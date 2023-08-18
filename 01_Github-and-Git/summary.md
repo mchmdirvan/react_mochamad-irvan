@@ -1,4 +1,4 @@
-# Introduction FE
+# Github and Git
 
 1. Cara memulai dan mengetahui roadmap belajar react dapat di akses di roadmap.sh
 2. Version control digunakan untuk dokumentasi dan kolaborasi
