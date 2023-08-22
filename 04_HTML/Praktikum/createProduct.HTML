@@ -6,20 +6,30 @@
     <title>Create Product</title>
   </head>
   <body>
+    <!-- title -->
     <h1>Create Product</h1>
     <h2>Detail Product</h2>
-    <p>Product Name :</p>
+
+    <!-- form product name  -->
     <form action="">
-      <input type="text" name="" id="" />
+      <label for="productName">Product Name :</label><br />
+      <input type="text" name="productName" id="productName" />
     </form>
-    <p>Product Category</p>
+    <br />
+
+    <!-- form product category  -->
     <form action="">
-      <select name="" id="">
-        <option value="Volvo">Volvo</option>
+      <label for="productCategory">Product Category :</label><br />
+      <select name="productCategory" id="productCategory">
+        <option value="">-- please select --</option>
+        <option value="">dummy</option>
       </select>
     </form>
-    <p>Product Freshess :</p>
+    <br />
+
+    <!-- form product freshess  -->
     <form action="">
+      <label for="productFreshess">Product Freshess</label><br />
       <input type="radio" />
       <label for="brand-new">Brand New</label><br />
       <input type="radio" />
@@ -28,19 +38,28 @@
       <label for="refurbished">Refurbished</label><br />
     </form>
     <br />
+
+    <!-- form Image of product  -->
     <form action="">
-      <label for="">Image of Product</label>
+      <label for="imageOfProduct">Image of Product</label>
       <input type="file" />
     </form>
-    <p>Additional Description</p>
+    <br />
+
+    <!-- form Additional Description  -->
     <form action="">
+      <label for="additionalDescription"> Additional Description</label><br />
       <textarea name="" id="" cols="50" rows="10"></textarea>
     </form>
-    <p>Product price :</p>
+
+    <!-- form product price  -->
     <form action="">
+      <label for="productPrice">Product Price :</label><br />
       <input type="number" placeholder="$100" />
     </form>
     <br />
+
+    <!-- button submit  -->
     <button type="button">Submit</button>
   </body>
 </html>
