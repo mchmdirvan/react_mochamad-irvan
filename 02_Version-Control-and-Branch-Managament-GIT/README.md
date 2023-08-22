@@ -1,9 +1,11 @@
-# Github and Git
+# (02) Version Control and Branch Management GIT
 
 1. Versioning mengatur versi dari source code program dan GIT adalah salah satu version control system.
 2. Commit harus menggunakan pesan yang jelas, bisa menggunakan add-ons semantic commit message
-3. git config -> set username dan email
-   git existing project -> masuk ke dalam project dengan clone [web] + cd [project]
+3. GIT Cheatsheet
+
+git config -> set username dan email
+git existing project -> masuk ke dalam project dengan clone [web] + cd [project]
 
 stagging area
 working directory di vs code
