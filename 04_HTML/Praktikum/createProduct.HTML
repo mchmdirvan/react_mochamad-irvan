@@ -13,15 +13,16 @@
     <!-- form product name  -->
     <form action="">
       <label for="productName">Product Name :</label><br />
-      <input type="text" name="productName" id="productName" />
+      <input type="text" name="productName" id="productName" required />
     </form>
     <br />
 
     <!-- form product category  -->
     <form action="">
       <label for="productCategory">Product Category :</label><br />
-      <select name="productCategory" id="productCategory">
-        <option value="">-- please select --</option>
+      
+      <select name="productCategory" id="productCategory" required>
+        <option value=""disabled selected ></option>
         <option value="">dummy</option>
       </select>
     </form>
@@ -30,32 +31,33 @@
     <!-- form product freshess  -->
     <form action="">
       <label for="productFreshess">Product Freshess</label><br />
-      <input type="radio" />
-      <label for="brand-new">Brand New</label><br />
-      <input type="radio" />
-      <label for="secondHank">Second Hank</label><br />
-      <input type="radio" />
-      <label for="refurbished">Refurbished</label><br />
+      
+      <input type="radio" name="productFreshess" value="Brand New" required/>
+      <label for="productFreshess">Brand New</label><br />
+      <input type="radio" name="productFreshess" value="Second Hank" />
+      <label for="productFreshess">Second Hank</label><br />
+      <input type="radio" name="productFreshess" value="Refurbished"/>
+      <label for="productFreshess">Refurbished</label><br />
     </form>
     <br />
 
     <!-- form Image of product  -->
     <form action="">
       <label for="imageOfProduct">Image of Product</label>
-      <input type="file" />
+      <input type="file" required />
     </form>
     <br />
 
     <!-- form Additional Description  -->
     <form action="">
       <label for="additionalDescription"> Additional Description</label><br />
-      <textarea name="" id="" cols="50" rows="10"></textarea>
+      <textarea name="" id="" cols="50" rows="10" required></textarea>
     </form>
 
     <!-- form product price  -->
     <form action="">
       <label for="productPrice">Product Price :</label><br />
-      <input type="number" placeholder="$100" />
+      <input type="number" placeholder="$100" required />
     </form>
     <br />
 
