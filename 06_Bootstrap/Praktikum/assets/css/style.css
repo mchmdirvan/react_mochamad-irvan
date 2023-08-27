@@ -13,6 +13,7 @@ nav {
   align-items: center;
   background-color: white;
   height: 8vh;
+  
 }
 .logo {
   font-family: Roboto;
@@ -38,15 +39,16 @@ nav {
 .body-container h1 {
   font-size: 3em;
   line-height: 1em;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.2em;
+  font-weight: 700;
 }
 .body-container p {
-  font-size: 1em;
+  font-size: 1.3em;
   opacity: 0.6;
 }
 .title {
   margin-bottom: 4em;
-  font-family: Jost;
+  font-family: Jost !important;
   color: white;
 }
 
@@ -72,6 +74,10 @@ nav {
   border: none;
   font-size: 1em;
 }
+.body-container a[href="createAccount.html"] {
+  text-decoration: none;
+}
+
 
 .newsletter {
   height: 30vh;
