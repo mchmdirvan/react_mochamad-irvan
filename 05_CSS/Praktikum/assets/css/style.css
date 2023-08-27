@@ -16,7 +16,7 @@ nav {
 }
 .logo {
   font-family: Roboto;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 500;
 }
@@ -29,23 +29,23 @@ nav {
 .container {
   display: flex;
   align-items: center;
-  padding: 12vh 12vh;
+  padding: 7em;
 }
 
 .body-container {
   flex-grow: 5;
 }
 .body-container h1 {
-  font-size: 7vh;
-  line-height: 8vh;
-  padding-bottom: 2vh;
+  font-size: 3em;
+  line-height: 1em;
+  padding-bottom: 0.5em;
 }
 .body-container p {
-  font-size: 3vh;
+  font-size: 1em;
   opacity: 0.6;
 }
 .title {
-  margin-bottom: 10vh;
+  margin-bottom: 4em;
   font-family: Jost;
   color: white;
 }
@@ -57,33 +57,33 @@ nav {
 .button {
   background-color: #47b2e4;
   color: white;
-  padding: 2vh 5vh;
-  border-radius: 5vh;
+  padding: 1em 2em;
+  border-radius: 5em;
   border: none;
-  font-size: 2.2vh;
-  margin-right: 7vh;
+  font-size: 1em;
+  margin-right: 5em;
 }
 
 .button-video {
   background-color: #37517e;
   color: white;
-  padding: 2vh 3vh;
-  border-radius: 5vh;
+  padding: 1em 2em;
+  border-radius: 5em;
   border: none;
-  font-size: 2.2vh;
+  font-size: 1em;
 }
 
 .newsletter {
   height: 30vh;
   background-color: #f3f5fa;
   text-align: center;
-  padding: 4vh;
+  padding: 2em;
 }
 
 .newsletter h4 {
   font-family: Jost;
-  font-size: 3.5vh;
-  padding: 1vh;
+  font-size: 1.5em;
+  padding: 0.5em;
   color: #37517e;
   font-weight: 600;
 }
@@ -91,16 +91,16 @@ nav {
 .newsletter p {
   font-family: "Open Sans";
   color: #444444;
-  padding-bottom: 4vh;
-  font-size: 2vh;
+  padding-bottom: 1em;
+  font-size: 1em;
 }
 
 input[type="email"] {
-  width:45vw;
+  width: 45vw;
   height: 3vw;
   background-color: white;
   border: none;
-  border-radius: 5vh;
+  border-radius: 5em;
   text-align: center;
 }
 
@@ -110,7 +110,24 @@ input[type="email"] {
   background-color: #47b2e4;
   color: white;
   margin-left: -7vw;
-  border-radius: 5vh;
+  border-radius: 5em;
   border: none;
-  font-size: 2vh
+  font-size: 1em;
+}
+
+.copyright {
+  background-color: #37517e;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  height: 50vh;
+  padding: 5em;
+  font-size: 1em;
+}
+
+.footer-container h3 {
+  color: #37517e;
 }
