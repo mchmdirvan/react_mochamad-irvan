@@ -13,7 +13,6 @@ nav {
   align-items: center;
   background-color: white;
   height: 8vh;
-  
 }
 .logo {
   font-family: Roboto;
@@ -73,11 +72,11 @@ nav {
   border-radius: 5em;
   border: none;
   font-size: 1em;
+  font-family: "Open Sans" !important;
 }
 .body-container a[href="createAccount.html"] {
   text-decoration: none;
 }
-
 
 .newsletter {
   height: 30vh;
@@ -127,7 +126,7 @@ input:hover {
 
 .footer-container {
   display: flex;
-  height: 40vh;
+  height: 50vh;
   padding: 3em 5em 5em 5em;
   font-size: 1em;
   font-family: Jost;
