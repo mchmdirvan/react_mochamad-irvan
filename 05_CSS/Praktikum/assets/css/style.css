@@ -1,5 +1,10 @@
 * {
   margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 200vh;
 }
 
 nav {
@@ -27,15 +32,15 @@ nav {
   padding: 12vh 12vh;
 }
 
-.bodyContainer {
+.body-container {
   flex-grow: 5;
 }
-.bodyContainer h1 {
+.body-container h1 {
   font-size: 7vh;
   line-height: 8vh;
   padding-bottom: 2vh;
 }
-.bodyContainer p {
+.body-container p {
   font-size: 3vh;
   opacity: 0.6;
 }
@@ -45,7 +50,7 @@ nav {
   color: white;
 }
 
-.bodyImage {
+.body-image {
   flex-grow: 2;
 }
 
@@ -59,10 +64,49 @@ nav {
   margin-right: 7vh;
 }
 
-.buttonVideo {
+.button-video {
   background-color: #37517e;
   color: white;
   padding: 2vh 3vh;
+  border-radius: 5vh;
+  border: none;
+  font-size: 2.2vh;
+}
+
+.newsletter {
+  height: 25vh;
+  background-color: #f3f5fa;
+  text-align: center;
+  padding: 3vh;
+}
+
+.newsletter h4 {
+  font-family: Jost;
+  font-size: 3.5vh;
+  padding: 1vh;
+  color: #37517e;
+}
+
+.newsletter p {
+  font-family: "Open Sans";
+  color: #444444;
+  padding-bottom: 4vh;
+}
+
+input[type="email"] {
+  width: 35vw;
+  background-color: white;
+  border: none;
+  border-radius: 5vh;
+  padding: 1vh;
+  text-align: center;
+}
+
+.button-subscribe {
+  background-color: #47b2e4;
+  color: white;
+  padding: 1vh 2vh;
+  margin-left: -7vw;
   border-radius: 5vh;
   border: none;
   font-size: 2.2vh;
