@@ -104,6 +104,10 @@ input[type="email"] {
   text-align: center;
 }
 
+input:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 .button-subscribe {
   height: 3vw;
   width: 7vw;
