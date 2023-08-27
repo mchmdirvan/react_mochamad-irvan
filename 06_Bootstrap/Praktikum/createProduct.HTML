@@ -66,7 +66,7 @@
       <h4 class="mt-5">Detail Product</h4>
 
       <!-- form product name  -->
-      <form action="">
+      <form action="" class="was-validated">
         <label for="productName">Product Name :</label><br />
         <input
           class="form-control w-75"
@@ -77,11 +77,13 @@
           minlength="6"
           maxlength="50"
         />
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </form>
       <br />
 
       <!-- form product category  -->
-      <form action="">
+      <form action="" class="was-validated">
         <label for="productCategory">Product Category:</label>
         <select
           class="form-control w-50"
@@ -92,18 +94,20 @@
           <option value="" disabled selected>Choose...</option>
           <option value="">dummy</option>
         </select>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </form>
       <br />
 
       <!-- form Image of product  -->
-      <form action="">
+      <form action="" class="was-validated">
         <label for="imageOfProduct">Image of Product</label>
         <input type="file" required />
       </form>
       <br />
 
       <!-- form product freshess  -->
-      <form action="">
+      <form action="" class="was-validated">
         <label for="productFreshess">Product Freshess:</label>
         <div class="form-check">
           <input
@@ -136,11 +140,13 @@
           />
           <label class="form-check-label" for="refurbished">Refurbished</label>
         </div>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </form>
       <br />
 
       <!-- form Additional Description  -->
-      <form action="">
+      <form action="" class="was-validated">
         <label for="additionalDescription">Additional Description:</label>
         <textarea
           class="form-control"
@@ -150,10 +156,12 @@
           rows="5"
           required
         ></textarea>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </form>
 
       <!-- form product price  -->
-      <form action="">
+      <form action="" class="was-validated">
         <label for="productPrice">Product Price :</label>
         <input
           type="number"
@@ -162,6 +170,8 @@
           placeholder="$1"
           required
         />
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
       </form>
       <br />
 
