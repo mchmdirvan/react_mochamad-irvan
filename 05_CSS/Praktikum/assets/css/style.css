@@ -1,16 +1,69 @@
-body {
+* {
   margin: 0;
-  height: 100vh;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
+  height: 8vh;
 }
 .logo {
   font-family: Roboto;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
+}
+
+.body {
+  height: 92vh;
+  background-color: #37517e;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 12vh 12vh;
+}
+
+.bodyContainer {
+  flex-grow: 5;
+}
+.bodyContainer h1 {
+  font-size: 7vh;
+  line-height: 8vh;
+  padding-bottom: 2vh;
+}
+.bodyContainer p {
+  font-size: 3vh;
+  opacity: 0.6;
+}
+.title {
+  margin-bottom: 10vh;
+  font-family: Jost;
+  color: white;
+}
+
+.bodyImage {
+  flex-grow: 2;
+}
+
+.button {
+  background-color: #47b2e4;
+  color: white;
+  padding: 2vh 5vh;
+  border-radius: 5vh;
+  border: none;
+  font-size: 2.2vh;
+  margin-right: 7vh;
+}
+
+.buttonVideo {
+  background-color: #37517e;
+  color: white;
+  padding: 2vh 3vh;
+  border-radius: 5vh;
+  border: none;
+  font-size: 2.2vh;
 }

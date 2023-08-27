@@ -80,5 +80,25 @@ Flexible Box Modul : Model layout 1D yang dapat mengatur jarak dan penjajaran an
 Maksudnya satu dimensi adalah hanya bisa memilih salah satu antara baris atau kolom. kalau mau dua-duanya atau 2D ada CSS grid
 
 ## Ada apa saja istilah dalam flexbox
+- Container : wadah
+- Items : Elemen yang ada di dalam atau childs
+- Main-Axis : Elemen di set sejajar secara horizontal // Sumbu utama dari sebuah container yang menentukan arah dari penempatan Items secara horizonal
+- Cross-Axis : --
+- Main Size : ukuran container // Ukuran (Width/Height) dari container yang akan membuat dimensi dari items nya relatif terhadap main size
+- Cross-Size : ukuran column 
+- Main Start / Main-End : Awalan atau akhiran Items secara horizontal di dalam container 
+- Cross-Start - Cross-End : Awalan secara vertikal 
 
+## Ada apa saja properti di dalam container flexbox?
+- Display : flex -> membuat sebuah element parent menjadi flex box dan membuat elemen-elemen di dalamnya bisa berperilaku flex juga. 
+- Flex Direction : row (default) | row-reverse | column | column-reverse -> untuk mengatur arah container flex nya
+- Flex-wrap : nowrap (default) | wrap | wrap-reverse -> wrap memungkinkan untuk memindahkan item ke baris bawahnya jika container sudah penuh 
+- Justify-content : flex-start | flex-end | center | space-between | space-around | space-evenly -> mengatur jarak antar items
+- Align-items : flex-star | flex-end | center | stretch | baseline -> mengatur perilaku penjajaran items terhadap cross axis
+- Align-content : -> mengatur jarak antar items terhadap cross axis
+  
+  ## Ada apa saja properti pada items?
+  - Order : mengatur urutan
+  - flex-grow : mengatur ukuran items nya
+  - Align-self : mengatur perilaku penjajaran sebuah item yang spesifik terhadap cross axis
 
