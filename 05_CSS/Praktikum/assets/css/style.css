@@ -128,12 +128,12 @@ input:hover {
   justify-content: space-between;
 }
 
-.footer-container h1 {
+.footer-container h1,
+.footer-container h4 {
   color: #37517e;
 }
 
 .footer-container h4 {
-  color: #37517e;
   padding-bottom: 1em;
 }
 
