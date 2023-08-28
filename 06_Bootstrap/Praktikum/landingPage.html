@@ -60,7 +60,14 @@
           <!-- Button -->
           <div>
             <a href="createAccount.html">
-              <button class="button">Get Started</button>
+              <button
+                type="button"
+                class="button"
+                data-bs-toggle="tooltip"
+                title="Start Your Journey!"
+              >
+                Get Started
+              </button>
             </a>
             <button class="button-video">Watch Video</button>
           </div>
@@ -143,5 +150,13 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
   </body>
 </html>
