@@ -435,8 +435,10 @@ li a {
     font-size: 1.5rem;
   }
   .body-container h1 {
-    font-size: 4em;
+    font-size: 3em;
+    max-width: 80vh;
   }
+
   .body-container p {
     font-size: 1.3em;
   }
@@ -448,7 +450,7 @@ li a {
     font-size: 1em;
   }
   .navbar {
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .newsletter {
     height: 40vh;
