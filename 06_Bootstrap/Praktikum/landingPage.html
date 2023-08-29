@@ -21,11 +21,20 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav>
-      <h3 class="p-4">Simple header</h3>
+    <nav class="navbar navbar-expand-sm justify-content-end">
+      <h3 class="p-4 me-auto">Simple header</h3>
 
-      <div>
-        <ul class="nav nav-pills p-4">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="nav nav-pills p-4 ms-auto">
           <li class="nav-item">
             <a class="nav-link active" href="#">Home</a>
           </li>
