@@ -26,10 +26,20 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav>
-      <h3 class="p-4">Simple header</h3>
-      <div>
-        <ul class="nav nav-pills p-4">
+    <nav class="navbar navbar-expand-sm justify-content-end">
+      <h3 class="p-4 me-auto">Simple header</h3>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="nav nav-pills p-4 ms-auto">
           <li class="nav-item">
             <a class="nav-link active" href="#">Home</a>
           </li>
@@ -65,121 +75,118 @@
 
       <h4 class="mt-5">Detail Product</h4>
 
-      <div class="needs-validation" novalidate">
-      <!-- form product name  -->
-      <form action="">
-        <label for="productName">Product Name :</label><br />
-        <input
-          class="form-control w-75"
-          type="text"
-          name="productName"
-          id="productName"
-          required
-          minlength="6"
-          maxlength="50"
-        />
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </form>
-      <br />
+      <!-- Detail Product form -->
+      <div class="needs-validation" novalidate>
+        <form action="" novalidate>
+          <!-- Form product name -->
+          <div class="col-5 mb-3">
+            <label for="productName" class="form-label">Product Name :</label>
+            <input
+              class="form-control"
+              type="text"
+              name="productName"
+              id="productName"
+              required
+              minlength="6"
+              maxlength="50"
+            />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
 
-      <!-- form product category  -->
-      <form action="">
-        <label for="productCategory">Product Category:</label>
-        <select
-          class="form-control w-50"
-          name="productCategory"
-          id="productCategory"
-          required
-        >
-          <option value="" disabled selected>Choose...</option>
-          <option value="">dummy</option>
-        </select>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </form>
-      <br />
+          <!-- Form product category -->
+          <div class="col-4 mb-3">
+            <label for="productCategory" class="form-label">Product Category:</label>
+            <select class="form-select" name="productCategory" id="productCategory" required>
+              <option value="" disabled selected>Choose...</option>
+              <option value="">dummy</option>
+            </select>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
 
-      <!-- form Image of product  -->
-      <form action="">
-        <label for="imageOfProduct">Image of Product</label>
-        <br />
-        <input type="file" required class="form-control custom-form-control" />
-      </form>
-      <br />
+          <!-- Form Image of product -->
+          <div class="col-4 mb-3">
+            <label for="imageOfProduct" class="form-label">Image of Product</label>
+            <input type="file" required class="form-control custom-form-control" />
+          </div>
 
-      <!-- form product freshess  -->
-      <form action="">
-        <label for="productFreshess">Product Freshess:</label>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="productFreshess"
-            id="brandNew"
-            value="Brand New"
-            required
-          />
-          <label class="form-check-label" for="brandNew">Brand New</label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="productFreshess"
-            id="secondHank"
-            value="Second Hank"
-          />
-          <label class="form-check-label" for="secondHank">Second Hank</label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="productFreshess"
-            id="refurbished"
-            value="Refurbished"
-          />
-          <label class="form-check-label" for="refurbished">Refurbished</label>
-        </div>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </form>
-      <br />
+          <!-- Form product freshness -->
+          <div class="mb-3">
+            <label class="form-label">Product Freshness:</label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="productFreshness"
+                id="brandNew"
+                value="Brand New"
+                required
+              />
+              <label class="form-check-label" for="brandNew">Brand New</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="productFreshess"
+                id="secondHank"
+                value="Second Hank"
+              />
+              <label class="form-check-label" for="secondHank">Second Hank</label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="productFreshess"
+                id="refurbished"
+                value="Refurbished"
+              />
+              <label class="form-check-label" for="refurbished">Refurbished</label>
+            </div>
+            
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
 
-      <!-- form Additional Description  -->
-      <form action="">
-        <label for="additionalDescription">Additional Description:</label>
-        <textarea
-          class="form-control"
-          name="additionalDescription"
-          id="additionalDescription"
-          cols="5"
-          rows="5"
-          required
-        ></textarea>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </form>
+          <!-- Form Additional Description -->
+          <div class="mb-3">
+            <label for="additionalDescription" class="form-label">Additional Description:</label>
+            <textarea
+              class="form-control"
+              name="additionalDescription"
+              id="additionalDescription"
+              cols="5"
+              rows="5"
+              required
+            ></textarea>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
 
-      <!-- form product price  -->
-      <form action="">
-        <label for="productPrice">Product Price :</label>
-        <input
-          type="number"
-          class="form-control"
-          id="productPrice"
-          placeholder="$1"
-          required
-        />
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-      </form>
-      <br />
+          <!-- Form product price -->
+          <div class="mb-3">
+            <label for="productPrice" class="form-label">Product Price :</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productPrice"
+              placeholder="$1"
+              required
+            />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
 
-      <!-- button submit  -->
-      <button type="button" class="btn btn-primary col-12">Submit</button>
-    </div>
+          <!-- Button submit -->
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-primary col-11">Submit</button>
+
+          </div>
+        </form>
+      </div>
+    
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
