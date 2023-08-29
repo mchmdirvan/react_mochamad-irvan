@@ -195,12 +195,10 @@ li a {
   * {
     box-sizing: border-box;
   }
-  .body{
+  .body {
     height: 50vh;
     padding: 5em;
   }
-
-
 
   nav {
     padding: 0 1em;
@@ -453,10 +451,9 @@ li a {
     font-size: 1em;
   }
   .navbar {
-    font-size: 1.5em;
+    font-size: 1em;
   }
   .newsletter {
     height: 40vh;
   }
 }
-
