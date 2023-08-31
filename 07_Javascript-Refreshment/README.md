@@ -1,8 +1,10 @@
 # (07) Javascript Refreshemt
 
 ## Apa itu Javascript?
+JavaScript adalah bahasa pemrograman serbaguna yang digunakan secara luas untuk membuat konten web interaktif dan dinamis. Bahasa ini berjalan di peramban web, memungkinkan untuk scripting di sisi klien, dan juga bisa digunakan di sisi server dengan Node.js.
 
 ## let and const
+Variabel dalam JavaScript bisa dideklarasikan dengan menggunakan let dan const. Kata kunci let digunakan untuk variabel yang nilainya bisa diubah, sementara const digunakan untuk variabel dengan nilai yang tetap.
 
 ## String template (backtick)
 
@@ -13,7 +15,7 @@
 - parseInt(string) : Mengkonversi string ke number (bilangan bulat)
 - parseFloat(string) : Mengkonversi string ke number (bilangan pecahan)
 - Number(string) : Mengkonversi string ke number (bilangan bulat atau pecahan)
-- number.toString() : : Mengkonversi number ke string (bilangan bulat)
+- number.toString() : Mengkonversi number ke string (bilangan bulat)
 
 ## NaN (Not a Number)
 
