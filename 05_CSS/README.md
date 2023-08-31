@@ -110,3 +110,7 @@ Maksudnya satu dimensi adalah hanya bisa memilih salah satu antara baris atau ko
   - flex-grow : mengatur ukuran items nya
   - Align-self : mengatur perilaku penjajaran sebuah item yang spesifik terhadap cross axis
 
+## Resize Image
+Squoosh.app/editor
+thumbor
+
