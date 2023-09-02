@@ -147,4 +147,6 @@ with (object) {
 properti
 }
 
-## Function 
+https://www.w3schools.com/css/css_pseudo_classes.asp
+https://www.w3schools.com/html/html_form_attributes.asp
+https://www.w3schools.com/js/js_validation_api.asp
