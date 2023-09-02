@@ -25,7 +25,7 @@ function validateForm(event) {
     // add manually border red
     productNameInput.classList.add("red");
     event.preventDefault();
-    
+
     // check symbol on product name
   } else if (invalidCharactersPattern.test(productNameInput.value)) {
     productNameError.textContent = "Name must not contain symbols.";
@@ -42,5 +42,26 @@ function validateForm(event) {
 const forms = document.querySelectorAll(".needs-validation");
 
 forms.forEach(function (form) {
-  form.addEventListener("submit", validateForm);
+  form.addEventListener("submit", function (event) {
+    validateForm(event);
+
+    // Check if the form is valid
+    if (form.checkValidity()) {
+      // Form data
+      const productName = form.querySelector("#productName").value;
+      const productCategory = form.querySelector("#productCategory").value;
+      const additionalDescription = form.querySelector(
+        "#additionalDescription"
+      ).value;
+      const productPrice = form.querySelector("#productPrice").value;
+      const productFreshness = form.querySelector(
+        'input[name="productFreshness"]:checked'
+      ).value;
+
+      // Display an alert with the form data
+      alert(
+        `Product Name: ${productName}\nProduct Category: ${productCategory}\nAdditional Description: ${additionalDescription}\nProduct Price: ${productPrice}\nProduct Freshness: ${productFreshness}`
+      );
+    }
+  });
 });
