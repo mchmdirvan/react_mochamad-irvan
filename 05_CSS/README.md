@@ -1,5 +1,13 @@
 # (05) CSS
 
+## Saran untuk melatih skill layouting CSS 
+- Flexbox Forggy
+- Grid Garden
+  
+  ## Ekstention untuk pick-color
+  - Color Zila
+  - Tailwind color picker
+
 ## Apa yang dimaksud dengan metode inline, internal, dan eksternal dalam penambahan gaya CSS?
 
 Metode inline melibatkan penulisan gaya langsung di dalam tag HTML, sedangkan metode internal melibatkan penambahan tag style di dalam HTML. Metode eksternal melibatkan penggunaan file .css terpisah.
@@ -101,4 +109,8 @@ Maksudnya satu dimensi adalah hanya bisa memilih salah satu antara baris atau ko
   - Order : mengatur urutan
   - flex-grow : mengatur ukuran items nya
   - Align-self : mengatur perilaku penjajaran sebuah item yang spesifik terhadap cross axis
+
+## Resize Image
+Squoosh.app/editor
+thumbor
 
