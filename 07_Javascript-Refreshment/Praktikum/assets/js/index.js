@@ -11,8 +11,7 @@ function validateForm(event) {
   if (productNameInput.value.length > 25) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
-    productNameInput.classList.add("is-invalid");
-
+    productNameInput.classList.add("red");
     event.preventDefault();
   } else {
     productNameError.textContent = "Please enter a valid Prouct name";
