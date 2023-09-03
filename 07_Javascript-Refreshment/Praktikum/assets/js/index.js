@@ -38,7 +38,7 @@ function validateForm(event) {
   } else {
     productNameError.textContent = "Please enter a valid Product Name";
   }
-    // Add the "was-validated" class to indicate that the form has been validated
+  // Add the "was-validated" class to indicate that the form has been validated
   form.classList.add("was-validated");
 }
 
