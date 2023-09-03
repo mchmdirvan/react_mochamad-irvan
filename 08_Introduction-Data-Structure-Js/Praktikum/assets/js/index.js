@@ -1,13 +1,14 @@
-// Function to validate the form
+// ---Function to validate the form---
 function validateForm(event) {
-  // Get the form element and relevant input elements
+  // ---Get the form element and relevant input elements---
   const form = event.target;
   const productNameInput = form.querySelector("#productName");
   const productNameError = form.querySelector("#productNameError");
   const invalidCharactersPattern = /[{}@#%]/;
 
+  //--- If the form is invalid (e.g., required fields are missing)---
   if (!form.checkValidity()) {
-    // If the form is invalid (e.g., required fields are missing)
+    
     event.preventDefault();
     event.stopPropagation();
 
@@ -19,7 +20,8 @@ function validateForm(event) {
     const submitButton = form.querySelector("#submitButton");
     submitButton.removeAttribute("disabled");
   }
-  //check the length of product name
+
+  //---check the length of product name---
   if (productNameInput.value.length > 25) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
@@ -28,7 +30,7 @@ function validateForm(event) {
     productNameInput.classList.add("red");
     event.preventDefault();
 
-    // Check for invalid characters in the product name
+    //---Check for invalid characters in the product name---
   } else if (invalidCharactersPattern.test(productNameInput.value)) {
     productNameError.textContent = "Name must not contain symbols.";
     productNameInput.classList.add("is-invalid");
@@ -38,21 +40,21 @@ function validateForm(event) {
   } else {
     productNameError.textContent = "Please enter a valid Product Name";
   }
-  // Add the "was-validated" class to indicate that the form has been validated
+  //---Add the "was-validated" class to indicate that the form has been validated---
   form.classList.add("was-validated");
 }
 
 // Initialize rowNumber to 1
 let rowNumber = 1;
 
-// Add event listeners to all forms with class "needs-validation"
+//--- Add event listeners to all forms with class "needs-validation"---
 const forms = document.querySelectorAll(".needs-validation");
 
 forms.forEach(function (form) {
   form.addEventListener("submit", function (event) {
     validateForm(event);
 
-    // Check if the form is valid
+    // ---Check if the form is valid---
     if (form.checkValidity()) {
       //Get Form data
       const productName = form.querySelector("#productName").value;
@@ -66,7 +68,7 @@ forms.forEach(function (form) {
       ).value;
       const productPrice = form.querySelector("#productPrice").value;
 
-      // Display an alert with the form data
+      // ---Display an alert with the form data---
       alert(
         `Product Name: ${productName}\n
         Product Category: ${productCategory}\n
@@ -77,9 +79,8 @@ forms.forEach(function (form) {
         `
       );
 
-      // Table
+      //---Display Table---
       let table = document.getElementsByTagName("table")[0];
-
       let newRow = table.insertRow(table.rows.length);
 
       let cel1 = newRow.insertCell(0);
@@ -115,7 +116,7 @@ document.getElementById("deleteButton").addEventListener("click", function () {
 
 // Mencari data berdasarkan username
 document.getElementById("searchButton").addEventListener("click", function () {
-  const searchUsername = prompt("Masukkan username yang ingin dicari:");
+  const searchUsername = prompt("Masukkan Product Name yang ingin dicari:");
   if (searchUsername) {
     let table = document.getElementsByTagName("table")[0];
     let found = false;
