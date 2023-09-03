@@ -93,7 +93,7 @@ forms.forEach(function (form) {
       cel1.innerHTML = rowNumber;
       cel2.innerHTML = productName;
       cel3.innerHTML = productCategory;
-      cel4.innerHTML = imageOfProduct;
+      cel4.innerHTML = "defaultName";
       cel5.innerHTML = productFreshness;
       cel6.innerHTML = additionalDescription;
       cel7.innerHTML = productPrice;
