@@ -54,17 +54,44 @@ forms.forEach(function (form) {
       //Get Form data
       const productName = form.querySelector("#productName").value;
       const productCategory = form.querySelector("#productCategory").value;
+      const imageOfProduct = form.querySelector("#imageOfProduct").value;
+      const productFreshness = form.querySelector(
+        'input[name="productFreshness"]:checked'
+      ).value;
       const additionalDescription = form.querySelector(
         "#additionalDescription"
       ).value;
       const productPrice = form.querySelector("#productPrice").value;
-      const productFreshness = form.querySelector(
-        'input[name="productFreshness"]:checked'
-      ).value;
+
+      // var table = document.getElementsByTagName('table')[0];
+
+      // 	var newRow = table.insertRow(table.rows.length);
+
+      // 	var cel1 = newRow.insertCell(0);
+      // 	var cel2 = newRow.insertCell(1);
+      // 	var cel3 = newRow.insertCell(2);
+      // 	var cel4 = newRow.insertCell(3);
+      // 	var cel5 = newRow.insertCell(4);
+      // 	var cel6 = newRow.insertCell(5);
+      // 	var cel7 = newRow.insertCell(6);
+
+      // 	cel1.innerHTML = ;
+      // 	cel2.innerHTML = productName;
+      // 	cel3.innerHTML = productCategory;
+      // 	cel4.innerHTML = gender;
+      // 	cel5.innerHTML = address;
+      // 	cel6.innerHTML = additionalDescription;
+      // 	cel7.innerHTML = productPrice;
 
       // Display an alert with the form data
       alert(
-        `Product Name: ${productName}\nProduct Category: ${productCategory}\nAdditional Description: ${additionalDescription}\nProduct Price: ${productPrice}\nProduct Freshness: ${productFreshness}`
+        `Product Name: ${productName}\n
+        Product Category: ${productCategory}\n
+        Image of Product: ${imageOfProduct}\n
+        Product Freshness: ${productFreshness}\n
+        Additional Description: ${additionalDescription}\n
+        Product Price: ${productPrice}\n
+        `
       );
     }
   });
