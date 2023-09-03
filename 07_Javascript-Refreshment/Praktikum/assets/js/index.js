@@ -42,6 +42,9 @@ function validateForm(event) {
   form.classList.add("was-validated");
 }
 
+// Initialize rowNumber to 1
+let rowNumber = 1;
+
 // Add event listeners to all forms with class "needs-validation"
 const forms = document.querySelectorAll(".needs-validation");
 
@@ -63,26 +66,6 @@ forms.forEach(function (form) {
       ).value;
       const productPrice = form.querySelector("#productPrice").value;
 
-      // var table = document.getElementsByTagName('table')[0];
-
-      // 	var newRow = table.insertRow(table.rows.length);
-
-      // 	var cel1 = newRow.insertCell(0);
-      // 	var cel2 = newRow.insertCell(1);
-      // 	var cel3 = newRow.insertCell(2);
-      // 	var cel4 = newRow.insertCell(3);
-      // 	var cel5 = newRow.insertCell(4);
-      // 	var cel6 = newRow.insertCell(5);
-      // 	var cel7 = newRow.insertCell(6);
-
-      // 	cel1.innerHTML = ;
-      // 	cel2.innerHTML = productName;
-      // 	cel3.innerHTML = productCategory;
-      // 	cel4.innerHTML = gender;
-      // 	cel5.innerHTML = address;
-      // 	cel6.innerHTML = additionalDescription;
-      // 	cel7.innerHTML = productPrice;
-
       // Display an alert with the form data
       alert(
         `Product Name: ${productName}\n
@@ -93,6 +76,30 @@ forms.forEach(function (form) {
         Product Price: ${productPrice}\n
         `
       );
+
+      // Table
+      let table = document.getElementsByTagName("table")[0];
+
+      let newRow = table.insertRow(table.rows.length);
+
+      let cel1 = newRow.insertCell(0);
+      let cel2 = newRow.insertCell(1);
+      let cel3 = newRow.insertCell(2);
+      let cel4 = newRow.insertCell(3);
+      let cel5 = newRow.insertCell(4);
+      let cel6 = newRow.insertCell(5);
+      let cel7 = newRow.insertCell(6);
+
+      cel1.innerHTML = rowNumber;
+      cel2.innerHTML = productName;
+      cel3.innerHTML = productCategory;
+      cel4.innerHTML = imageOfProduct;
+      cel5.innerHTML = productFreshness;
+      cel6.innerHTML = additionalDescription;
+      cel7.innerHTML = productPrice;
+      rowNumber++;
+
+      event.preventDefault();
     }
   });
 });
