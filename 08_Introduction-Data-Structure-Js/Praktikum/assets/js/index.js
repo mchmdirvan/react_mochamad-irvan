@@ -76,6 +76,59 @@ forms.forEach(function (form) {
         Product Price: ${productPrice}\n
         `
       );
+
+      // Table
+      let table = document.getElementsByTagName("table")[0];
+
+      let newRow = table.insertRow(table.rows.length);
+
+      let cel1 = newRow.insertCell(0);
+      let cel2 = newRow.insertCell(1);
+      let cel3 = newRow.insertCell(2);
+      let cel4 = newRow.insertCell(3);
+      let cel5 = newRow.insertCell(4);
+      let cel6 = newRow.insertCell(5);
+      let cel7 = newRow.insertCell(6);
+
+      cel1.innerHTML = rowNumber;
+      cel2.innerHTML = productName;
+      cel3.innerHTML = productCategory;
+      cel4.innerHTML = "defaultName";
+      cel5.innerHTML = productFreshness;
+      cel6.innerHTML = additionalDescription;
+      cel7.innerHTML = productPrice;
+      rowNumber++;
+
+      event.preventDefault();
     }
   });
+});
+
+document.getElementById("deleteButton").addEventListener("click", function () {
+  let table = document.getElementsByTagName("table")[0];
+  let lastRow = table.rows[table.rows.length - 1];
+  if (lastRow) {
+    table.deleteRow(table.rows.length - 1);
+    rowNumber--;
+  }
+});
+
+// Mencari data berdasarkan username
+document.getElementById("searchButton").addEventListener("click", function () {
+  const searchUsername = prompt("Masukkan username yang ingin dicari:");
+  if (searchUsername) {
+    let table = document.getElementsByTagName("table")[0];
+    let found = false;
+    for (let i = 1; i < table.rows.length; i++) {
+      let username = table.rows[i].cells[1].textContent; // Ganti indeks dengan indeks kolom username
+      if (username === searchUsername) {
+        alert(`Data ditemukan:\n${table.rows[i].innerText}`);
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      alert("Data tidak ditemukan.");
+    }
+  }
 });
