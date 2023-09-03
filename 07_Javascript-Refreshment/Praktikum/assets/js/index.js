@@ -103,3 +103,32 @@ forms.forEach(function (form) {
     }
   });
 });
+
+document.getElementById("deleteButton").addEventListener("click", function () {
+  let table = document.getElementsByTagName("table")[0];
+  let lastRow = table.rows[table.rows.length - 1];
+  if (lastRow) {
+    table.deleteRow(table.rows.length - 1);
+    rowNumber--;
+  }
+});
+
+// Mencari data berdasarkan username
+document.getElementById("searchButton").addEventListener("click", function () {
+  const searchUsername = prompt("Masukkan username yang ingin dicari:");
+  if (searchUsername) {
+    let table = document.getElementsByTagName("table")[0];
+    let found = false;
+    for (let i = 1; i < table.rows.length; i++) {
+      let username = table.rows[i].cells[1].textContent; // Ganti indeks dengan indeks kolom username
+      if (username === searchUsername) {
+        alert(`Data ditemukan:\n${table.rows[i].innerText}`);
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      alert("Data tidak ditemukan.");
+    }
+  }
+});
