@@ -1,19 +1,21 @@
 // Function to validate the form
 function validateForm(event) {
+  // Get the form element and relevant input elements
   const form = event.target;
   const productNameInput = form.querySelector("#productName");
   const productNameError = form.querySelector("#productNameError");
   const invalidCharactersPattern = /[{}@#%]/;
 
   if (!form.checkValidity()) {
+    // If the form is invalid (e.g., required fields are missing)
     event.preventDefault();
     event.stopPropagation();
 
-    //control button
+    // Disable the submit button
     const submitButton = form.querySelector("#submitButton");
     submitButton.setAttribute("disabled", "true");
   } else {
-    //control button
+    // If the form is valid
     const submitButton = form.querySelector("#submitButton");
     submitButton.removeAttribute("disabled");
   }
@@ -22,19 +24,21 @@ function validateForm(event) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
     productNameInput.classList.add("is-invalid");
-    // add manually border red
+    // Add a red border manually to indicate an error
     productNameInput.classList.add("red");
     event.preventDefault();
 
-    // check symbol on product name
+    // Check for invalid characters in the product name
   } else if (invalidCharactersPattern.test(productNameInput.value)) {
     productNameError.textContent = "Name must not contain symbols.";
     productNameInput.classList.add("is-invalid");
+    // Add a red border manually to indicate an error
     productNameInput.classList.add("red");
     event.preventDefault();
   } else {
     productNameError.textContent = "Please enter a valid Product Name";
   }
+    // Add the "was-validated" class to indicate that the form has been validated
   form.classList.add("was-validated");
 }
 
@@ -47,7 +51,7 @@ forms.forEach(function (form) {
 
     // Check if the form is valid
     if (form.checkValidity()) {
-      // Form data
+      //Get Form data
       const productName = form.querySelector("#productName").value;
       const productCategory = form.querySelector("#productCategory").value;
       const additionalDescription = form.querySelector(
