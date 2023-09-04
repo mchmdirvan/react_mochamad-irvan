@@ -8,7 +8,6 @@ function validateForm(event) {
 
   //--- If the form is invalid (e.g., required fields are missing)---
   if (!form.checkValidity()) {
-    
     event.preventDefault();
     event.stopPropagation();
 
@@ -116,20 +115,20 @@ document.getElementById("deleteButton").addEventListener("click", function () {
 
 // Mencari data berdasarkan username
 document.getElementById("searchButton").addEventListener("click", function () {
-  const searchUsername = prompt("Masukkan Product Name yang ingin dicari:");
+  const searchUsername = prompt("Enter Product Name to search:");
   if (searchUsername) {
     let table = document.getElementsByTagName("table")[0];
     let found = false;
     for (let i = 1; i < table.rows.length; i++) {
-      let username = table.rows[i].cells[1].textContent; // Ganti indeks dengan indeks kolom username
-      if (username === searchUsername) {
-        alert(`Data ditemukan:\n${table.rows[i].innerText}`);
+      let productName = table.rows[i].cells[1].textContent;
+      if (productName === searchUsername) {
+        alert(`Data found:\n${table.rows[i].innerText}`);
         found = true;
         break;
       }
     }
     if (!found) {
-      alert("Data tidak ditemukan.");
+      alert("Data not found.");
     }
   }
 });
