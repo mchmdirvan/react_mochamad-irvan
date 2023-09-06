@@ -81,14 +81,21 @@ forms.forEach(function (form) {
       //---Display Table---
       let table = document.getElementsByTagName("table")[0];
       let newRow = table.insertRow(table.rows.length);
+      
+      let cellData = [
+        "",
+        productName,
+        productCategory,
+        "defaultName",
+        productFreshness,
+        additionalDescription,
+        productPrice,
+      ];
 
-      let cel1 = newRow.insertCell(0);
-      let cel2 = newRow.insertCell(1);
-      let cel3 = newRow.insertCell(2);
-      let cel4 = newRow.insertCell(3);
-      let cel5 = newRow.insertCell(4);
-      let cel6 = newRow.insertCell(5);
-      let cel7 = newRow.insertCell(6);
+      for (let i = 0; i < cellData.length; i++) {
+        let cell = newRow.insertCell(i);
+        cell.innerHTML = cellData[i];
+      }
 
       cel1.innerHTML = rowNumber;
       cel2.innerHTML = productName;
@@ -113,7 +120,7 @@ document.getElementById("deleteButton").addEventListener("click", function () {
   }
 });
 
-// Mencari data berdasarkan username
+// Mencari data berdasarkan Product Name
 document.getElementById("searchButton").addEventListener("click", function () {
   const searchUsername = prompt("Enter Product Name to search:");
   if (searchUsername) {
