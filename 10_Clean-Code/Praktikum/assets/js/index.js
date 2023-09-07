@@ -25,7 +25,7 @@ function validateForm(event) {
   form.classList.add("was-validated");
 }
 
-// -->>> Function to validate and style the Product Name input <<<---
+// -->>> Function to validate Product Name input <<<---
 function validateProductName(
   productNameInput,
   productNameError,
@@ -35,17 +35,21 @@ function validateProductName(
   if (productNameInput.value.length > 25) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
-    productNameInput.classList.add("is-invalid");
-    productNameInput.classList.add("add-red-border");
+    addValidationClasses(productNameInput);
     event.preventDefault();
   } else if (invalidCharactersPattern.test(productNameInput.value)) {
     productNameError.textContent = "Name must not contain symbols.";
-    productNameInput.classList.add("is-invalid");
-    productNameInput.classList.add("add-red-border");
+    addValidationClasses(productNameInput);
     event.preventDefault();
   } else {
     productNameError.textContent = "Please enter a valid Product Name";
   }
+}
+
+//--->>> Function to add validation classes to an input element <<<---
+function addValidationClasses(inputElement) {
+  inputElement.classList.add("is-invalid");
+  inputElement.classList.add("add-red-border");
 }
 
 //--->>> Function to disable the submit button <<<---
@@ -59,7 +63,7 @@ function enableSubmitButton(form) {
   submitButton.removeAttribute("disabled");
 }
 
-// --->> Add event listeners to all forms with class "needs-validation" <<<---
+// --->> Event listener for form submission <<<---
 const forms = document.querySelectorAll(".needs-validation");
 forms.forEach(function (form) {
   form.addEventListener("submit", function (event) {
