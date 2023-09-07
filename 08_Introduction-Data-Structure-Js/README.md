@@ -11,3 +11,6 @@ Dalam pelajaran ini, kami fokus pada dua jenis data structures dasar, yaitu Arra
 ## Operasi pada Data Structures:
 
 Kami mempelajari berbagai operasi pada data structures, termasuk Read, Search, Insert, dan Delete. Operasi "Read" efisien karena memungkinkan akses langsung ke elemen yang ingin dibaca. Operasi "Search" memerlukan jumlah langkah yang bervariasi tergantung pada lokasi elemen yang dicari. Sementara itu, "Insert" dan "Delete" juga memerlukan jumlah langkah yang bervariasi tergantung pada lokasi penambahan atau penghapusan elemen.
+
+## Evaluasi Tugas
+delete data dengan filter 
