@@ -1,26 +1,3 @@
-// -->>> Function to validate and style the Product Name input <<<---
-function validateProductName(
-  productNameInput,
-  productNameError,
-  invalidCharactersPattern,
-  event
-) {
-  if (productNameInput.value.length > 25) {
-    productNameError.textContent =
-      "Product Name must not exceed 25 characters.";
-    productNameInput.classList.add("is-invalid");
-    productNameInput.classList.add("add-red-border");
-    event.preventDefault();
-  } else if (invalidCharactersPattern.test(productNameInput.value)) {
-    productNameError.textContent = "Name must not contain symbols.";
-    productNameInput.classList.add("is-invalid");
-    productNameInput.classList.add("add-red-border");
-    event.preventDefault();
-  } else {
-    productNameError.textContent = "Please enter a valid Product Name";
-  }
-}
-
 // --->>> Function to validate the form <<<---
 // Check if the form is valid (e.g., required fields are not missing)
 // Add the "was-validated" class to indicate that the form has been validated
@@ -48,6 +25,29 @@ function validateForm(event) {
   form.classList.add("was-validated");
 }
 
+// -->>> Function to validate and style the Product Name input <<<---
+function validateProductName(
+  productNameInput,
+  productNameError,
+  invalidCharactersPattern,
+  event
+) {
+  if (productNameInput.value.length > 25) {
+    productNameError.textContent =
+      "Product Name must not exceed 25 characters.";
+    productNameInput.classList.add("is-invalid");
+    productNameInput.classList.add("add-red-border");
+    event.preventDefault();
+  } else if (invalidCharactersPattern.test(productNameInput.value)) {
+    productNameError.textContent = "Name must not contain symbols.";
+    productNameInput.classList.add("is-invalid");
+    productNameInput.classList.add("add-red-border");
+    event.preventDefault();
+  } else {
+    productNameError.textContent = "Please enter a valid Product Name";
+  }
+}
+
 //--->>> Function to disable the submit button <<<---
 function disableSubmitButton(form) {
   const submitButton = form.querySelector("#submitButton");
@@ -58,6 +58,22 @@ function enableSubmitButton(form) {
   const submitButton = form.querySelector("#submitButton");
   submitButton.removeAttribute("disabled");
 }
+
+// --->> Add event listeners to all forms with class "needs-validation" <<<---
+const forms = document.querySelectorAll(".needs-validation");
+forms.forEach(function (form) {
+  form.addEventListener("submit", function (event) {
+    validateForm(event);
+
+    // Check if the form is valid
+    if (form.checkValidity()) {
+      const formData = getFormData(form);
+      displayFormData(formData);
+      displayTableData(formData);
+      event.preventDefault();
+    }
+  });
+});
 
 // --->>> Function to get form data <<<---
 function getFormData(form) {
@@ -107,22 +123,6 @@ function displayTableData(formData) {
     cell.innerHTML = cellData[i];
   }
 }
-
-// --->> Add event listeners to all forms with class "needs-validation" <<<---
-const forms = document.querySelectorAll(".needs-validation");
-forms.forEach(function (form) {
-  form.addEventListener("submit", function (event) {
-    validateForm(event);
-
-    // Check if the form is valid
-    if (form.checkValidity()) {
-      const formData = getFormData(form);
-      displayFormData(formData);
-      displayTableData(formData);
-      event.preventDefault();
-    }
-  });
-});
 
 //--->>> Event listener for the delete button <<<---
 document.getElementById("deleteButton").addEventListener("click", function () {
