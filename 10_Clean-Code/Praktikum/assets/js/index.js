@@ -1,43 +1,11 @@
-// --->>> Function to validate the form <<<---
-// Check if the form is valid (e.g., required fields are not missing)
-// Add the "was-validated" class to indicate that the form has been validated
-function validateForm(event) {
-  const form = event.target;
-  const productNameInput = form.querySelector("#productName");
-  const productNameError = form.querySelector("#productNameError");
-  const invalidCharactersPattern = /[{}@#%]/;
-
-  if (!form.checkValidity()) {
-    event.preventDefault();
-    event.stopPropagation();
-    disableSubmitButton(form);
-  } else {
-    enableSubmitButton(form);
-  }
-
-  validateProductName(
-    productNameInput,
-    productNameError,
-    invalidCharactersPattern,
-    event
-  );
-
-  form.classList.add("was-validated");
-}
-
 // -->>> Function to validate Product Name input <<<---
-function validateProductName(
-  productNameInput,
-  productNameError,
-  invalidCharactersPattern,
-  event
-) {
+function validateProductName(productNameInput, productNameError, event) {
   if (productNameInput.value.length > 25) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
     addValidationClasses(productNameInput);
     event.preventDefault();
-  } else if (invalidCharactersPattern.test(productNameInput.value)) {
+  } else if (/[{}@#%]/.test(productNameInput.value)) {
     productNameError.textContent = "Name must not contain symbols.";
     addValidationClasses(productNameInput);
     event.preventDefault();
@@ -45,11 +13,26 @@ function validateProductName(
     productNameError.textContent = "Please enter a valid Product Name";
   }
 }
-
 //--->>> Function to add validation classes to an input element <<<---
 function addValidationClasses(inputElement) {
   inputElement.classList.add("is-invalid");
   inputElement.classList.add("add-red-border");
+}
+
+// --->>> Function to validate the form <<<---
+function validateForm(event) {
+  const form = event.target;
+  if (!form.checkValidity()) {
+    event.preventDefault();
+    event.stopPropagation();
+    disableSubmitButton(form);
+  } else {
+    enableSubmitButton(form);
+  }
+  const productNameInput = form.querySelector("#productName");
+  const productNameError = form.querySelector("#productNameError");
+  validateProductName(productNameInput, productNameError, event);
+  form.classList.add("was-validated");
 }
 
 //--->>> Function to disable the submit button <<<---
@@ -101,22 +84,21 @@ function displayFormData(formData) {
     Image of Product: ${formData.imageOfProduct}\n
     Product Freshness: ${formData.productFreshness}\n
     Additional Description: ${formData.additionalDescription}\n
-    Product Price: ${formData.productPrice}\n
-    `
+    Product Price: ${formData.productPrice}\n`
   );
 }
 
-// Initialize rowNumber to 1
-let rowNumber = 1;
 // --->>> Function to display table data <<<---
 function displayTableData(formData) {
   const table = document.querySelector("table");
-  const newRow = table.insertRow(table.rows.length);
+  const currentRowCount = table.rows.length;
+
+  const newRow = table.insertRow(currentRowCount);
   const cellData = [
-    rowNumber++,
+    currentRowCount,
     formData.productName,
     formData.productCategory,
-    "defaultName", //for Image of Product
+    "defaultName", // for Image of Product
     formData.productFreshness,
     formData.additionalDescription,
     formData.productPrice,
