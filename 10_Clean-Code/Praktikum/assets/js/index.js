@@ -14,12 +14,12 @@ function validateProductName(productNameInput, productNameError, event) {
     addValidationClasses(productNameInput);
     event.preventDefault();
   } else {
-    productNameError.textContent = ""; // Clear the error message on success
+    productNameError.textContent = "";
     removeValidationClasses(productNameInput);
   }
 }
 
-//--->>> Function to add validation classes to an input element <<<---
+//--->>> Function to validation classes to an input element <<<---
 function addValidationClasses(inputElement) {
   inputElement.classList.add("is-invalid");
   inputElement.classList.add("add-red-border");
@@ -89,7 +89,6 @@ function displayFormData(formData) {
 function displayTableData(formData) {
   const table = document.querySelector("table");
   const currentRowCount = table.rows.length;
-
   const newRow = table.insertRow(currentRowCount);
   const cellData = [
     currentRowCount,
