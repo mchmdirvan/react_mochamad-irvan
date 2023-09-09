@@ -1,6 +1,10 @@
-// -->>> Function to validate Product Name input <<<---
+// -->>> Function to validate Product Name input <<<
 function validateProductName(productNameInput, productNameError, event) {
-  if (productNameInput.value.length > 25) {
+  if (productNameInput.value.length === 0) {
+    productNameError.textContent = "Please enter a valid Product Name";
+    addValidationClasses(productNameInput);
+    event.preventDefault();
+  } else if (productNameInput.value.length > 25) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
     addValidationClasses(productNameInput);
@@ -10,40 +14,33 @@ function validateProductName(productNameInput, productNameError, event) {
     addValidationClasses(productNameInput);
     event.preventDefault();
   } else {
-    productNameError.textContent = "Please enter a valid Product Name";
+    productNameError.textContent = ""; // Clear the error message on success
+    removeValidationClasses(productNameInput);
   }
 }
+
 //--->>> Function to add validation classes to an input element <<<---
 function addValidationClasses(inputElement) {
   inputElement.classList.add("is-invalid");
   inputElement.classList.add("add-red-border");
 }
+function removeValidationClasses(inputElement) {
+  inputElement.classList.remove("is-invalid");
+  inputElement.classList.remove("add-red-border");
+}
 
 // --->>> Function to validate the form <<<---
 function validateForm(event) {
   const form = event.target;
+  const productNameInput = form.querySelector("#productName");
+  const productNameError = form.querySelector("#productNameError");
+
   if (!form.checkValidity()) {
     event.preventDefault();
     event.stopPropagation();
-    disableSubmitButton(form);
-  } else {
-    enableSubmitButton(form);
   }
-  const productNameInput = form.querySelector("#productName");
-  const productNameError = form.querySelector("#productNameError");
   validateProductName(productNameInput, productNameError, event);
   form.classList.add("was-validated");
-}
-
-//--->>> Function to disable the submit button <<<---
-function disableSubmitButton(form) {
-  const submitButton = form.querySelector("#submitButton");
-  submitButton.setAttribute("disabled", "true");
-}
-//--->>> Function to enable the submit button <<<---
-function enableSubmitButton(form) {
-  const submitButton = form.querySelector("#submitButton");
-  submitButton.removeAttribute("disabled");
 }
 
 // --->> Event listener for form submission <<<---
