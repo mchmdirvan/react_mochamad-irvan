@@ -28,8 +28,12 @@ function removeValidationClasses(inputElement) {
   inputElement.classList.remove("is-invalid");
   inputElement.classList.remove("add-red-border");
 }
-
-// --->>> Function to validate the form <<<---
+/** --->>> Function to validate the form <<<--- 
+ * Validates the product name input and handles error messaging.
+ * @param {Event} event - The form submission event.
+ * @param {HTMLInputElement} productNameInput - The input element for the product name.
+ * @param {HTMLElement} productNameError - The element to display error messages.
+ */
 function validateForm(event) {
   const form = event.target;
   const productNameInput = form.querySelector("#productName");
