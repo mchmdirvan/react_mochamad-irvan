@@ -54,3 +54,34 @@ berbasis tipe file:
 
 ## Bagaimana cara penamaan folder di React?
 dengan menggunakan nama kecil semua. 
+
+## Bagaimana cara membuat reusable compenent?
+1. Membuat container 
+
+## Bagaimana cara styling di HTML?
+dengan menggunakan className="" atau style=({})
+
+## Props State
+- Props (Properties): Props adalah cara untuk mengirim data dari satu komponen (komponen induk) ke komponen lainnya (komponen anak). Ini digunakan untuk mentransfer data yang bersifat statis dan tidak dapat diubah oleh komponen yang menerimanya.
+- State: State adalah cara untuk menyimpan dan mengelola data dalam komponen React. Ini digunakan untuk data yang bersifat dinamis dan dapat berubah selama masa hidup komponen.
+
+## Bagaimana cara agar kita tidak perlu menginstall node modules terus di setiap project?
+Menggunakan pnpm dengan node modules nya menjadi global
+
+## Library Komponen Tailwind
+- Tailwind Component
+- daisyUI
+- Radix UI
+- Headless component
+- Shadcn (populer)
+- React Aria
+- Material UI
+- Ant Design
+- Awesome React GitHub -> react library
+- Semantic UI
+- Hero icons
+- React Icons
+
+## Export
+- Export default -> export default ...
+- Export Named -> export {...,...}
