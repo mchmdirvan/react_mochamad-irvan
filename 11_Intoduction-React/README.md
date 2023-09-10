@@ -47,3 +47,10 @@ berbasis tipe file:
 
 ## Ekstension VSCode
 -ES7+
+
+## Apa arti (.) atau (..) dari directory import?
+- Titik tunggal (.) dalam direktori adalah singkatan untuk direktori saat ini. Dengan menggunakan titik ini, Anda bisa merujuk ke direktori tempat Anda saat ini berada. Misalnya, jika Anda berada di direktori /home/user/documents, menggunakan . akan merujuk ke direktori /home/user/documents.
+- Titik dua (..) dalam direktori adalah singkatan untuk direktori di atasnya (parent directory). Ini memungkinkan Anda untuk navigasi ke direktori di atasnya dalam hierarki. Misalnya, jika Anda berada di direktori /home/user/documents, menggunakan .. akan membawa Anda ke direktori /home/user.
+
+## Bagaimana cara penamaan folder di React?
+dengan menggunakan nama kecil semua. 
