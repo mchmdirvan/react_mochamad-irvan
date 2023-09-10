@@ -56,7 +56,7 @@ berbasis tipe file:
 dengan menggunakan nama kecil semua. 
 
 ## Bagaimana cara membuat reusable compenent?
-1. Membuat container 
+Membuat container 
 
 ## Bagaimana cara styling di HTML?
 dengan menggunakan className="" atau style=({})
