@@ -20,3 +20,30 @@ React adalah Javascript Library untuk membuat user-interface di web-platform. Re
 
 ## Bagaimana cara mengetahui sebuah website menggunakan sebagian besar libray apa?
 -> Ekstension Wappalyzer
+
+## Mengapa react by default tidak bisa navigasi?
+Karena react -> SPA (Single Page Application) -> HTML nya hanya satu
+
+## Lalu bagaimana jika ingin menambahkan halaman lainnya?
+Virtual DOM
+
+## Bagaimana cara menjalankan react di Mobile?
+1. cmd : ipconfig (mengetahui alamat IPv4)
+2. membuka vite.config.js -> server: {
+    host: true,
+  } (membuka network IP)
+
+## Bagaimana cara menginstall Tailwind dengan Vite?
+https://tailwindcss.com/docs/guides/vite
+
+## Bagaimana folder Structures src reacts?
+berbasis tipe file:
+- Assets: gambar
+- Components: untuk menggunakan components berulang kali
+- Pages: untuk halaman-halaman yang akan tampil 
+- Routes: letak untuk menroutes halamannya akan seperti apa
+- Styles: css
+- Utils: untuk function helper
+
+## Ekstension VSCode
+-ES7+
