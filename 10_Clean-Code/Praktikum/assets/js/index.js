@@ -1,15 +1,17 @@
 // -->>> Function to validate Product Name input <<<
 function validateProductName(productNameInput, productNameError, event) {
-  if (productNameInput.value.length === 0) {
+  const inputValue = productNameInput.value;
+
+  if (inputValue.length < 6) {
     productNameError.textContent = "Please enter a valid Product Name";
     addValidationClasses(productNameInput);
     event.preventDefault();
-  } else if (productNameInput.value.length > 25) {
+  } else if (inputValue.length > 25) {
     productNameError.textContent =
       "Product Name must not exceed 25 characters.";
     addValidationClasses(productNameInput);
     event.preventDefault();
-  } else if (/[{}@#%]/.test(productNameInput.value)) {
+  } else if (/[{}@#%]/.test(inputValue)) {
     productNameError.textContent = "Name must not contain symbols.";
     addValidationClasses(productNameInput);
     event.preventDefault();
@@ -28,7 +30,7 @@ function removeValidationClasses(inputElement) {
   inputElement.classList.remove("is-invalid");
   inputElement.classList.remove("add-red-border");
 }
-/** --->>> Function to validate the form <<<--- 
+/** --->>> Function to validate the form <<<---
  * Validates the product name input and handles error messaging.
  * @param {Event} event - The form submission event.
  * @param {HTMLInputElement} productNameInput - The input element for the product name.
