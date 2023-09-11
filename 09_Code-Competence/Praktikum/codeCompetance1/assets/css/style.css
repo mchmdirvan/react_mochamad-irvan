@@ -7,11 +7,18 @@ body {
   height: 200vh;
 }
 
+.nav-info {
+  background-color: #838671;
+  color: #FDFBEF;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  height: 8vh;
+  background-color: #FDFBEF;
 }
 
+.navbar-brand {
+  font-family: Caprasimo;
+}
