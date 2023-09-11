@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 200vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 8vh;
+}
+
