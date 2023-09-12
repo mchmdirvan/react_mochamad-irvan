@@ -94,3 +94,31 @@ nav {
 .btn-submit {
   background-color: #e9ec79 !important;
 }
+
+/* Footer */
+footer {
+  background-color: #e9ec79;
+}
+
+footer h1 {
+  font-size: 12rem;
+  font-family: Caprasimo;
+}
+
+footer h2 {
+  font-size: 3rem;
+}
+
+footer li a {
+  text-decoration: none;
+  color: black;
+}
+
+footer li {
+  padding-bottom: 1rem;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+}
