@@ -1,5 +1,5 @@
+const form = document.querySelector("form");
 const submitButton = document.querySelector("#submit-btn");
-submitButton.addEventListener("click", handleSubmit);
 
 // Function to get form data
 function getFormData(form) {
@@ -21,9 +21,8 @@ function displayFormData(formData) {
       `);
 }
 
-function handleSubmit(event) {
+submitButton.addEventListener("click", function (event) {
   event.preventDefault();
-  const form = document.querySelector("form");
   const formData = getFormData(form);
   displayFormData(formData);
-}
+});
