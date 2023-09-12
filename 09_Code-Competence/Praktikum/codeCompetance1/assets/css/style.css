@@ -23,6 +23,10 @@ nav {
   background-color: #fdfbef;
 }
 
+nav h1 {
+  font-size: 1.8rem !important;
+}
+
 .navbar-brand {
   font-family: Caprasimo;
   padding-bottom: 0 !important;
