@@ -1,17 +1,21 @@
+/* Reset CSS */
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
   height: 200vh;
 }
 
+/* Navigation Info Styles */
 .nav-info {
   background-color: #838671;
   color: #fdfbef;
 }
 
+/* Navbar Styles */
 nav {
   display: flex;
   justify-content: space-between;
@@ -24,6 +28,7 @@ nav {
   padding-bottom: 0 !important;
 }
 
+/* Hero Section 1 Styles */
 .hero-section {
   background-color: #838671;
   height: 80vh;
@@ -61,13 +66,14 @@ nav {
   color: #fdfbef;
 }
 
+/* Hero Section 2 Styles */
 .hero-section-2 {
   background-color: #fdfbef;
   height: 70vh;
 }
 
 .text-grey {
-  color: #C5C3B7;
+  color: #c5c3b7;
 }
 
 .btn-order-now-2 {
@@ -78,4 +84,4 @@ nav {
 
 .image-hero-2 {
   min-height: 50vh;
-} 
+}
