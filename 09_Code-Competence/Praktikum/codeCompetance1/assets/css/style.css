@@ -9,16 +9,54 @@ body {
 
 .nav-info {
   background-color: #838671;
-  color: #FDFBEF;
+  color: #fdfbef;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FDFBEF;
+  background-color: #fdfbef;
 }
 
 .navbar-brand {
   font-family: Caprasimo;
+  padding-bottom: 0 !important;
+}
+
+.hero-section {
+  background-color: #838671;
+  height: 80vh;
+}
+
+.btn-order-now {
+  background-color: #e9ec79;
+  padding: 0.5rem 8rem;
+  border-radius: 0.5rem;
+}
+
+.image-hero {
+  max-height: 75vh;
+}
+
+.text-yellow {
+  color: #e9ec79;
+}
+
+.h1-hero {
+  font-size: 4rem;
+  line-height: 3.5rem;
+}
+
+.hero-text {
+  max-width: 40em;
+}
+
+.flex-point {
+  padding-right: 7rem;
+  gap: 1rem;
+}
+
+.text-cream {
+  color: #fdfbef;
 }
