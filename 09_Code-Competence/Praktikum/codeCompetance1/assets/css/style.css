@@ -60,3 +60,22 @@ nav {
 .text-cream {
   color: #fdfbef;
 }
+
+.hero-section-2 {
+  background-color: #fdfbef;
+  height: 70vh;
+}
+
+.text-grey {
+  color: #C5C3B7;
+}
+
+.btn-order-now-2 {
+  background-color: #838671;
+  padding: 0.5rem 8rem;
+  border-radius: 0.5rem;
+}
+
+.image-hero-2 {
+  min-height: 50vh;
+} 
