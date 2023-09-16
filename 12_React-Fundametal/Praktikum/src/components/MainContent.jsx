@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import BootstrapLogo from "../assets/bootstrap-logo.svg";
 
 function MainContent() {
   return (
     <main className="body">
       {/* Title and Description */}
       <img
-        src="assets/images/bootstrap-logo.svg"
+        src={BootstrapLogo}
         alt="Bootstrap Logo"
         className="mx-auto d-block bootstrap-logo"
       />
+
       <h2>Create Product</h2>
       <p>
         Below is an example form built entirely with Bootstrap’s form controls.
