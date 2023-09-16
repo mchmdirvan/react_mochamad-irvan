@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
+import Navbar from "../components/Navbar";
+
 function Index() {
   return (
     <>
-      <h1 className="text-danger">Hello World!</h1>
+      <Navbar />
     </>
   );
 }
