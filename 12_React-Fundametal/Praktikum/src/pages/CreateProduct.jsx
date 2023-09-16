@@ -2,12 +2,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import MainContent from "../components/MainContent";
+import Table from "../components/Table";
 
 function CreateProduct() {
   return (
     <>
       <Navbar />
       <MainContent />
+      <Table />
     </>
   );
 }
