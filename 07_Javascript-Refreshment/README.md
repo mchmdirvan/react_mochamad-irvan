@@ -1,9 +1,11 @@
 # (07) Javascript Refreshemt
 
 ## Apa itu Javascript?
+
 JavaScript adalah bahasa pemrograman serbaguna yang digunakan secara luas untuk membuat konten web interaktif dan dinamis. Bahasa ini berjalan di peramban web, memungkinkan untuk scripting di sisi klien, dan juga bisa digunakan di sisi server dengan Node.js.
 
 ## let and const
+
 Variabel dalam JavaScript bisa dideklarasikan dengan menggunakan let dan const. Kata kunci let digunakan untuk variabel yang nilainya bisa diubah, sementara const digunakan untuk variabel dengan nilai yang tetap.
 
 ## String template (backtick)
@@ -86,62 +88,76 @@ Nullist value adalah null dan undefined, operator ini mirip dengan ternary opera
 comparison ?? "value"
 
 ## Optional Chaining Operator (?)
+
 Optional Chaining Operator (?) merupakan operator yang digunakan untuk mengamankan ketika kita ingin mengakses property sebuah object dari data nullish agar tidak terjadi error
 object?.attributes
 
 ## Falsy dan Truthy
+
 Falsy adalah value yang ketika dalam konteks boolean di anggap false : false, 0, -0, null, "", '', ``, undefined, NaN
 Truthy kebalikannya, truthy selain yang disebutkan di atas
 
 ## Operator Logika di Non Boolean
+
 || : akan mengambil yang truthy
 && : akan mengambil yang falsy
 
-## For Loop 
+## For Loop
+
 for (init statement; kondisi; post statement){
-  //action
+//action
 }
+
 - init statement akan di eksekusi hanya sekali di awal sebelum perulangan
 - kondisi akan dilakukan pengecekan dalam setiap perulangan, jika true lanjut
 - post statement akan dieksekusi setiap kali di akhir perulangan
+*jangan lupa declaration init statement dan (;)
 
 ## While Loop
+
 While loop adalah versi perulangan yang lebih sederhana dibandingkan for loop dimana hanya terdapat init statment dan post statement
 init statement
 while (kondisi){
-  action
-  post statement
+action
+post statement
 }
 
 ## Do While Loop
+
 Pengecekan kondisi di while loop dilakukan setelah perulangan dilakukan
 Minimal dilakukan sekali walaupun kondisinya false
 init statement
 do {
-  action
-  post statement
+action
+post statement
 } while (kondisi)
 
 ## Break & Continue
+
 - Break : Menghentikan perulangan
 - Continue : Skip perulangan
 
-## Label (:) 
+## Label (:)
+
 Label merupakan penanda yang bisa digunakan dengan kata kunci break dan continue
 
 ## For In
+
 For in merupakan perulangan for yang digunakan untuk melihat seluruh data property/attribute di object ataupun index di array.
 For in digunakan untuk melakukan iterasi property atau index
 for (let variable in object) {
-  (${variable} : ${object[variable]})
+(${variable} : ${object[variable]})
 }
+
 ## For Of
+
 For of digunakan untuk melakukan iterasi terhadap isi value dari iterable object, seperti array, string,dll.
 for ( variable of object){
-  (${variable})
+(${variable})
 }
 
 ## With Statement
+
 With statement merupakan fitur yang digunakan untuk menurunkan sebuah scope data. Dengan menggunakan with statement, kita bisa mengakses property dalam sebuah data tanpa harus menyebut datanya.
 with (object) {
 properti
@@ -150,3 +166,39 @@ properti
 https://www.w3schools.com/css/css_pseudo_classes.asp
 https://www.w3schools.com/html/html_form_attributes.asp
 https://www.w3schools.com/js/js_validation_api.asp
+
+## Spread Operator (...)
+
+Spread digunakan untuk menyebarkan nilai array atau lebih tepatnya iterable object menjadi beberapa elemen.
+
+## Destructuring
+
+Destructuring dalam JavaScript merupakan sintaksis yang dapat mengeluarkan nilai dari array atau properties dari sebuah object ke dalam satuan yang lebih kecil. Iterasi object dan array adalah dua hal yang paling banyak digunakan dalam mengelola data di JavaScript. JSON (JavaScript Object Notation) merupakan format data paling populer yang digunakan dalam transaksi data saat ini.
+
+- Destructuring Object : declaration {param} = objectName
+- Destructuring Array : declaration [props] = arrayName
+
+## Map
+
+Map adalah tipe data yang menyimpan koleksi data dengan format key-value layaknya Object. Yang membedakan adalah Map memperbolehkan key dengan tipe data apa pun, dibandingkan Object yang hanya mengizinkan key bertipe String atau Symbol.
+const myMap = new Map([]);
+
+## Bagaimana cara mengakses Map?
+Ketika sudah membuat objek Map, kita bisa mendapatkan nilainya berdasarkan key tertentu dengan metode get(). Lalu, untuk menambahkan pasangan key-value baru gunakan metode set().
+get : mapName.get(key)
+set : mapName.set(key,value)
+
+## Function ()
+function merupakan sebuah variabel yang berisi blok logika. Blok logika tersebut akan dieksekusi ketika variabelnya dipanggil.
+function functioName(param) {
+  logic action
+}
+
+## Arrow Function Expression()
+Regular function dapat berupa function declaration dan function expression. Namun, arrow function hanya berupa expression function saja. 
+const variableName = (param) => {
+  action
+}
+ketika body dari function hanya terdiri dari satu baris, kita bisa menghapus tanda kurung kurawal 
+const sayName = name => console.log(`Nama saya ${name}`);
+
