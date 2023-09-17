@@ -1,8 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { useState } from "react";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 1000);
+}
+
 function MainContent() {
+  const [randomNumber, setRandomNumber] = useState(null);
+  
   return (
     <main className="body">
       {/* Title and Description */}
@@ -163,6 +170,21 @@ function MainContent() {
             Submit
           </button>
         </div>
+        <div className="d-flex justify-content-center align-content-center">
+          <button
+            type="button"
+            className="btn btn-primary col-5 mt-3"
+            id="generateRandomNumberButton"
+            onClick={() => setRandomNumber(generateRandomNumber())}
+          >
+            Generate Random Number
+          </button>
+        </div>
+        {randomNumber !== null && (
+          <div className="mt-3">
+            <p>Random Number: {randomNumber}</p>
+          </div>
+        )}
       </form>
     </main>
   );
