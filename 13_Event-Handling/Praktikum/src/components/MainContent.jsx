@@ -9,7 +9,7 @@ function generateRandomNumber() {
 
 function MainContent() {
   const [randomNumber, setRandomNumber] = useState(null);
-  
+
   return (
     <main className="body">
       {/* Title and Description */}
@@ -180,11 +180,7 @@ function MainContent() {
             Generate Random Number
           </button>
         </div>
-        {randomNumber !== null && (
-          <div className="mt-3">
-            <p>Random Number: {randomNumber}</p>
-          </div>
-        )}
+        {<p>Random Number: {randomNumber}</p>}
       </form>
     </main>
   );
