@@ -8,6 +8,6 @@ import CreateAccount from "./pages/CreateAccount";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CreateAccount />
+    <CreateProduct />
   </React.StrictMode>
 );
