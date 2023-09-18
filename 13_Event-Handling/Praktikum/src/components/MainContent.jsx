@@ -2,6 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
+import { FormInput } from "../components/FormInput";
 
 function generateRandomNumber() {
   return Math.floor(Math.random() * 1000);
@@ -25,9 +26,17 @@ function MainContent() {
         Each required form group has a validation state that can be triggered by
         attempting to submit the form without completing it.
       </p>
-      {/* Detail Product Form */}
+
       <h4 className="mt-5">Detail Product</h4>
       <form className="needs-validation" noValidate="">
+        <FormInput
+          className="col-6 mt-3"
+          label="Product Name :"
+          type="text"
+          name="productName"
+          id="productName"
+        />
+
         {/* Form Product Name */}
         <div className="col-6 mt-3">
           <label htmlFor="productName" className="form-label">
