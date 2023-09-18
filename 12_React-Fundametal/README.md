@@ -45,27 +45,55 @@ bisa digabungkan dengan element div atau fragment elemen (<></>)
    },[])
 
 2. Side effect dijalankan sekali pada saat component telat dimuat, lalu akan dijalankan kembali ketika ada perubahan nilai dari salah satu scope (mirip didMount + didUpdate) :
-    useEffect(() => {
-        ...
-    }, [state])
+   useEffect(() => {
+   ...
+   }, [state])
 
 3. Side effect akan dijalankan terus-menerus kalau penulisannya tanpa scope ([]) :
    useEffect(() =>{
-    ...
+   ...
    })
 
 4. Side effect akan dijalankan setiap waktu, namun dia akan berhenti ketika ingin meninggalkan halaman, atau sebelum komponen/elemen dihancurkan dalam DOM tree, dengan harap performa dari web tetap terjaga karena tidak ada proses berjalan dibelakang layar. contoh; OTP, Status Online. (mirip dengan DidMount+ DidUpdate + WillUnmount) :
    useEffect(() =>{
-    ...
-    return() => {
-        ...
-    }
+   ...
+   return() => {
+   ...
+   }
    })
 
 ## Kebanyakan State digunakan untuk apa?
+
 digunakan untuk menyimpan data sementara
 
 ## Apa itu props?
-Props sama seperti state layaknya variabel, namun props hanya bisa membaca saja dan tidak bisa di ubah. 
 
-##  
+Props sama seperti state layaknya variabel, namun props hanya bisa membaca saja dan tidak bisa di ubah.
+
+## Bagaimana contoh cara menggunakan function props?
+
+function Input (props){
+const {param: label,onChange, value} = props
+}
+
+return (
+<label>{param}</label>
+<input onChagne={onChange}></input>
+<value><value/>
+)
+
+## Bagaimana cara menyimpan data di Input?
+Menggunakan state, contohnya :
+function (){
+    const [productName, setProductName] = useState("")
+}
+
+## Jika kita memasukan sebuah data ke Input, maka akan menghasilkan tipe data apa?
+String. Jika ingin number maka gunakan valueAsNumber
+
+## Bagaimana cara mengecek jika targetnya terekam atau mengecek tipe data pada Input?
+onChange={(event) => console.log(event.target.value)}
+onChange={(event) => console.log(typeof event.target.value)}
+
+## Bagaimana jika kita menggunakan value?
+onChange={(event) => setProductName(event.target.value)}
