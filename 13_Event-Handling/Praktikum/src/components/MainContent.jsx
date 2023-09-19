@@ -2,15 +2,13 @@
 import React from "react";
 import { useState } from "react";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
-import {
-  FormInput,
-  SelectInput,
-  FileInput,
-  TextAreaInput,
-} from "../components/FormInput";
+import { FormInput, FileInput, TextAreaInput } from "./FormInput";
+import Button from "./Button";
 
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 1000);
+  const randomNum = Math.floor(Math.random() * 1000);
+  console.log(randomNum);
+  return randomNum;
 }
 
 function MainContent() {
@@ -48,14 +46,26 @@ function MainContent() {
         />
 
         {/* Form Product Category */}
-        <SelectInput
-          className="col-5 mt-3"
-          label="Product Category:"
-          name="productCategory"
-          id="productCategory"
-          required=""
-        />
-
+        <div className="col-5 mt-3">
+          <label htmlFor="productCategory" className="form-label">
+            Product Category:
+          </label>
+          <select
+            className="form-select"
+            name="productCategory"
+            id="productCategory"
+            required=""
+            defaultValue=""
+          >
+            <option value="" disabled="">
+              Choose...
+            </option>
+            <option value="dummy">dummy</option>
+          </select>
+          <div className="invalid-feedback">
+            The Product Category field must be filled in
+          </div>
+        </div>
         {/* Form Image of Product */}
         <FileInput
           className="col-4 mt-3"
@@ -133,26 +143,13 @@ function MainContent() {
         />
 
         {/* Button to Submit the Form */}
-        <div className="d-flex justify-content-center">
-          <button
-            type="submit"
-            className="btn btn-primary col-11"
-            id="submitButton"
-          >
-            Submit
-          </button>
-        </div>
-        <div className="d-flex justify-content-center align-content-center">
-          <button
-            type="button"
-            className="btn btn-primary col-5 mt-3"
-            id="generateRandomNumberButton"
-            onClick={() => setRandomNumber(generateRandomNumber())}
-          >
-            Generate Random Number
-          </button>
-        </div>
-        {<p>Random Number: {randomNumber}</p>}
+        <Button type="submit" id="submitButton" label="Submit" />
+        <Button
+          type="Button"
+          id="generateRandomNumberButton"
+          label="Generate Random Number"
+          onClick={() => setRandomNumber(generateRandomNumber())}
+        />
       </form>
     </main>
   );
