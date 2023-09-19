@@ -15,6 +15,7 @@ function FormInput({
   value,
   onChange,
   error,
+  placeholder
 }) {
   return (
     <div className={className}>
@@ -32,6 +33,7 @@ function FormInput({
         autoFocus={autoFocus}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
       {error ? (
         <div className="invalid-feedback" id={`${id}Error`}>
@@ -72,6 +74,23 @@ function FileInput({ className, label, type, required, id }) {
   );
 }
 
+function TextAreaInput ({className,label,name,id,cols,rows,required}){
+  return (
+    <div className={className}>
+      <label className="form-label">{label}</label>
+      <textarea
+      className="form-control"
+      name={name}
+      id={id}
+      cols={cols}
+      rows={rows}
+      required={required}
+      />
+
+    </div>
+  )
+}
 
 
-export { FormInput, SelectInput, FileInput};
+
+export { FormInput, SelectInput, FileInput, TextAreaInput};

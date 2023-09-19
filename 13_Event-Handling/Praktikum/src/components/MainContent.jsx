@@ -2,7 +2,12 @@
 import React from "react";
 import { useState } from "react";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
-import { FormInput, SelectInput, FileInput } from "../components/FormInput";
+import {
+  FormInput,
+  SelectInput,
+  FileInput,
+  TextAreaInput,
+} from "../components/FormInput";
 
 function generateRandomNumber() {
   return Math.floor(Math.random() * 1000);
@@ -61,7 +66,6 @@ function MainContent() {
         />
 
         {/* Form Product Freshness */}
-
         <div className="col-5 mt-3">
           <label className="form-label">Product Freshness:</label>
           {/* Radio Buttons for Freshness */}
@@ -106,41 +110,27 @@ function MainContent() {
             </div>
           </div>
         </div>
+
         {/* Form Additional Description */}
-        <div className="mt-3">
-          <label htmlFor="additionalDescription" className="form-label">
-            Additional Description:
-          </label>
-          <textarea
-            className="form-control"
-            name="additionalDescription"
-            id="additionalDescription"
-            cols={5}
-            rows={5}
-            required=""
-            defaultValue={""}
-          />
-          <div className="invalid-feedback">
-            The Additional Description field must be filled in
-          </div>
-        </div>
+        <TextAreaInput
+          className="mt-3"
+          label="Addittional Description"
+          name="additionalDescription"
+          id="additionalDescription"
+          cols={5}
+          rows={5}
+          required
+        />
+
         {/* Form Product Price */}
-        <div className="mb-4 mt-3">
-          <label htmlFor="productPrice" className="form-label">
-            Product Price :
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="productPrice"
-            placeholder="$1"
-            required=""
-          />
-          <div className="valid-feedback" />
-          <div className="invalid-feedback">
-            Please enter a valid Product price.
-          </div>
-        </div>
+        <FormInput
+          className="mb-4 mt-3"
+          label="Product Price"
+          type="number"
+          id="productPrice"
+          placeholder="$1"
+          required
+        />
 
         {/* Button to Submit the Form */}
         <div className="d-flex justify-content-center">
