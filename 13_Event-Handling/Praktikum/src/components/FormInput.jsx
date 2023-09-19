@@ -15,7 +15,7 @@ function FormInput({
   value,
   onChange,
   error,
-  placeholder
+  placeholder,
 }) {
   return (
     <div className={className}>
@@ -44,22 +44,6 @@ function FormInput({
   );
 }
 
-function SelectInput({ label, id, className, name, required }) {
-  return (
-    <div className={className}>
-      <label className="form-label">{label}</label>
-
-      <select className="form-select" id={id} name={name} required={required}>
-        <option value="" disabled="" selected=" ">
-          Choose
-        </option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </select>
-    </div>
-  );
-}
-
 function FileInput({ className, label, type, required, id }) {
   return (
     <div className={className}>
@@ -74,23 +58,20 @@ function FileInput({ className, label, type, required, id }) {
   );
 }
 
-function TextAreaInput ({className,label,name,id,cols,rows,required}){
+function TextAreaInput({ className, label, name, id, cols, rows, required }) {
   return (
     <div className={className}>
       <label className="form-label">{label}</label>
       <textarea
-      className="form-control"
-      name={name}
-      id={id}
-      cols={cols}
-      rows={rows}
-      required={required}
+        className="form-control"
+        name={name}
+        id={id}
+        cols={cols}
+        rows={rows}
+        required={required}
       />
-
     </div>
-  )
+  );
 }
 
-
-
-export { FormInput, SelectInput, FileInput, TextAreaInput};
+export { FormInput, FileInput, TextAreaInput };
