@@ -97,3 +97,7 @@ onChange={(event) => console.log(typeof event.target.value)}
 
 ## Bagaimana jika kita menggunakan value?
 onChange={(event) => setProductName(event.target.value)}
+
+## Bagaimana contoh menggunakan ternary operator di useState?
+const [isLoading, setIsLoading] = useState(true)
+<p>{isLoading ? "Loading" : title }</p> // tapi harus di jadiin false pas pakai setTimeOut
