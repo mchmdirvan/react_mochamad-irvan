@@ -27,9 +27,8 @@ nav {
   align-items: center;
 }
 
-.body {
+main {
   padding: 0 25vw;
-  font-family: Roboto;
 }
 
 .body h2,
