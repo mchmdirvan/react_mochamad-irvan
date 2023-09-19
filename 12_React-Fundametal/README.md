@@ -97,6 +97,7 @@ onChange={(event) => console.log(typeof event.target.value)}
 
 ## Bagaimana jika kita menggunakan value?
 onChange={(event) => setProductName(event.target.value)}
+fungsi -> proses
 
 ## Bagaimana contoh menggunakan ternary operator di useState?
 const [isLoading, setIsLoading] = useState(true)
