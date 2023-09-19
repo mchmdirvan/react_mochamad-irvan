@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 
@@ -25,9 +26,9 @@ function FormInput({
         type={type}
         name={name}
         id={id}
-        required={required}
         minLength={minLength}
         maxLength={maxLength}
+        required={required}
         autoFocus={autoFocus}
         value={value}
         onChange={onChange}
@@ -41,4 +42,36 @@ function FormInput({
   );
 }
 
-export { FormInput };
+function SelectInput({ label, id, className, name, required }) {
+  return (
+    <div className={className}>
+      <label className="form-label">{label}</label>
+
+      <select className="form-select" id={id} name={name} required={required}>
+        <option value="" disabled="" selected=" ">
+          Choose
+        </option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+  );
+}
+
+function FileInput({ className, label, type, required, id }) {
+  return (
+    <div className={className}>
+      <label>{label}</label>
+      <input
+        type={type}
+        required={required}
+        className="form-control custom-form-control"
+        id={id}
+      />
+    </div>
+  );
+}
+
+
+
+export { FormInput, SelectInput, FileInput};

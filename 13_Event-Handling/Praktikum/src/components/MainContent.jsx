@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
-import { FormInput } from "../components/FormInput";
+import { FormInput, SelectInput, FileInput } from "../components/FormInput";
 
 function generateRandomNumber() {
   return Math.floor(Math.random() * 1000);
@@ -29,67 +29,39 @@ function MainContent() {
 
       <h4 className="mt-5">Detail Product</h4>
       <form className="needs-validation" noValidate="">
+        {/* Form Product Name */}
         <FormInput
           className="col-6 mt-3"
           label="Product Name :"
           type="text"
           name="productName"
           id="productName"
+          minLength={6}
+          maxLength={50}
+          required
+          autoFocus
         />
 
-        {/* Form Product Name */}
-        <div className="col-6 mt-3">
-          <label htmlFor="productName" className="form-label">
-            Product Name :
-          </label>
-          <input
-            className="form-control"
-            type="text"
-            name="productName"
-            id="productName"
-            required=""
-            minLength={6}
-            maxLength={50}
-            autoFocus=""
-          />
-          <div className="invalid-feedback" id="productNameError" />
-        </div>
         {/* Form Product Category */}
-        <div className="col-5 mt-3">
-          <label htmlFor="productCategory" className="form-label">
-            Product Category:
-          </label>
-          <select
-            className="form-select"
-            name="productCategory"
-            id="productCategory"
-            required=""
-          >
-            <option value="" disabled="" selected="">
-              Choose...
-            </option>
-            <option value="dummy">dummy</option>
-          </select>
-          <div className="invalid-feedback">
-            The Product Category field must be filled in
-          </div>
-        </div>
+        <SelectInput
+          className="col-5 mt-3"
+          label="Product Category:"
+          name="productCategory"
+          id="productCategory"
+          required=""
+        />
+
         {/* Form Image of Product */}
-        <div className="col-4 mt-3">
-          <label htmlFor="imageOfProduct" className="form-label">
-            Image of Product
-          </label>
-          <input
-            type="file"
-            required=""
-            className="form-control custom-form-control"
-            id="imageOfProduct"
-          />
-          <div className="invalid-feedback">
-            The Image of Product field must be filled in
-          </div>
-        </div>
+        <FileInput
+          className="col-4 mt-3"
+          label="Image of Product"
+          type="file"
+          required
+          id="imageOfProduct"
+        />
+
         {/* Form Product Freshness */}
+
         <div className="col-5 mt-3">
           <label className="form-label">Product Freshness:</label>
           {/* Radio Buttons for Freshness */}
@@ -169,6 +141,7 @@ function MainContent() {
             Please enter a valid Product price.
           </div>
         </div>
+
         {/* Button to Submit the Form */}
         <div className="d-flex justify-content-center">
           <button
