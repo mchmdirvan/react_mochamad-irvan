@@ -10,15 +10,21 @@ function generateRandomNumber() {
   return randomNum;
 }
 
-function MainContent() {
+function handleSubmit(event) {
+  event.preventDefault();
+}
+
+function MainForm() {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productNameLength, setProductNameLength] = useState(false)
+
   const [randomNumber, setRandomNumber] = useState(null);
 
   return (
     <main className="body">
       <h4 className="mt-5">Detail Product</h4>
-      <form className="needs-validation" noValidate="">
+      <form className="needs-validation" noValidate="" onSubmit={handleSubmit}>
         {/* Form Product Name */}
         <FormInput
           className="col-6 mt-3"
@@ -55,6 +61,7 @@ function MainContent() {
             The Product Category field must be filled in
           </div>
         </div>
+
         {/* Form Image of Product */}
         <FileInput
           className="col-4 mt-3"
@@ -135,6 +142,8 @@ function MainContent() {
 
         {/* Button to Submit the Form */}
         <Button type="submit" id="submitButton" label="Submit" />
+
+        {/* Button to Generate Random Number */}
         <Button
           type="Button"
           id="generateRandomNumberButton"
@@ -146,4 +155,4 @@ function MainContent() {
   );
 }
 
-export default MainContent;
+export default MainForm;
