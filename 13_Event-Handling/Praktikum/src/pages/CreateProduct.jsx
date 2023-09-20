@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import MainForm from "../components/MainForm";
 import Table from "../components/Table";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
+import CreateProductLanguage from "../utils/CreateProductLanguage";
 
 function CreateProduct() {
+  const [currentLanguage, setCurrentLanguage] = useState("en");
+  const toggleLanguage = () => {
+    setCurrentLanguage(currentLanguage === "en" ? "id" : "en");
+  };
   return (
     <>
       <Navbar />
@@ -18,12 +23,9 @@ function CreateProduct() {
           className="mx-auto d-block bootstrap-logo"
         />
 
-        <h2>Create Product</h2>
-        <p>
-          Below is an example form built entirely with Bootstrap’s form
-          controls. Each required form group has a validation state that can be
-          triggered by attempting to submit the form without completing it.
-        </p>
+        <h2>{CreateProductLanguage.title[currentLanguage]}</h2>
+        <p>{CreateProductLanguage.description[currentLanguage]}</p>
+        <button onClick={toggleLanguage}>Toggle Language</button>
       </main>
 
       <MainForm />

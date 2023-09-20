@@ -9,17 +9,16 @@ function handleSubmit(event) {
   event.currentTarget.classList.add("was-validated");
 }
 
-function MainForm() {
-  function generateRandomNumber() {
-    const randomNum = Math.floor(Math.random() * 1000);
-    console.log(randomNum);
-    return randomNum;
-  }
+function generateRandomNumber() {
+  const randomNum = Math.floor(Math.random() * 1000);
+  console.log(randomNum);
+  return randomNum;
+}
 
+function MainForm() {
   const [productName, setProductName] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
-  const [productFreshness, setProductFreshness] = useState("");
   const [additionalDescription, setAdditionalDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
 
@@ -161,7 +160,6 @@ function MainForm() {
               id="brandNew"
               defaultValue="Brand New"
               required
-              onChange={(event) => setProductFreshness(event.target.value)}
             />
             <label className="form-check-label" htmlFor="brandNew">
               Brand New
@@ -174,7 +172,6 @@ function MainForm() {
               name="productFreshness"
               id="secondHank"
               defaultValue="Second Hank"
-              onChange={(event) => setProductFreshness(event.target.value)}
             />
             <label className="form-check-label" htmlFor="secondHank">
               Second Hank
@@ -187,7 +184,6 @@ function MainForm() {
               name="productFreshness"
               id="refurbished"
               defaultValue="Refurbished"
-              onChange={(event) => setProductFreshness(event.target.value)}
             />
             <label className="form-check-label" htmlFor="refurbished">
               Refurbished
