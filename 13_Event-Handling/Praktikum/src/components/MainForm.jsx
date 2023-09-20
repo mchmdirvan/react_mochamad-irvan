@@ -4,22 +4,62 @@ import { useState } from "react";
 import { FormInput, FileInput, TextAreaInput } from "./FormComponent";
 import Button from "./Button";
 
-function generateRandomNumber() {
-  const randomNum = Math.floor(Math.random() * 1000);
-  console.log(randomNum);
-  return randomNum;
-}
-
 function handleSubmit(event) {
   event.preventDefault();
+  const form = event.currentTarget;
+
+  if (form.checkValidity() === false) {
+    event.stopPropagation();
+  }
+  form.classList.add("was-validated");
 }
 
 function MainForm() {
-  const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productNameLength, setProductNameLength] = useState(false)
+  function generateRandomNumber() {
+    const randomNum = Math.floor(Math.random() * 1000);
+    console.log(randomNum);
+    return randomNum;
+  }
 
-  const [randomNumber, setRandomNumber] = useState(null);
+  const [productName, setProductName] = useState("");
+  const [productCategory, setProductCategory] = useState("");
+  const [imageOfProduct, setImageOfProduct] = useState("");
+  const [productFreshness, setProductFreshness] = useState("");
+  const [additionalDescription, setAdditionalDescription] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleProductNameChange = (event) => {
+    const inputValue = event.target.value;
+    setProductName(inputValue);
+    if (inputValue.length < 6) {
+      setErrorMessage("Please enter a valid Product Name");
+      event.target.classList.add("is-invalid");
+    } else if (inputValue.length > 25) {
+      setErrorMessage("Product Name must not exceed 25 characters.");
+      event.target.classList.add("is-invalid");
+    } else {
+      setErrorMessage("");
+      event.target.classList.add("is-valid");
+      event.target.classList.remove("is-invalid");
+    }
+  };
+
+  const handleProductPriceChange = (event) => {
+    const inputValue = event.target.value;
+    setProductPrice(inputValue);
+    if (inputValue.length < 1) {
+      setErrorMessage("Please enter a valid Product price.");
+      event.target.classList.add("is-invalid");
+    } else {
+      setErrorMessage("");
+      event.target.classList.add("is-valid");
+      event.target.classList.remove("is-invalid");
+    }
+  };
+
+  
 
   return (
     <main className="body">
@@ -37,7 +77,8 @@ function MainForm() {
           required
           autoFocus
           value={productName}
-          onChange={(event) => setProductName(event.target.value)}
+          onChange={handleProductNameChange}
+          errorMessage={errorMessage}
         />
 
         {/* Form Product Category */}
@@ -49,10 +90,10 @@ function MainForm() {
             className="form-select"
             name="productCategory"
             id="productCategory"
-            required=""
-            defaultValue=""
+            required
+            defaultValue
           >
-            <option value="" disabled="">
+            <option value="" disabled="" selected="true">
               Choose...
             </option>
             <option value="dummy">dummy</option>
@@ -69,6 +110,8 @@ function MainForm() {
           type="file"
           required
           id="imageOfProduct"
+          errorMessage={"The Image of Product field must be filled in"}
+          
         />
 
         {/* Form Product Freshness */}
@@ -82,7 +125,8 @@ function MainForm() {
               name="productFreshness"
               id="brandNew"
               defaultValue="Brand New"
-              required=""
+              required
+              onChange={(event) => setProductFreshness(event.target.value)}
             />
             <label className="form-check-label" htmlFor="brandNew">
               Brand New
@@ -95,6 +139,7 @@ function MainForm() {
               name="productFreshness"
               id="secondHank"
               defaultValue="Second Hank"
+              onChange={(event) => setProductFreshness(event.target.value)}
             />
             <label className="form-check-label" htmlFor="secondHank">
               Second Hank
@@ -107,6 +152,7 @@ function MainForm() {
               name="productFreshness"
               id="refurbished"
               defaultValue="Refurbished"
+              onChange={(event) => setProductFreshness(event.target.value)}
             />
             <label className="form-check-label" htmlFor="refurbished">
               Refurbished
@@ -126,6 +172,8 @@ function MainForm() {
           cols={5}
           rows={5}
           required
+          errorMessage={"The Additional Description field must be filled in"}
+          onChange={(event) => setAdditionalDescription(event.target.value)}
         />
 
         {/* Form Product Price */}
@@ -137,7 +185,8 @@ function MainForm() {
           placeholder="$1"
           required
           value={productPrice}
-          onChange={(event) => setProductPrice(event.target.valueAsNumber)}
+          onChange={handleProductPriceChange}
+          errorMessage={errorMessage}
         />
 
         {/* Button to Submit the Form */}
@@ -148,7 +197,7 @@ function MainForm() {
           type="Button"
           id="generateRandomNumberButton"
           label="Generate Random Number"
-          onClick={() => setRandomNumber(generateRandomNumber())}
+          onClick={() => generateRandomNumber()}
         />
       </form>
     </main>
