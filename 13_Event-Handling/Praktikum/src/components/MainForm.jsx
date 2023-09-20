@@ -6,12 +6,7 @@ import Button from "./Button";
 
 function handleSubmit(event) {
   event.preventDefault();
-  const form = event.currentTarget;
-
-  if (form.checkValidity() === false) {
-    event.stopPropagation();
-  }
-  form.classList.add("was-validated");
+  event.currentTarget.classList.add("was-validated");
 }
 
 function MainForm() {
@@ -59,7 +54,47 @@ function MainForm() {
     }
   };
 
-  
+  const handleProductCategoryChange = (event) => {
+    const inputValue = event.target.value;
+    setProductCategory(inputValue);
+
+    if (inputValue === "") {
+      event.target.classList.add("is-invalid");
+      setErrorMessage("The Product Category field must be filled in");
+    } else {
+      setErrorMessage("");
+      event.target.classList.add("is-valid");
+      event.target.classList.remove("is-invalid");
+    }
+  };
+
+  const handleImageChange = (event) => {
+    const inputValue = event.target.value;
+    setImageOfProduct(inputValue);
+
+    if (!inputValue) {
+      setErrorMessage("The Image of Product field must be filled in");
+      event.target.classList.add("is-invalid");
+    } else {
+      setErrorMessage("");
+      event.target.classList.remove("is-invalid");
+      event.target.classList.add("is-valid");
+    }
+  };
+
+  const handleAdditionalDescriptionChange = (event) => {
+    const inputValue = event.target.value;
+    setAdditionalDescription(inputValue);
+
+    if (!inputValue) {
+      setErrorMessage("The Additional Description field must be filled in");
+      event.target.classList.add("is-invalid");
+    } else {
+      setErrorMessage("");
+      event.target.classList.remove("is-invalid");
+      event.target.classList.add("is-valid");
+    }
+  };
 
   return (
     <main className="body">
@@ -91,16 +126,15 @@ function MainForm() {
             name="productCategory"
             id="productCategory"
             required
-            defaultValue
+            defaultValue={productCategory}
+            onChange={handleProductCategoryChange}
           >
-            <option value="" disabled="" selected="true">
+            <option hidden value="">
               Choose...
             </option>
             <option value="dummy">dummy</option>
           </select>
-          <div className="invalid-feedback">
-            The Product Category field must be filled in
-          </div>
+          <div className="invalid-feedback">{errorMessage}</div>
         </div>
 
         {/* Form Image of Product */}
@@ -110,8 +144,9 @@ function MainForm() {
           type="file"
           required
           id="imageOfProduct"
-          errorMessage={"The Image of Product field must be filled in"}
-          
+          errorMessage={errorMessage}
+          onChange={handleImageChange}
+          value={imageOfProduct}
         />
 
         {/* Form Product Freshness */}
@@ -172,8 +207,9 @@ function MainForm() {
           cols={5}
           rows={5}
           required
-          errorMessage={"The Additional Description field must be filled in"}
-          onChange={(event) => setAdditionalDescription(event.target.value)}
+          errorMessage={errorMessage}
+          onChange={handleAdditionalDescriptionChange}
+          value={additionalDescription}
         />
 
         {/* Form Product Price */}
