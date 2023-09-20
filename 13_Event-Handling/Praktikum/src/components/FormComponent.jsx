@@ -14,51 +14,58 @@ function FormInput({
   autoFocus,
   value,
   onChange,
-  error,
+  errorMessage,
   placeholder,
 }) {
   return (
-    <div className={className}>
-      <label className="form-label" htmlFor={id}>
-        {label}
-      </label>
-      <input
-        className="form-control"
-        type={type}
-        name={name}
-        id={id}
-        minLength={minLength}
-        maxLength={maxLength}
-        required={required}
-        autoFocus={autoFocus}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-      {error ? (
-        <div className="invalid-feedback" id={`${id}Error`}>
-          {error}
+    <>
+      <div className={className}>
+        <label className="form-label" htmlFor={id}>
+          {label}
+        </label>
+        <input
+          className="form-control"
+          type={type}
+          name={name}
+          id={id}
+          minLength={minLength}
+          maxLength={maxLength}
+          required={required}
+          autoFocus={autoFocus}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+        <div className="invalid-feedback">
+          {errorMessage}
         </div>
-      ) : null}
-    </div>
+      </div>
+    </>
   );
 }
 
-function FileInput({ className, label, type, required, id }) {
+function FileInput({ className, label, type, required, id, errorMessage, onChange, value}) {
   return (
-    <div className={className}>
-      <label>{label}</label>
-      <input
-        type={type}
-        required={required}
-        className="form-control custom-form-control"
-        id={id}
-      />
-    </div>
+    <>
+      <div className={className}>
+        <label>{label}</label>
+        <input
+          type={type}
+          required={required}
+          className="form-control custom-form-control"
+          id={id}
+          onChange={onChange}
+          value={value}
+        />
+      </div>
+      <div className="invalid-feedback">
+        {errorMessage}
+      </div>
+    </>
   );
 }
 
-function TextAreaInput({ className, label, name, id, cols, rows, required }) {
+function TextAreaInput({ className, label, name, id, cols, rows, required,errorMessage,onChange,value }) {
   return (
     <div className={className}>
       <label className="form-label">{label}</label>
@@ -69,7 +76,12 @@ function TextAreaInput({ className, label, name, id, cols, rows, required }) {
         cols={cols}
         rows={rows}
         required={required}
+        onChange={onChange}
+        value={value}
       />
+      <div className="invalid-feedback">
+        {errorMessage}
+      </div>
     </div>
   );
 }
