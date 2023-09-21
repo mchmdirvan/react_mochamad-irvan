@@ -20,7 +20,7 @@ function CreateProduct() {
   const [productName, setProductName] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
-  const [productFreshness, setProductFreshness] = useState("");
+  const [productFreshness, setProductFreshness] = useState(false);
   const [additionalDescription, setAdditionalDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
 
@@ -88,7 +88,6 @@ function CreateProduct() {
   const handleAdditionalDescriptionChange = (event) => {
     const inputValue = event.target.value;
     setAdditionalDescription(inputValue);
-
     if (!inputValue) {
       setErrorMessage("The Additional Description field must be filled in");
       event.target.classList.add("is-invalid");
@@ -96,6 +95,16 @@ function CreateProduct() {
       setErrorMessage("");
       event.target.classList.remove("is-invalid");
       event.target.classList.add("is-valid");
+    }
+  };
+
+  const handleProductFreshnessChange = (event) => {
+    const inputValue = event.target.value;
+    setProductFreshness(inputValue);
+    if (!productFreshness) {
+      setErrorMessage("The Product Freshness field must be filled in");
+    } else {
+      setErrorMessage("");
     }
   };
 
@@ -115,7 +124,7 @@ function CreateProduct() {
     setProductName("");
     setProductCategory("");
     setImageOfProduct("");
-    setProductFreshness("");
+    setProductFreshness(false);
     setAdditionalDescription("");
     setProductPrice("");
   }
@@ -175,7 +184,7 @@ function CreateProduct() {
               name="productCategory"
               id="productCategory"
               required
-              defaultValue={productCategory}
+              value={productCategory}
               onChange={handleProductCategoryChange}
             >
               <option hidden value="">
@@ -207,20 +216,11 @@ function CreateProduct() {
                 className="form-check-input"
                 type="radio"
                 name="productFreshness"
-                id="noFreshness"
-                defaultValue=""
-                onChange={(event) => setProductFreshness(event.target.value)}
-                hidden
-              />
-              
-              <input
-                className="form-check-input"
-                type="radio"
-                name="productFreshness"
                 id="brandNew"
                 value="Brand New"
                 required
-                onChange={(event) => setProductFreshness(event.target.value)}
+                checked={productFreshness === "Brand New"}
+                onChange={handleProductFreshnessChange}
               />
               <label className="form-check-label" htmlFor="brandNew">
                 Brand New
@@ -233,7 +233,8 @@ function CreateProduct() {
                 name="productFreshness"
                 id="secondHank"
                 value="Second Hank"
-                onChange={(event) => setProductFreshness(event.target.value)}
+                checked={productFreshness === "Second Hank"}
+                onChange={handleProductFreshnessChange}
               />
               <label className="form-check-label" htmlFor="secondHank">
                 Second Hank
@@ -246,7 +247,8 @@ function CreateProduct() {
                 name="productFreshness"
                 id="refurbished"
                 value="Refurbished"
-                onChange={(event) => setProductFreshness(event.target.value)}
+                checked={productFreshness === "Refurbished"}
+                onChange={handleProductFreshnessChange}
               />
               <label className="form-check-label" htmlFor="refurbished">
                 Refurbished
