@@ -6,6 +6,8 @@ import Table from "../components/Table";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 import CreateProductLanguage from "../utils/CreateProductLanguage";
 import { Input, File, TextArea, Select } from "../components/FormComponent";
+import { v4 as uuidv4 } from 'uuid';
+
 
 function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
@@ -28,7 +30,7 @@ function CreateProduct() {
     event.preventDefault();
     event.currentTarget.classList.add("was-validated");
     const product = {
-      id: products.length + 1,
+      id: uuidv4() + 1,
       productName: productName,
       productCategory: productCategory,
       productFreshness: productFreshness,
