@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 200vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 8vh;
+}
+.logo {
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.bootstrap-logo {
+  width: 5em;
+  margin: 2em 0;
+  align-items: center;
+}
+
+main {
+  padding: 0 25vw;
+}
+
+.body h2,
+.body p {
+  text-align: center;
+}
+input::file-selector-button {
+  background-color: #0d6efd !important;
+  color: white !important;
+  border-radius: 5px;
+  border-color: #0d6efd;
+  padding: 0.5em;
+}
+
+.custom-form-control {
+  border: 1px solid #0d6efd !important;
+  color: #0d6efd !important;
+}
+
+.table-section {
+  --bs-gutter-x: 0 !important;
+}
