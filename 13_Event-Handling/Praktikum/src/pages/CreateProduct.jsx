@@ -112,6 +112,12 @@ function CreateProduct() {
       productPrice: productPrice,
     };
     setCreateProducts([...products, product]);
+    setProductName("");
+    setProductCategory("");
+    setImageOfProduct("");
+    setProductFreshness("");
+    setAdditionalDescription("");
+    setProductPrice("");
   }
 
   function generateRandomNumber() {
@@ -201,8 +207,18 @@ function CreateProduct() {
                 className="form-check-input"
                 type="radio"
                 name="productFreshness"
+                id="noFreshness"
+                defaultValue=""
+                onChange={(event) => setProductFreshness(event.target.value)}
+                hidden
+              />
+              
+              <input
+                className="form-check-input"
+                type="radio"
+                name="productFreshness"
                 id="brandNew"
-                defaultValue="Brand New"
+                value="Brand New"
                 required
                 onChange={(event) => setProductFreshness(event.target.value)}
               />
@@ -216,7 +232,7 @@ function CreateProduct() {
                 type="radio"
                 name="productFreshness"
                 id="secondHank"
-                defaultValue="Second Hank"
+                value="Second Hank"
                 onChange={(event) => setProductFreshness(event.target.value)}
               />
               <label className="form-check-label" htmlFor="secondHank">
@@ -229,7 +245,7 @@ function CreateProduct() {
                 type="radio"
                 name="productFreshness"
                 id="refurbished"
-                defaultValue="Refurbished"
+                value="Refurbished"
                 onChange={(event) => setProductFreshness(event.target.value)}
               />
               <label className="form-check-label" htmlFor="refurbished">
