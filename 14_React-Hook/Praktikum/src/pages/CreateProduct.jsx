@@ -24,6 +24,25 @@ function CreateProduct() {
 
   const [products, setCreateProducts] = useState([]);
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    event.currentTarget.classList.add("was-validated");
+    const product = {
+      id: products.length + 1,
+      productName: productName,
+      productCategory: productCategory,
+      productFreshness: productFreshness,
+      productPrice: productPrice,
+    };
+    setCreateProducts([...products, product]);
+    setProductName("");
+    setProductCategory("");
+    setImageOfProduct("");
+    setProductFreshness(false);
+    setAdditionalDescription("");
+    setProductPrice("");
+  }
+
   const handleProductNameChange = (event) => {
     const inputValue = event.target.value;
     setProductName(inputValue);
@@ -103,25 +122,6 @@ function CreateProduct() {
       setErrorMessage("");
     }
   };
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    event.currentTarget.classList.add("was-validated");
-    const product = {
-      id: products.length + 1,
-      productName: productName,
-      productCategory: productCategory,
-      productFreshness: productFreshness,
-      productPrice: productPrice,
-    };
-    setCreateProducts([...products, product]);
-    setProductName("");
-    setProductCategory("");
-    setImageOfProduct("");
-    setProductFreshness(false);
-    setAdditionalDescription("");
-    setProductPrice("");
-  }
 
   function generateRandomNumber() {
     const randomNum = Math.floor(Math.random() * 1000);
