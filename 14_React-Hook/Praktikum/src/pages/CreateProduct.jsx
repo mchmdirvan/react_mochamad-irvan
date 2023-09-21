@@ -5,11 +5,7 @@ import Button from "../components/Button";
 import Table from "../components/Table";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 import CreateProductLanguage from "../utils/CreateProductLanguage";
-import {
-  FormInput,
-  FileInput,
-  TextAreaInput,
-} from "../components/FormComponent";
+import { Input, File, TextArea, Select } from "../components/FormComponent";
 
 function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
@@ -157,7 +153,7 @@ function CreateProduct() {
           onSubmit={handleSubmit}
         >
           {/* Form Product Name */}
-          <FormInput
+          <Input
             className="col-6 mt-3"
             label="Product Name :"
             type="text"
@@ -173,28 +169,20 @@ function CreateProduct() {
           />
 
           {/* Form Product Category */}
-          <div className="col-5 mt-3">
-            <label htmlFor="productCategory" className="form-label">
-              Product Category:
-            </label>
-            <select
-              className="form-select"
-              name="productCategory"
-              id="productCategory"
-              required
-              value={productCategory}
-              onChange={handleProductCategoryChange}
-            >
-              <option hidden value="">
-                Choose...
-              </option>
-              <option value="dummy">dummy</option>
-            </select>
-            <div className="invalid-feedback">{errorMessage}</div>
-          </div>
+          <Select
+            className="col-5 mt-3"
+            label="Product Category"
+            name="productCategory"
+            id="productCategory"
+            required
+            value={productCategory}
+            options={["Fruits", "Vegetable", "Dairy"]}
+            onChange={handleProductCategoryChange}
+            placeholder="Choose..."
+          />
 
           {/* Form Image of Product */}
-          <FileInput
+          <File
             className="col-4 mt-3"
             label="Image of Product"
             type="file"
@@ -257,7 +245,7 @@ function CreateProduct() {
           </div>
 
           {/* Form Additional Description */}
-          <TextAreaInput
+          <TextArea
             className="mt-3"
             label="Addittional Description"
             name="additionalDescription"
@@ -270,7 +258,7 @@ function CreateProduct() {
           />
 
           {/* Form Product Price */}
-          <FormInput
+          <Input
             className="mb-4 mt-3"
             label="Product Price"
             type="number"

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-function FormInput({
+function Input({
   label,
   className,
   type,
@@ -36,15 +36,22 @@ function FormInput({
           onChange={onChange}
           placeholder={placeholder}
         />
-        <div className="invalid-feedback">
-          {errorMessage}
-        </div>
+        <div className="invalid-feedback">{errorMessage}</div>
       </div>
     </>
   );
 }
 
-function FileInput({ className, label, type, required, id, errorMessage, onChange, value}) {
+function File({
+  className,
+  label,
+  type,
+  required,
+  id,
+  errorMessage,
+  onChange,
+  value,
+}) {
   return (
     <>
       <div className={className}>
@@ -58,14 +65,23 @@ function FileInput({ className, label, type, required, id, errorMessage, onChang
           value={value}
         />
       </div>
-      <div className="invalid-feedback">
-        {errorMessage}
-      </div>
+      <div className="invalid-feedback">{errorMessage}</div>
     </>
   );
 }
 
-function TextAreaInput({ className, label, name, id, cols, rows, required,errorMessage,onChange,value }) {
+function TextArea({
+  className,
+  label,
+  name,
+  id,
+  cols,
+  rows,
+  required,
+  errorMessage,
+  onChange,
+  value,
+}) {
   return (
     <div className={className}>
       <label className="form-label">{label}</label>
@@ -79,11 +95,45 @@ function TextAreaInput({ className, label, name, id, cols, rows, required,errorM
         onChange={onChange}
         value={value}
       />
-      <div className="invalid-feedback">
-        {errorMessage}
-      </div>
+      <div className="invalid-feedback">{errorMessage}</div>
     </div>
   );
 }
 
-export { FormInput, FileInput, TextAreaInput };
+function Select({
+  className,
+  label,
+  name,
+  id,
+  required,
+  value,
+  onChange,
+  options = [],
+  placeholder,
+  errorMessage,
+}) {
+  return (
+    <div className={className}>
+      <label className="form-label">{label}</label>
+      <select
+        className="form-select"
+        name={name}
+        id={id}
+        required={required}
+        value={value}
+        onChange={onChange}
+      >
+        <option hidden>
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option key={option}>{option}</option>
+        ))}
+      </select>
+
+      <div className="invalid-feedback">{errorMessage}</div>
+    </div>
+  );
+}
+
+export { Input, File, TextArea, Select };
