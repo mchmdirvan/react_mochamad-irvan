@@ -1,9 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import bootstrapLogo from "../assets/bootstrap-logo.svg";
 import article from "../utils/article";
 
 function CreateAccount() {
+  useEffect(() => {
+    alert('Welcome!')
+  },[])
+
   return (
     <main className="align-content-center text-center ">
       <img
