@@ -102,3 +102,9 @@ fungsi -> proses
 ## Bagaimana contoh menggunakan ternary operator di useState?
 const [isLoading, setIsLoading] = useState(true)
 <p>{isLoading ? "Loading" : title }</p> // tapi harus di jadiin false pas pakai setTimeOut
+
+## Jika ingin menggunakan Map agar tidak error harus apa?
+Map hanya bisa digunakan untuk Array. Maka buat default value terlebih dahulu. Contohnya data=[]
+
+## Lalu bagaimana cara agar memasukan datanya ke array ([]) ?
+Dengan menggunakan spread operator (...)
