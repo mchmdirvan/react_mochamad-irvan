@@ -20,9 +20,7 @@ function Table({ headers = [], datas = [] }) {
                 <td>{data.id}</td>
                 <td>{data.productName}</td>
                 <td>{data.productCategory}</td>
-                <td>{data.imageOfProduct}</td>
                 <td>{data.productFreshness}</td>
-                <td>{data.additionalDescription}</td>
                 <td>{data.productPrice}</td>
               </tr>
             ))}

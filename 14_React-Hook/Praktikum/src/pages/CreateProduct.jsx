@@ -115,9 +115,7 @@ function CreateProduct() {
       id: products.length + 1,
       productName: productName,
       productCategory: productCategory,
-      imageOfProduct: imageOfProduct,
       productFreshness: productFreshness,
-      additionalDescription: additionalDescription,
       productPrice: productPrice,
     };
     setCreateProducts([...products, product]);
@@ -200,7 +198,6 @@ function CreateProduct() {
             className="col-4 mt-3"
             label="Image of Product"
             type="file"
-            required
             id="imageOfProduct"
             errorMessage={errorMessage}
             onChange={handleImageChange}
@@ -267,7 +264,6 @@ function CreateProduct() {
             id="additionalDescription"
             cols={5}
             rows={5}
-            required
             errorMessage={errorMessage}
             onChange={handleAdditionalDescriptionChange}
             value={additionalDescription}
@@ -304,9 +300,7 @@ function CreateProduct() {
           "No",
           "Product Name",
           "Product Category",
-          "Image Of Product",
           "Product Freshness",
-          "Additional Description",
           "Product Price",
         ]}
         datas={products}
