@@ -1,24 +1,32 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 
-function Table() {
+function Table({ headers = [], datas = [] }) {
   return (
     <section className="row justify-content-center mt-5 table-section">
       <div className="col-10">
-        {/* Table */}
-        <table className=" table table-hover table-bordered text-center">
+        <table className=" table table-hover table-bordered text-center col-10">
           <thead className="table-dark">
             <tr>
-              <th scope="col">No</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Product Category</th>
-              <th scope="col">Image of Product</th>
-              <th scope="col">Product Freshness</th>
-              <th scope="col">Additional Description</th>
-              <th scope="col">Product Price</th>
+              {headers.map((headers, index) => (
+                <th key={index} scope="col">
+                  {headers}
+                </th>
+              ))}
             </tr>
+            {datas.map((data) => (
+              <tr key={data.id}>
+                <td>{data.id}</td>
+                <td>{data.productName}</td>
+                <td>{data.productCategory}</td>
+                <td>{data.imageOfProduct}</td>
+                <td>{data.productFreshness}</td>
+                <td>{data.additionalDescription}</td>
+                <td>{data.productPrice}</td>
+              </tr>
+            ))}
           </thead>
-          {/* Table Body Goes Here */}
         </table>
 
         {/* Buttons (Delete and Search) */}
