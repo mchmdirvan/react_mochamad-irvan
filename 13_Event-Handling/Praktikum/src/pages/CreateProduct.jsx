@@ -1,26 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import Button from "../components/Button";
+import Table from "../components/Table";
+import BootstrapLogo from "../assets/bootstrap-logo.svg";
+import CreateProductLanguage from "../utils/CreateProductLanguage";
 import {
   FormInput,
   FileInput,
   TextAreaInput,
 } from "../components/FormComponent";
-import Button from "../components/Button";
-import Table from "../components/Table";
-import BootstrapLogo from "../assets/bootstrap-logo.svg";
-import CreateProductLanguage from "../utils/CreateProductLanguage";
-
-function handleSubmit(event) {
-  event.preventDefault();
-  event.currentTarget.classList.add("was-validated");
-}
-
-function generateRandomNumber() {
-  const randomNum = Math.floor(Math.random() * 1000);
-  console.log(randomNum);
-  return randomNum;
-}
 
 function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
@@ -31,10 +20,13 @@ function CreateProduct() {
   const [productName, setProductName] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
+  const [productFreshness, setProductFreshness] = useState("");
   const [additionalDescription, setAdditionalDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const [products, setCreateProducts] = useState([]);
 
   const handleProductNameChange = (event) => {
     const inputValue = event.target.value;
@@ -55,7 +47,7 @@ function CreateProduct() {
   const handleProductPriceChange = (event) => {
     const inputValue = event.target.value;
     setProductPrice(inputValue);
-    if (inputValue.length < 1) {
+    if (!inputValue) {
       setErrorMessage("Please enter a valid Product price.");
       event.target.classList.add("is-invalid");
     } else {
@@ -106,6 +98,27 @@ function CreateProduct() {
       event.target.classList.add("is-valid");
     }
   };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    event.currentTarget.classList.add("was-validated");
+    const product = {
+      id: products.length + 1,
+      productName: productName,
+      productCategory: productCategory,
+      imageOfProduct: imageOfProduct,
+      productFreshness: productFreshness,
+      additionalDescription: additionalDescription,
+      productPrice: productPrice,
+    };
+    setCreateProducts([...products, product]);
+  }
+
+  function generateRandomNumber() {
+    const randomNum = Math.floor(Math.random() * 1000);
+    console.log(randomNum);
+    return randomNum;
+  }
 
   return (
     <>
@@ -191,6 +204,7 @@ function CreateProduct() {
                 id="brandNew"
                 defaultValue="Brand New"
                 required
+                onChange={(event) => setProductFreshness(event.target.value)}
               />
               <label className="form-check-label" htmlFor="brandNew">
                 Brand New
@@ -203,6 +217,7 @@ function CreateProduct() {
                 name="productFreshness"
                 id="secondHank"
                 defaultValue="Second Hank"
+                onChange={(event) => setProductFreshness(event.target.value)}
               />
               <label className="form-check-label" htmlFor="secondHank">
                 Second Hank
@@ -215,6 +230,7 @@ function CreateProduct() {
                 name="productFreshness"
                 id="refurbished"
                 defaultValue="Refurbished"
+                onChange={(event) => setProductFreshness(event.target.value)}
               />
               <label className="form-check-label" htmlFor="refurbished">
                 Refurbished
@@ -265,7 +281,18 @@ function CreateProduct() {
         </form>
       </main>
 
-      <Table />
+      <Table
+        headers={[
+          "No",
+          "Product Name",
+          "Product Category",
+          "Image Of Product",
+          "Product Freshness",
+          "Additional Description",
+          "Product Price",
+        ]}
+        datas={products}
+      />
     </>
   );
 }
