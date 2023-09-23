@@ -73,3 +73,6 @@ https://github.com/airbnb/javascript
 ## Motivation
 
 Untuk membuat coding usahakan untuk mengetahu essensi dari penggunaan code nya agar bisa survive di dunia kerjaan. project test atau logic test.
+
+## React Clean-Code
+import library component dipisah, urutannya dari panjang ke pendek, sesuaikan tipe data

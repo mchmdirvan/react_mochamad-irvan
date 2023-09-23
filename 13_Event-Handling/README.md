@@ -21,7 +21,7 @@ fetchData
 
 ## Bagaimana cara mereturn dua buah element?
 
-Kita dapat menggabungkan dua elemen dengan menggunakan elemen `div` atau `fragment` (`<> </>`). Ini berhubungan dengan rendering dan tampilan elemen, yang sering berhubungan dengan event handling.
+Kita dapat menggabungkan dua elemen dengan menggunakan elemen `div` atau `fragment` (`<component> </>`). Ini berhubungan dengan rendering dan tampilan elemen, yang sering berhubungan dengan event handling.
 
 ## Bagaimana jika ingin menggunakan useEffect?
 
@@ -82,14 +82,45 @@ Ini berkaitan dengan bagaimana kita dapat memasukkan data ke dalam array dengan 
 
 ## Bagaimana cara memanggil data?
 - fetchAPI
-- Menggunakan library : axious, react query 
+- Menggunakan library : axious, 
+- Menggunakan library : react query 
 
 ## API gratis
 - JSON Place Holder : testing pemanggilan API 
 
-## Ada metode apa saja untuk memanggil API
-- GET : Memanggil data -> ex : memanggil list dari API
-- POST
-- PUT 
-- PATCH
-- DELETE
+## Ada metode apa saja untuk memanggil API menggunakan restfulAPi?
+- GET : Read , Memanggil data -> ex : memanggil list data dari API
+- POST : Create  -> ex : menambahkan data 
+- PUT  : Update
+- PATCH : Update
+- DELETE : delete -> ex : menghapus data
+
+## Selain Restful API ada apa lagi?
+GraphQL
+
+## Bagaimana cara menampilkan fetchdata?
+dengan menggunakan useEffect agar dapat berjalan seperti didMount
+
+## Fetch API
+- perlu input, init?, dan menghasilkan promise dimana bisa menggunakan try catch atau then catch
+- perlu konversi menjadi json => .then((result) => result.json), lalu baru .then((response) => ...), .catch((error)=> ...), 
+- untuk memunculkan datanya gunakan useState , {.map}, dan key
+- Jika ingin menambahkan animasi saat loading dapat menggunakan  useState dan .finally(()=> setIsLoading(false)) dan menggunakan ternary operator pada {?():()}
+- Lite edition dan sudah ada di server, bisa di render di server (react server component : di nextjs)
+
+## Bagaimanakah cara melihat debugging fetch API?
+dev tools : network - fetch/xhr - response
+
+## Animasi
+Spinner : Frammer React, lottiefiles lottie react (perlu dibuat reusable compo)
+Skeleton : Tailwind Pulse -> untuk looping dapat menggunkan array [...Array(10).keys().map((data) => </component   key = {data}>)]
+
+# Axious
+- Mirip seperti memanggil promise : axious.get()
+- tidak perlu konversi ke json terlebih dahulu karena hasilnya akan menjadi object 
+- Mendapatkan konfigurasi tambahan yang sifat nya optional
+
+# React Query
+- Perlu effort
+- Render perlu sekali saja
+- bisa realtime ambil data 
