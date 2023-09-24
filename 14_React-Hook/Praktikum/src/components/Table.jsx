@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { BsFillPencilFill, BsFillTrash2Fill } from "react-icons/bs";
 
-function Table({ headers = [], datas = [] }) {
+function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
   return (
     <section className="row justify-content-center mt-5 table-section">
       <div className="col-10">
@@ -14,6 +15,7 @@ function Table({ headers = [], datas = [] }) {
                   {headers}
                 </th>
               ))}
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +26,10 @@ function Table({ headers = [], datas = [] }) {
                 <td>{data.productCategory}</td>
                 <td>{data.productFreshness}</td>
                 <td>{data.productPrice}</td>
+                <td className="flex gap-2">
+                  <BsFillPencilFill onClick={() => onEditClick(data)} />
+                  <BsFillTrash2Fill onClick={() => onDeleteClick(data)} />
+                </td>
               </tr>
             ))}
           </tbody>

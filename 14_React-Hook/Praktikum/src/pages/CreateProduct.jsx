@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import CreateProductLanguage from "../utils/CreateProductLanguage";
 
@@ -11,7 +11,6 @@ import { Input, File, TextArea, Select } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
-
 
 function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
@@ -27,9 +26,7 @@ function CreateProduct() {
   const [errorMessage, setErrorMessage] = useState("");
   const [productName, setProductName] = useState("");
   const [products, setCreateProducts] = useState([]);
-  useTitle("Create Product")
-
-
+  useTitle("Create Product");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -299,6 +296,8 @@ function CreateProduct() {
           "Product Price",
         ]}
         datas={products}
+        onEditClick={(data) => console.log(data)}
+        onDeleteClick={(data) => console.log(data)}
       />
     </>
   );
