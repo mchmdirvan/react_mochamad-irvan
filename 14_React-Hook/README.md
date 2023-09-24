@@ -95,3 +95,8 @@ useEffect( () => {}, []) mirip dengan componentDidMount
     }
    })
 6. Panggil use... di jsx -> use...('')
+
+## Apa saja helper yang biasanya ada di utils?
+- API
+- Configs
+- Formatter
