@@ -108,4 +108,7 @@ useEffect( () => {}, []) mirip dengan componentDidMount
       "@": "/src",
     },
   },
-3. pada import tambahkan "@/"
+3. pada import tambahkan "@/" 
+
+## Jika ingin menggunakan daisy UI apa yang perlu diperhatikan?
+Samakan tag nya pembukusnya dan tambahkan tema di html
