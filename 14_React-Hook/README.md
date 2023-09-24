@@ -76,3 +76,22 @@ useEffect( () => {}, []) mirip dengan componentDidMount
    }
    })
 
+## Apa itu Custom Hook?
+- Custom hook merupakan Javascript function yang dapat digunakan untuk memanggil hooks lain
+- Digunakan untuk berbagi statefull logic antar komponen
+- Diawali dengan "use" sebagai konvensi.
+
+
+## Bagaimana cara jika ingin membuat custom hooks?
+1. Buat folder hooks di utils
+2. Buat file .js bisa customHooks.js
+3. Import useState dan useEffect
+4. buat function dengan awalan use... 
+5. Gunakan useEffect yang return 
+   useEffect (() => {
+    ...
+    return () => {
+        ...
+    }
+   })
+6. Panggil use... di jsx -> use...('')
