@@ -100,3 +100,12 @@ useEffect( () => {}, []) mirip dengan componentDidMount
 - API
 - Configs
 - Formatter
+
+## Bagaimana cara melakukan absolute Import?
+1. add code in vite-config.js
+2. resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
+3. pada import tambahkan "@/"
