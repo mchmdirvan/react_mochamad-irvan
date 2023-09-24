@@ -112,3 +112,6 @@ useEffect( () => {}, []) mirip dengan componentDidMount
 
 ## Jika ingin menggunakan daisy UI apa yang perlu diperhatikan?
 Samakan tag nya pembukusnya dan tambahkan tema di html
+
+## Table Powerful
+TanStack -> yang buat react query
