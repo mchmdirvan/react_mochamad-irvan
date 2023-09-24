@@ -15,6 +15,8 @@ function Table({ headers = [], datas = [] }) {
                 </th>
               ))}
             </tr>
+          </thead>
+          <tbody>
             {datas.map((data) => (
               <tr key={data.id}>
                 <td>{data.id}</td>
@@ -24,7 +26,7 @@ function Table({ headers = [], datas = [] }) {
                 <td>{data.productPrice}</td>
               </tr>
             ))}
-          </thead>
+          </tbody>
         </table>
 
         {/* Buttons (Delete and Search) */}
