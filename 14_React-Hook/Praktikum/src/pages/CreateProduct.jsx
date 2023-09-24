@@ -1,12 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
+import CreateProductLanguage from "../utils/CreateProductLanguage";
+
+import BootstrapLogo from "../assets/bootstrap-logo.svg";
+import { useTitle } from "../utils/hooks/customHooks";
+
+import { Input, File, TextArea, Select } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
-import BootstrapLogo from "../assets/bootstrap-logo.svg";
-import CreateProductLanguage from "../utils/CreateProductLanguage";
-import { Input, File, TextArea, Select } from "../components/FormComponent";
-import { v4 as uuidv4 } from 'uuid';
 
 
 function CreateProduct() {
@@ -15,16 +19,17 @@ function CreateProduct() {
     setCurrentLanguage(currentLanguage === "en" ? "id" : "en");
   };
 
-  const [productName, setProductName] = useState("");
-  const [productCategory, setProductCategory] = useState("");
-  const [imageOfProduct, setImageOfProduct] = useState("");
   const [productFreshness, setProductFreshness] = useState(false);
   const [additionalDescription, setAdditionalDescription] = useState("");
+  const [productCategory, setProductCategory] = useState("");
+  const [imageOfProduct, setImageOfProduct] = useState("");
   const [productPrice, setProductPrice] = useState("");
-
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [productName, setProductName] = useState("");
   const [products, setCreateProducts] = useState([]);
+  useTitle("Create Product")
+
+
 
   function handleSubmit(event) {
     event.preventDefault();
