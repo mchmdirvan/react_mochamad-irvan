@@ -37,24 +37,7 @@ function CreateProduct() {
     event.currentTarget.classList.add("was-validated");
 
     if (isEdit) {
-      const updatedProduct = {
-        id: selectedId,
-        productName: productName,
-        productCategory: productCategory,
-        productFreshness: productFreshness,
-        productPrice: productPrice,
-      };
-      const updatedProducts = products.map((product) =>
-        product.id === selectedId ? updatedProduct : product
-      );
-      setCreateProducts(updatedProducts);
-      setIsEdit(false);
-      setProductName("");
-      setProductCategory("");
-      setImageOfProduct("");
-      setProductFreshness(false);
-      setAdditionalDescription("");
-      setProductPrice("");
+      handleEdit();
     } else {
       const product = {
         id: uuidv4() + 1,
@@ -64,24 +47,34 @@ function CreateProduct() {
         productPrice: productPrice,
       };
       setCreateProducts([...products, product]);
-      setProductName("");
-      setProductCategory("");
-      setImageOfProduct("");
-      setProductFreshness(false);
-      setAdditionalDescription("");
-      setProductPrice("");
       Swal.fire({
         title: "Success",
         text: "Berhasil menambahkan data",
         showCancelButton: false,
       });
     }
+    setProductName("");
+    setProductCategory("");
+    setImageOfProduct("");
+    setProductFreshness(false);
+    setAdditionalDescription("");
+    setProductPrice("");
   }
 
-  function handleEdit(event) {
-    event.preventDefault();
-    setSelectedId("");
+  function handleEdit() {
+    const updatedProduct = {
+      id: selectedId,
+      productName: productName,
+      productCategory: productCategory,
+      productFreshness: productFreshness,
+      productPrice: productPrice,
+    };
+    const updatedProducts = products.map((product) =>
+      product.id === selectedId ? updatedProduct : product
+    );
+    setCreateProducts(updatedProducts);
     setIsEdit(false);
+    setSelectedId("");
   }
 
   function handleDelete(id) {
