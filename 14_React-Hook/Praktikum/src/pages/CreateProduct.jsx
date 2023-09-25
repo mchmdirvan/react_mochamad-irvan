@@ -6,6 +6,7 @@ import CreateProductLanguage from "../utils/CreateProductLanguage";
 
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 import { useTitle } from "../utils/hooks/customHooks";
+import Swal from "../utils/swal";
 
 import { Input, File, TextArea, Select } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
@@ -19,32 +20,78 @@ function CreateProduct() {
   };
 
   const [productFreshness, setProductFreshness] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+
   const [additionalDescription, setAdditionalDescription] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [productName, setProductName] = useState("");
+  const [selectedId, setSelectedId] = useState("");
   const [products, setCreateProducts] = useState([]);
   useTitle("Create Product");
 
   function handleSubmit(event) {
     event.preventDefault();
     event.currentTarget.classList.add("was-validated");
-    const product = {
-      id: uuidv4() + 1,
-      productName: productName,
-      productCategory: productCategory,
-      productFreshness: productFreshness,
-      productPrice: productPrice,
-    };
-    setCreateProducts([...products, product]);
-    setProductName("");
-    setProductCategory("");
-    setImageOfProduct("");
-    setProductFreshness(false);
-    setAdditionalDescription("");
-    setProductPrice("");
+
+    if (isEdit) {
+      const updatedProduct = {
+        id: selectedId,
+        productName: productName,
+        productCategory: productCategory,
+        productFreshness: productFreshness,
+        productPrice: productPrice,
+      };
+      const updatedProducts = products.map((product) =>
+        product.id === selectedId ? updatedProduct : product
+      );
+      setCreateProducts(updatedProducts);
+      setIsEdit(false);
+      setProductName("");
+      setProductCategory("");
+      setImageOfProduct("");
+      setProductFreshness(false);
+      setAdditionalDescription("");
+      setProductPrice("");
+    } else {
+      const product = {
+        id: uuidv4() + 1,
+        productName: productName,
+        productCategory: productCategory,
+        productFreshness: productFreshness,
+        productPrice: productPrice,
+      };
+      setCreateProducts([...products, product]);
+      setProductName("");
+      setProductCategory("");
+      setImageOfProduct("");
+      setProductFreshness(false);
+      setAdditionalDescription("");
+      setProductPrice("");
+      Swal.fire({
+        title: "Success",
+        text: "Berhasil menambahkan data",
+        showCancelButton: false,
+      });
+    }
+  }
+
+  function handleEdit(event) {
+    event.preventDefault();
+    setSelectedId("");
+    setIsEdit(false);
+  }
+
+  function handleDelete(id) {
+    const updatedProducts = products.filter((product) => product.id !== id);
+    setCreateProducts(updatedProducts);
+    Swal.fire({
+      title: "Success",
+      text: "Berhasil menghapus data",
+      showCancelButton: false,
+    });
   }
 
   function handleProductNameChange(event) {
@@ -76,7 +123,7 @@ function CreateProduct() {
     }
   }
 
-  function handleProductCategoryChange(event){
+  function handleProductCategoryChange(event) {
     const inputValue = event.target.value;
     setProductCategory(inputValue);
 
@@ -90,7 +137,7 @@ function CreateProduct() {
     }
   }
 
-  function handleImageChange(event){
+  function handleImageChange(event) {
     const inputValue = event.target.value;
     setImageOfProduct(inputValue);
 
@@ -104,7 +151,7 @@ function CreateProduct() {
     }
   }
 
-  function handleAdditionalDescriptionChange(event){
+  function handleAdditionalDescriptionChange(event) {
     const inputValue = event.target.value;
     setAdditionalDescription(inputValue);
     if (!inputValue) {
@@ -117,7 +164,7 @@ function CreateProduct() {
     }
   }
 
-  function handleProductFreshnessChange(event){
+  function handleProductFreshnessChange(event) {
     const inputValue = event.target.value;
     setProductFreshness(inputValue);
     if (!productFreshness) {
@@ -131,14 +178,6 @@ function CreateProduct() {
     const randomNum = Math.floor(Math.random() * 1000);
     console.log(randomNum);
     return randomNum;
-  }
-
-  function handleEdit(){
-
-  }
-
-  function handleDelete(){
-
   }
 
   return (
@@ -302,10 +341,27 @@ function CreateProduct() {
           "Product Category",
           "Product Freshness",
           "Product Price",
+          "Actions",
         ]}
         datas={products}
-        onEditClick={(data) => handleEdit(data.id)}
-        onDeleteClick={(data) => handleDelete(data.id)}
+        onEditClick={(data) => {
+          setIsEdit(true);
+          setProductName(data.productName);
+          setProductCategory(data.productCategory);
+          setProductFreshness(data.productFreshness);
+          setProductPrice(data.productPrice);
+          setSelectedId(data.id);
+        }}
+        onDeleteClick={(data) =>
+          Swal.fire({
+            title: "Peringatan",
+            text: `Apakah anda yakin untuk menghapus product ${data.productName}?`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              handleDelete(data.id);
+            }
+          })
+        }
       />
     </>
   );
