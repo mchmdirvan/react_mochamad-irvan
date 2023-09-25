@@ -115,3 +115,6 @@ Samakan tag nya pembukusnya dan tambahkan tema di html
 
 ## Table Powerful
 TanStack -> yang buat react query
+
+## Helper Modal
+SweetAlert2
