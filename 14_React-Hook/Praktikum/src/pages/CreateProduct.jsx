@@ -47,7 +47,7 @@ function CreateProduct() {
     setProductPrice("");
   }
 
-  const handleProductNameChange = (event) => {
+  function handleProductNameChange(event) {
     const inputValue = event.target.value;
     setProductName(inputValue);
     if (inputValue.length < 6) {
@@ -61,9 +61,9 @@ function CreateProduct() {
       event.target.classList.add("is-valid");
       event.target.classList.remove("is-invalid");
     }
-  };
+  }
 
-  const handleProductPriceChange = (event) => {
+  function handleProductPriceChange(event) {
     const inputValue = event.target.value;
     setProductPrice(inputValue);
     if (!inputValue) {
@@ -74,9 +74,9 @@ function CreateProduct() {
       event.target.classList.add("is-valid");
       event.target.classList.remove("is-invalid");
     }
-  };
+  }
 
-  const handleProductCategoryChange = (event) => {
+  function handleProductCategoryChange(event){
     const inputValue = event.target.value;
     setProductCategory(inputValue);
 
@@ -88,9 +88,9 @@ function CreateProduct() {
       event.target.classList.add("is-valid");
       event.target.classList.remove("is-invalid");
     }
-  };
+  }
 
-  const handleImageChange = (event) => {
+  function handleImageChange(event){
     const inputValue = event.target.value;
     setImageOfProduct(inputValue);
 
@@ -102,9 +102,9 @@ function CreateProduct() {
       event.target.classList.remove("is-invalid");
       event.target.classList.add("is-valid");
     }
-  };
+  }
 
-  const handleAdditionalDescriptionChange = (event) => {
+  function handleAdditionalDescriptionChange(event){
     const inputValue = event.target.value;
     setAdditionalDescription(inputValue);
     if (!inputValue) {
@@ -115,9 +115,9 @@ function CreateProduct() {
       event.target.classList.remove("is-invalid");
       event.target.classList.add("is-valid");
     }
-  };
+  }
 
-  const handleProductFreshnessChange = (event) => {
+  function handleProductFreshnessChange(event){
     const inputValue = event.target.value;
     setProductFreshness(inputValue);
     if (!productFreshness) {
@@ -125,12 +125,20 @@ function CreateProduct() {
     } else {
       setErrorMessage("");
     }
-  };
+  }
 
   function generateRandomNumber() {
     const randomNum = Math.floor(Math.random() * 1000);
     console.log(randomNum);
     return randomNum;
+  }
+
+  function handleEdit(){
+
+  }
+
+  function handleDelete(){
+
   }
 
   return (
@@ -296,8 +304,8 @@ function CreateProduct() {
           "Product Price",
         ]}
         datas={products}
-        onEditClick={(data) => console.log(data)}
-        onDeleteClick={(data) => console.log(data)}
+        onEditClick={(data) => handleEdit(data.id)}
+        onDeleteClick={(data) => handleDelete(data.id)}
       />
     </>
   );
