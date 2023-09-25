@@ -123,7 +123,7 @@ function Select({
         value={value}
         onChange={onChange}
       >
-        <option hidden>
+        <option hidden value="">
           {placeholder}
         </option>
         {options.map((option) => (
