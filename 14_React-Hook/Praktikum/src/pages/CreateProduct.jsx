@@ -69,6 +69,11 @@ function CreateProduct() {
     const updatedProducts = products.map((product) =>
       product.id === selectedId ? updatedProduct : product
     );
+    Swal.fire({
+      title: "Success",
+      text: "Berhasil merubah data",
+      showCancelButton: false,
+    });
     setCreateProducts(updatedProducts);
     setIsEdit(false);
     setSelectedId("");
