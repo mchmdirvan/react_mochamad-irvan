@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import bootstrapLogo from "../assets/bootstrap-logo.svg";
-import article from "../utils/article";
+import article from "../utils/constants/article";
 
 function CreateAccount() {
   useEffect(() => {
