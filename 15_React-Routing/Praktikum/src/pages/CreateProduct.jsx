@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import CreateProductLanguage from "../utils/CreateProductLanguage";
+import CreateProductLanguage from "../utils/constants/CreateProductLanguage";
 
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 import { useTitle } from "../utils/hooks/customHooks";
@@ -15,9 +15,6 @@ import Table from "../components/Table";
 
 function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
-  const toggleLanguage = () => {
-    setCurrentLanguage(currentLanguage === "en" ? "id" : "en");
-  };
 
   const [productFreshness, setProductFreshness] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -188,7 +185,13 @@ function CreateProduct() {
         />
         <h2>{CreateProductLanguage.title[currentLanguage]}</h2>
         <p>{CreateProductLanguage.description[currentLanguage]}</p>
-        <button onClick={toggleLanguage}>Toggle Language</button>
+        <button
+          onClick={() =>
+            setCurrentLanguage(currentLanguage === "en" ? "id" : "en")
+          }
+        >
+          Toggle Language
+        </button>
       </main>
 
       <main className="body">
