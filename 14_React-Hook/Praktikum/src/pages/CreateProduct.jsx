@@ -36,23 +36,19 @@ function CreateProduct() {
     event.preventDefault();
     event.currentTarget.classList.add("was-validated");
 
-    if (isEdit) {
-      handleEdit();
-    } else {
-      const product = {
-        id: uuidv4() + 1,
-        productName: productName,
-        productCategory: productCategory,
-        productFreshness: productFreshness,
-        productPrice: productPrice,
-      };
-      setCreateProducts([...products, product]);
-      Swal.fire({
-        title: "Success",
-        text: "Berhasil menambahkan data",
-        showCancelButton: false,
-      });
-    }
+    const product = {
+      id: uuidv4() + 1,
+      productName: productName,
+      productCategory: productCategory,
+      productFreshness: productFreshness,
+      productPrice: productPrice,
+    };
+    setCreateProducts([...products, product]);
+    Swal.fire({
+      title: "Success",
+      text: "Berhasil menambahkan data",
+      showCancelButton: false,
+    });
     setProductName("");
     setProductCategory("");
     setImageOfProduct("");
@@ -61,7 +57,8 @@ function CreateProduct() {
     setProductPrice("");
   }
 
-  function handleEdit() {
+  function handleEdit(event) {
+    event.preventDefault();
     const updatedProduct = {
       id: selectedId,
       productName: productName,
@@ -194,7 +191,9 @@ function CreateProduct() {
         <form
           className="needs-validation"
           noValidate=""
-          onSubmit={handleSubmit}
+          onSubmit={(event) =>
+            isEdit ? handleEdit(event) : handleSubmit(event)
+          }
         >
           {/* Form Product Name */}
           <Input
