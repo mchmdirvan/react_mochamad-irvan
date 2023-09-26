@@ -108,3 +108,15 @@ Map hanya bisa digunakan untuk Array. Maka buat default value terlebih dahulu. C
 
 ## Lalu bagaimana cara agar memasukan datanya ke array ([]) ?
 Dengan menggunakan spread operator (...)
+
+## Render Bersyarat 
+- Menggunakan If 
+- If dengan operator && 
+- If-else  ternary operator
+- Mencegah rendering (!...)
+
+## Summary on one.alterra
+{} untuk menaruh expression dari Javascript
+penamaan variable atau function harus PascalCase agar tidak dilihat sebagai tag html
+tambahkan key pada indeks array
+

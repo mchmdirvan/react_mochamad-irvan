@@ -124,3 +124,25 @@ Skeleton : Tailwind Pulse -> untuk looping dapat menggunkan array [...Array(10).
 - Perlu effort
 - Render perlu sekali saja
 - bisa realtime ambil data 
+
+# Summary on one.alterra
+
+## List Event
+1. Clipboard Events (Promise terpenuhi)
+2. Form Events (onChange, onSubmit)
+3. Mouse Events (onClick, onDoubleClick, onMouseOver)
+4. Generic Events (onError,onLoad)
+
+## Perbedaan Stateful dan Staless Component
+1. Stateless :
+   - Tidak tahu tentang aplikasi
+   - Tidak melakukand data fetching (pengambilan data)
+   - Tujuan utamanya adalah visualisasi
+   - Dapat digunakan kembali
+   - Hanya berkomunikasi dengan Induk langsungnya
+2. Statefull :
+   - Mengerti tentang aplikasi
+   - Melakukand data fetching (pengambilan data)
+   - Berinteraksi dengan aplikasi
+   - Tidak dapat digunakan kembali
+   - Meneruskan status dan data ke anak-anaknnya
