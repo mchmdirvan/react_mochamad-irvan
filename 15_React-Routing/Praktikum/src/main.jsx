@@ -5,9 +5,10 @@ import CreateProduct from "./pages/CreateProduct";
 import "./styles/style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CreateAccount from "./pages/CreateAccount";
+import LandingPage from "./pages/LandingPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CreateProduct />
+    <LandingPage />
   </React.StrictMode>
 );
