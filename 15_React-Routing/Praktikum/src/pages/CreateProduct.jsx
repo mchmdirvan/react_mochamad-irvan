@@ -176,16 +176,16 @@ function CreateProduct() {
     <>
       <Navbar />
 
-      <main className="body">
-        {/* Title and Description */}
+      <main className=" py-10 flex flex-col items-center justify-center">
+        {/* Title and Description */} 
         <img
           src={BootstrapLogo}
           alt="Bootstrap Logo"
-          className="mx-auto d-block bootstrap-logo"
+          className=" w-[4rem] align-middle"
         />
-        <h2>{CreateProductLanguage.title[currentLanguage]}</h2>
-        <p>{CreateProductLanguage.description[currentLanguage]}</p>
-        <button
+        <h1 className=" pt-5 font-semibold text-4xl">{CreateProductLanguage.title[currentLanguage]}</h1>
+        <p className="pt-2 text-lg px-[20rem] text-center">{CreateProductLanguage.description[currentLanguage]}</p>
+        <button className=" mt-2 py-2 px-4 bg-blue-500 rounded-full text-center text-white"
           onClick={() =>
             setCurrentLanguage(currentLanguage === "en" ? "id" : "en")
           }
@@ -194,7 +194,7 @@ function CreateProduct() {
         </button>
       </main>
 
-      <main className="body">
+      <main className="">
         <h4 className="mt-5">Detail Product</h4>
         <form
           className="needs-validation"
