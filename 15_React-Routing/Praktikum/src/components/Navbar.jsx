@@ -39,29 +39,29 @@ function Navbar() {
             <li>
               <a
                 href="#"
-                className=" bg-blue-600 text-white px-5 py-2 rounded-md"
+                className=" bg-blue-600 text-white px-5 py-2 rounded-md hover:text-black hover:bg-white"
                 aria-current="page"
               >
                 Home
               </a>
             </li>
             <li>
-              <a href="#" className=" text-blue-600">
+              <a href="#" className=" text-blue-600 hover:text-black">
                 Features
               </a>
             </li>
             <li>
-              <a href="#" className="text-blue-600">
+              <a href="#" className="text-blue-600  hover:text-black">
                 Pricing
               </a>
             </li>
             <li>
-              <a href="#" className="text-blue-600">
+              <a href="#" className="text-blue-600  hover:text-black">
                 FAQs
               </a>
             </li>
             <li>
-              <a href="#" className="text-blue-600">
+              <a href="#" className="text-blue-600  hover:text-black">
                 About
               </a>
             </li>
