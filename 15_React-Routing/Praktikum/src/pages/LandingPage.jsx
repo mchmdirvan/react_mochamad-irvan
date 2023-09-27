@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import Navbar from "../components/Navbar";
-import "../styles/LandingPage.css";
-import HeroImage from "../assets/hero-img.png";
+
 import { useTitle } from "../utils/hooks/customHooks";
+import HeroImage from "../assets/hero-img.png";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function LandingPage() {
-    useTitle("Landing Page")
+  useTitle("Landing Page");
   return (
     <>
       <Navbar />
@@ -36,6 +36,7 @@ function LandingPage() {
                 </button>
               </a>
               <button className="button-video">Watch Video</button>
+              <button className="button-video">Go to Create Product</button>
             </div>
           </div>
           {/* Image */}
@@ -57,9 +58,8 @@ function LandingPage() {
           <button className="button-subscribe">Subscribe</button>
         </div>
       </footer>
-      <Footer/>
+      <Footer />
     </>
-    
   );
 }
 
