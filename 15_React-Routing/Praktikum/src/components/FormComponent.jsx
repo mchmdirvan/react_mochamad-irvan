@@ -4,7 +4,7 @@ import React from "react";
 
 function Input({
   label,
-
+  className,
   type,
   name,
   id,
@@ -25,9 +25,7 @@ function Input({
         </label>
         <div className="mt-2">
           <input
-            className="w-72 rounded-md py-2 pl-5 text-gray-900  
-            ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
-            transition duration-300 ease-in-out"
+            className={className}
             type={type}
             name={name}
             id={id}
@@ -69,7 +67,6 @@ function File({ label, type, required, id, errorMessage, onChange, value }) {
 }
 
 function TextArea({
-  className,
   label,
   name,
   id,
@@ -81,19 +78,23 @@ function TextArea({
   value,
 }) {
   return (
-    <div className={className}>
+    <div className="mt-5">
       <label className="form-label">{label}</label>
-      <textarea
-        className="form-control"
-        name={name}
-        id={id}
-        cols={cols}
-        rows={rows}
-        required={required}
-        onChange={onChange}
-        value={value}
-      />
-      <div className="invalid-feedback">{errorMessage}</div>
+      <div className="mt-3">
+        <textarea
+          className="form-control w-full rounded-md py-2 pl-5 text-gray-900  
+          ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
+          transition duration-300 ease-in-out"
+          name={name}
+          id={id}
+          cols={cols}
+          rows={rows}
+          required={required}
+          onChange={onChange}
+          value={value}
+        />
+        <div className="invalid-feedback">{errorMessage}</div>
+      </div>
     </div>
   );
 }
