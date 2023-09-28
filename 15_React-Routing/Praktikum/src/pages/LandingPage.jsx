@@ -11,40 +11,38 @@ function LandingPage() {
   return (
     <>
       <Navbar />
-      {/* Body */}
-      <div className="body">
-        {/* Flex Container */}
-        <div className="container px-5">
-          <div className="body-container me-5">
-            {/* Title */}
-            <div className="title">
-              <h1>Better Solution For Your Business</h1>
-              <p>
-                We are team of talented designers making website with Bootstrap
-              </p>
-            </div>
-            {/* Button */}
-            <div>
-              <a href="createAccount.html">
-                <button
-                  type="button"
-                  className="button"
-                  data-bs-toggle="tooltip"
-                  title="Start Your Journey!"
-                >
-                  Get Started
-                </button>
-              </a>
-              <button className="button-video">Watch Video</button>
-              <button className="button-video">Go to Create Product</button>
-            </div>
+
+      <main className="flex justify-center items-center bg-[#37517E] h-[93vh]">
+        <div className=" ps-12 text-white font-[Jost] max-w-2xl">
+          <h1 className=" text-[3.2rem] font-bold leading-none">
+            Better Solution For Your Business
+          </h1>
+          <p className=" text-gray-300 text-2xl mt-3 mb-16 ">
+            We are team of talented designers making website with Bootstrap
+          </p>
+          <div className="tooltip" data-tip="Start Your Journey">
+            <a href="createAccount.html">
+              <button
+                type="button"
+                className="rounded-full bg-[#47B2E4] px-4 py-2 "
+                data-bs-toggle="tooltip"
+                title="Start Your Journey!"
+              >
+                Get Started
+              </button>
+            </a>
           </div>
-          {/* Image */}
-          <div className="body-image">
-            <img src={HeroImage} alt="" className="hero-image" />
-          </div>
+          <button className="ms-12 px-4 hover:border-white hover:rounded-full hover:border-2">
+            Watch Video
+          </button>
+          <button className="ms-12 px-4 hover:border-white hover:rounded-full hover:border-2">
+            Go to Create Product
+          </button>
         </div>
-      </div>
+        <div className="">
+          <img src={HeroImage} alt="" className="" />
+        </div>
+      </main>
 
       {/* Footer 1 */}
       <footer className="newsletter">
