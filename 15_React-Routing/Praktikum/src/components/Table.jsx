@@ -38,13 +38,13 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
       <div className="">
         <button
           type="submit"
-          className=""
+          className=" bg-red-400 text-white px-4 py-1 rounded-md m-5"
           id="deleteButton"
         >
           Delete
         </button>
         <button
-          className=""
+          className=" bg-green-400 text-white px-4 py-1 rounded-md"
           type="submit"
           id=""
         >
