@@ -19,13 +19,21 @@ function CreateProduct() {
   const [productFreshness, setProductFreshness] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
+  const [additionalDescriptionError, setAdditionalDescriptionError] =
+    useState("");
+  const [productFreshnessError, setProductFreshnessError] = useState("");
+  const [productCategoryError, setProductCategoryError] = useState("");
+  const [imageOfProductError, setImageOfProductError] = useState("");
+  const [productPriceError, setProductPriceError] = useState("");
+  const [productNameError, setProductNameError] = useState("");
+
   const [additionalDescription, setAdditionalDescription] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
   const [productPrice, setProductPrice] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [productName, setProductName] = useState("");
   const [selectedId, setSelectedId] = useState("");
+
   const [products, setCreateProducts] = useState([]);
   useTitle("Create Product");
 
@@ -90,13 +98,13 @@ function CreateProduct() {
     const inputValue = event.target.value;
     setProductName(inputValue);
     if (inputValue.length < 6) {
-      setErrorMessage("Please enter a valid Product Name");
+      setProductNameError("Please enter a valid Product Name");
       event.target.classList.add("is-invalid");
     } else if (inputValue.length > 25) {
-      setErrorMessage("Product Name must not exceed 25 characters.");
+      setProductNameError("Product Name must not exceed 25 characters.");
       event.target.classList.add("is-invalid");
     } else {
-      setErrorMessage("");
+      setProductNameError("");
       event.target.classList.add("is-valid");
       event.target.classList.remove("is-invalid");
     }
@@ -106,10 +114,10 @@ function CreateProduct() {
     const inputValue = event.target.value;
     setProductPrice(inputValue);
     if (!inputValue) {
-      setErrorMessage("Please enter a valid Product price.");
+      setProductPriceError("Please enter a valid Product price.");
       event.target.classList.add("is-invalid");
     } else {
-      setErrorMessage("");
+      setProductPriceError("");
       event.target.classList.add("is-valid");
       event.target.classList.remove("is-invalid");
     }
@@ -121,9 +129,9 @@ function CreateProduct() {
 
     if (inputValue === "") {
       event.target.classList.add("is-invalid");
-      setErrorMessage("The Product Category field must be filled in");
+      setProductCategoryError("The Product Category field must be filled in");
     } else {
-      setErrorMessage("");
+      setProductCategoryError("");
       event.target.classList.add("is-valid");
       event.target.classList.remove("is-invalid");
     }
@@ -134,10 +142,10 @@ function CreateProduct() {
     setImageOfProduct(inputValue);
 
     if (!inputValue) {
-      setErrorMessage("The Image of Product field must be filled in");
+      setImageOfProductError("The Image of Product field must be filled in");
       event.target.classList.add("is-invalid");
     } else {
-      setErrorMessage("");
+      setImageOfProductError("");
       event.target.classList.remove("is-invalid");
       event.target.classList.add("is-valid");
     }
@@ -147,10 +155,12 @@ function CreateProduct() {
     const inputValue = event.target.value;
     setAdditionalDescription(inputValue);
     if (!inputValue) {
-      setErrorMessage("The Additional Description field must be filled in");
+      setAdditionalDescriptionError(
+        "The Additional Description field must be filled in"
+      );
       event.target.classList.add("is-invalid");
     } else {
-      setErrorMessage("");
+      setAdditionalDescriptionError("");
       event.target.classList.remove("is-invalid");
       event.target.classList.add("is-valid");
     }
@@ -160,9 +170,9 @@ function CreateProduct() {
     const inputValue = event.target.value;
     setProductFreshness(inputValue);
     if (!productFreshness) {
-      setErrorMessage("The Product Freshness field must be filled in");
+      setProductFreshnessError("The Product Freshness field must be filled in");
     } else {
-      setErrorMessage("");
+      setProductFreshnessError("");
     }
   }
 
@@ -202,7 +212,7 @@ function CreateProduct() {
       <main className="px-[28rem]">
         <h4 className="font-semibold text-2xl">Detail Product</h4>
         <form
-          className="needs-validation"
+          className=""
           noValidate=""
           onSubmit={(event) =>
             isEdit ? handleEdit(event) : handleSubmit(event)
@@ -210,9 +220,7 @@ function CreateProduct() {
         >
           {/* Form Product Name */}
           <Input
-            className="w-72 rounded-md py-2 pl-5 text-gray-900  
-            ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
-            transition duration-300 ease-in-out"
+            className="w-72"
             label="Product Name :"
             type="text"
             name="productName"
@@ -223,7 +231,7 @@ function CreateProduct() {
             autoFocus
             value={productName}
             onChange={handleProductNameChange}
-            errorMessage={errorMessage}
+            errorMessage={productNameError}
           />
 
           {/* Form Product Category */}
@@ -237,6 +245,7 @@ function CreateProduct() {
             options={["Fruits", "Vegetable", "Dairy"]}
             onChange={handleProductCategoryChange}
             placeholder="Choose..."
+            errorMessage={productCategoryError}
           />
 
           {/* Form Image of Product */}
@@ -245,7 +254,7 @@ function CreateProduct() {
             label="Image of Product"
             type="file"
             id="imageOfProduct"
-            errorMessage={errorMessage}
+            errorMessage={imageOfProductError}
             onChange={handleImageChange}
             value={imageOfProduct}
           />
@@ -310,16 +319,14 @@ function CreateProduct() {
             id="additionalDescription"
             cols={5}
             rows={5}
-            errorMessage={errorMessage}
+            errorMessage={additionalDescriptionError}
             onChange={handleAdditionalDescriptionChange}
             value={additionalDescription}
           />
 
           {/* Form Product Price */}
           <Input
-            className="w-full rounded-md py-2 pl-5 text-gray-900  
-            ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
-            transition duration-300 ease-in-out"
+            className="w-full"
             label="Product Price"
             type="number"
             id="productPrice"
@@ -327,7 +334,7 @@ function CreateProduct() {
             required
             value={productPrice}
             onChange={handleProductPriceChange}
-            errorMessage={errorMessage}
+            errorMessage={productPriceError}
           />
 
           {/* Button to Submit the Form */}
