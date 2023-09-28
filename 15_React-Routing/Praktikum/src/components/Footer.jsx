@@ -4,9 +4,9 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <footer className="">
-        <div className="section-hero">
-          <h1>ARSHA</h1>
+      <footer className="flex justify-around py-20 font-[Jost]">
+        <div className="">
+          <h1 className="text-[#37517E] text-3xl font-medium">ARSHA</h1>
           <p>A108 Adam Street</p>
           <p>New York, NY 535022</p>
           <p>United States</p>
@@ -18,9 +18,9 @@ function Footer() {
             <b>Email:</b> info@example.com
           </p>
         </div>
-        <div className="section-links">
-          <h4>Useful Links</h4>
-          <ul>
+        <div className="">
+          <h4 className="text-[#37517E] font-bold mb-3">Useful Links</h4>
+          <ul className="flex flex-col gap-2">
             <li>
               <a href="#">Home</a>
             </li>
@@ -38,9 +38,9 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="section-services">
-          <h4>Our Services</h4>
-          <ul>
+        <div className="">
+          <h4 className="text-[#37517E] font-bold mb-3">Our Services</h4>
+          <ul className="flex flex-col gap-2">
             <li>
               <a href="#">Web Design</a>
             </li>
@@ -58,23 +58,23 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="section-network">
-          <h4>Our Social Networks</h4>
+        <div className=" max-w-sm">
+          <h4 className="text-[#37517E] font-bold">Our Social Networks</h4>
           <p>
             Cras fermentum odio eu feugiat lide par naso tierra videa magna
             derita valies
           </p>
-          <div className="social-icons">
-            <div className="circle" />
-            <div className="circle" />
-            <div className="circle" />
-            <div className="circle" />
-            <div className="circle" />
+          <div className="flex gap-2">
+            <div className="h-8 w-8 rounded-full bg-[#47B2E4]"></div>
+            <div className="h-8 w-8 rounded-full bg-[#47B2E4]"></div>
+            <div className="h-8 w-8 rounded-full bg-[#47B2E4]"></div>
+            <div className="h-8 w-8 rounded-full bg-[#47B2E4]"></div>
+            <div className="h-8 w-8 rounded-full bg-[#47B2E4]"></div>
           </div>
         </div>
       </footer>
-      {/* Footer 3 */}
-      <footer className="copyright">
+
+      <footer className="">
         <p>
           ©Copyright by <b>Arsha</b>. All rights reserved.
         </p>
