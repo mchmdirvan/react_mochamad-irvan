@@ -74,12 +74,12 @@ function Footer() {
         </div>
       </footer>
 
-      <footer className="">
+      <footer className="flex bg-[#37517E] justify-between text-white p-10">
         <p>
           ©Copyright by <b>Arsha</b>. All rights reserved.
         </p>
         <p>
-          Designed by <span className="">BootstrapMade</span>
+          Designed by <span className="text-[#47B2E4]">BootstrapMade</span>
         </p>
       </footer>
     </>
