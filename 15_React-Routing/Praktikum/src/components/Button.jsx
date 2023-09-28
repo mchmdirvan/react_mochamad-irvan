@@ -4,9 +4,9 @@ import React from "react";
 
 function Button({ type, id, label, onClick }) {
   return (
-    <div className="d-flex justify-content-center my-3">
+    <div className="mt-5">
       <button
-        className="btn btn-primary col-11"
+        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700"
         type={type}
         id={id}
         onClick={onClick}
