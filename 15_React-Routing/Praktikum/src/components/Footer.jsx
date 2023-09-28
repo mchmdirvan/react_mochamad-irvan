@@ -4,7 +4,7 @@ import React from "react";
 function Footer() {
   return (
     <>
-      <footer className="footer-container">
+      <footer className="">
         <div className="section-hero">
           <h1>ARSHA</h1>
           <p>A108 Adam Street</p>
@@ -74,12 +74,12 @@ function Footer() {
         </div>
       </footer>
       {/* Footer 3 */}
-      <footer className="copyright-container">
+      <footer className="copyright">
         <p>
           ©Copyright by <b>Arsha</b>. All rights reserved.
         </p>
         <p>
-          Designed by <span className="bootstrap-made-text">BootstrapMade</span>
+          Designed by <span className="">BootstrapMade</span>
         </p>
       </footer>
     </>
