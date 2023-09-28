@@ -208,10 +208,11 @@ function CreateProduct() {
             isEdit ? handleEdit(event) : handleSubmit(event)
           }
         >
-
           {/* Form Product Name */}
           <Input
-            className=""
+            className="w-72 rounded-md py-2 pl-5 text-gray-900  
+            ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
+            transition duration-300 ease-in-out"
             label="Product Name :"
             type="text"
             name="productName"
@@ -250,7 +251,7 @@ function CreateProduct() {
           />
 
           {/* Form Product Freshness */}
-          <div className="col-5 mt-3">
+          <div className="mt-5">
             <label className="form-label">Product Freshness:</label>
             {/* Radio Buttons for Freshness */}
             <div className="form-check">
@@ -316,7 +317,9 @@ function CreateProduct() {
 
           {/* Form Product Price */}
           <Input
-            className="mb-4 mt-3"
+            className="w-full rounded-md py-2 pl-5 text-gray-900  
+            ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
+            transition duration-300 ease-in-out"
             label="Product Price"
             type="number"
             id="productPrice"
@@ -328,7 +331,7 @@ function CreateProduct() {
           />
 
           {/* Button to Submit the Form */}
-          <Button type="submit" id="submitButton" label="Submit" />
+          <Button type="submit" id="submitButton" label="Submit" className="" />
 
           {/* Button to Generate Random Number */}
           <Button
