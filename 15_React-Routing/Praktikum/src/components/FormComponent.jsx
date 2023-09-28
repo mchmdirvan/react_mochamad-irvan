@@ -25,7 +25,12 @@ function Input({
         </label>
         <div className="mt-2">
           <input
-            className={className}
+            className={`${className} ${
+              errorMessage
+                ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
+                : "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 ring-gray-300 "
+            } rounded-md py-2 pl-5 text-gray-900 ring-1
+            transition duration-300 ease-in-out"`}
             type={type}
             name={name}
             id={id}
@@ -37,7 +42,7 @@ function Input({
             onChange={onChange}
             placeholder={placeholder}
           />
-          <div className="invalid-feedback">{errorMessage}</div>
+          <div className=" text-red-500">{errorMessage}</div>
         </div>
       </div>
     </>
@@ -52,16 +57,18 @@ function File({ label, type, required, id, errorMessage, onChange, value }) {
         <input
           type={type}
           required={required}
-          className="form-control custom-form-control 
-          w-56 rounded-md ring-2 ring-blue-500 focus:ring-[0.4rem] 
-          focus:ring-offset-0 focus:ring-blue-200 
-          transition duration-300 ease-in-out text-blue-500"
+          className={`${
+            errorMessage
+              ? "focus:ring-[0.4rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
+              : "focus:ring-[0.4rem] focus:ring-offset-0 focus:ring-blue-200 ring-blue-500 "
+          } w-56 rounded-md ring-2 text-blue-500
+          transition duration-300 ease-in-out"`}
           id={id}
           onChange={onChange}
           value={value}
         />
       </div>
-      <div className="invalid-feedback">{errorMessage}</div>
+      <div className=" text-red-500">{errorMessage}</div>
     </div>
   );
 }
@@ -82,9 +89,12 @@ function TextArea({
       <label className="form-label">{label}</label>
       <div className="mt-3">
         <textarea
-          className="form-control w-full rounded-md py-2 pl-5 text-gray-900  
-          ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
-          transition duration-300 ease-in-out"
+          className={`${
+            errorMessage
+              ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
+              : "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 ring-gray-300 "
+          }  w-full rounded-md py-2 pl-5 text-gray-900 ring-1
+          transition duration-300 ease-in-out"`}
           name={name}
           id={id}
           cols={cols}
@@ -93,7 +103,7 @@ function TextArea({
           onChange={onChange}
           value={value}
         />
-        <div className="invalid-feedback">{errorMessage}</div>
+        <div className=" text-red-500">{errorMessage}</div>
       </div>
     </div>
   );
@@ -115,9 +125,12 @@ function Select({
       <label className="form-label">{label}</label>
       <div className="mt-2">
         <select
-          className="w-60 rounded-md py-2 text-gray-900  
-          ring-1  ring-gray-300 focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 
-          transition duration-300 ease-in-out"
+          className={`${
+            errorMessage
+              ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
+              : "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 ring-gray-300 "
+          }  w-60 rounded-md py-2 pl-5 text-gray-900 ring-1
+          transition duration-300 ease-in-out"`}
           name={name}
           id={id}
           required={required}
@@ -132,7 +145,7 @@ function Select({
           ))}
         </select>
 
-        <div className="invalid-feedback">{errorMessage}</div>
+        <div className=" text-red-500">{errorMessage}</div>
       </div>
     </div>
   );
