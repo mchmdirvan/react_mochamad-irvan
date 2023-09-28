@@ -8,7 +8,13 @@ import BootstrapLogo from "../assets/bootstrap-logo.svg";
 import { useTitle } from "../utils/hooks/customHooks";
 import Swal from "../utils/swal";
 
-import { Input, File, TextArea, Select } from "../components/FormComponent";
+import {
+  Input,
+  File,
+  TextArea,
+  Select,
+  RadioInput,
+} from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
@@ -16,7 +22,6 @@ import Table from "../components/Table";
 function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
 
-  const [productFreshness, setProductFreshness] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
   const [additionalDescriptionError, setAdditionalDescriptionError] =
@@ -28,6 +33,7 @@ function CreateProduct() {
   const [productNameError, setProductNameError] = useState("");
 
   const [additionalDescription, setAdditionalDescription] = useState("");
+  const [productFreshness, setProductFreshness] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -49,17 +55,18 @@ function CreateProduct() {
       productPrice: productPrice,
     };
     setCreateProducts([...products, product]);
+    setProductName("");
+    setProductCategory("");
+    setImageOfProduct("");
+    setProductFreshness("");
+    setAdditionalDescription("");
+    setProductPrice("");
+
     Swal.fire({
       title: "Success",
       text: "Berhasil menambahkan data",
       showCancelButton: false,
     });
-    setProductName("");
-    setProductCategory("");
-    setImageOfProduct("");
-    setProductFreshness(false);
-    setAdditionalDescription("");
-    setProductPrice("");
   }
 
   function handleEdit(event) {
@@ -74,14 +81,21 @@ function CreateProduct() {
     const updatedProducts = products.map((product) =>
       product.id === selectedId ? updatedProduct : product
     );
+    setProductName("");
+    setProductCategory("");
+    setImageOfProduct("");
+    setProductFreshness(false);
+    setAdditionalDescription("");
+    setProductPrice("");
+
+    setCreateProducts(updatedProducts);
+    setIsEdit(false);
+    setSelectedId("");
     Swal.fire({
       title: "Success",
       text: "Berhasil merubah data",
       showCancelButton: false,
     });
-    setCreateProducts(updatedProducts);
-    setIsEdit(false);
-    setSelectedId("");
   }
 
   function handleDelete(id) {
@@ -99,14 +113,10 @@ function CreateProduct() {
     setProductName(inputValue);
     if (inputValue.length < 6) {
       setProductNameError("Please enter a valid Product Name");
-      event.target.classList.add("is-invalid");
     } else if (inputValue.length > 25) {
       setProductNameError("Product Name must not exceed 25 characters.");
-      event.target.classList.add("is-invalid");
     } else {
       setProductNameError("");
-      event.target.classList.add("is-valid");
-      event.target.classList.remove("is-invalid");
     }
   }
 
@@ -115,11 +125,8 @@ function CreateProduct() {
     setProductPrice(inputValue);
     if (!inputValue) {
       setProductPriceError("Please enter a valid Product price.");
-      event.target.classList.add("is-invalid");
     } else {
       setProductPriceError("");
-      event.target.classList.add("is-valid");
-      event.target.classList.remove("is-invalid");
     }
   }
 
@@ -128,12 +135,9 @@ function CreateProduct() {
     setProductCategory(inputValue);
 
     if (inputValue === "") {
-      event.target.classList.add("is-invalid");
       setProductCategoryError("The Product Category field must be filled in");
     } else {
       setProductCategoryError("");
-      event.target.classList.add("is-valid");
-      event.target.classList.remove("is-invalid");
     }
   }
 
@@ -143,11 +147,8 @@ function CreateProduct() {
 
     if (!inputValue) {
       setImageOfProductError("The Image of Product field must be filled in");
-      event.target.classList.add("is-invalid");
     } else {
       setImageOfProductError("");
-      event.target.classList.remove("is-invalid");
-      event.target.classList.add("is-valid");
     }
   }
 
@@ -158,11 +159,8 @@ function CreateProduct() {
       setAdditionalDescriptionError(
         "The Additional Description field must be filled in"
       );
-      event.target.classList.add("is-invalid");
     } else {
       setAdditionalDescriptionError("");
-      event.target.classList.remove("is-invalid");
-      event.target.classList.add("is-valid");
     }
   }
 
@@ -227,7 +225,6 @@ function CreateProduct() {
             id="productName"
             minLength={6}
             maxLength={50}
-            required
             autoFocus
             value={productName}
             onChange={handleProductNameChange}
@@ -240,7 +237,6 @@ function CreateProduct() {
             label="Product Category"
             name="productCategory"
             id="productCategory"
-            required
             value={productCategory}
             options={["Fruits", "Vegetable", "Dairy"]}
             onChange={handleProductCategoryChange}
@@ -261,54 +257,32 @@ function CreateProduct() {
 
           {/* Form Product Freshness */}
           <div className="mt-5">
-            <label className="form-label">Product Freshness:</label>
-            {/* Radio Buttons for Freshness */}
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="productFreshness"
-                id="brandNew"
-                value="Brand New"
-                required
-                checked={productFreshness === "Brand New"}
-                onChange={handleProductFreshnessChange}
-              />
-              <label className="form-check-label" htmlFor="brandNew">
-                Brand New
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="productFreshness"
-                id="secondHank"
-                value="Second Hank"
-                checked={productFreshness === "Second Hank"}
-                onChange={handleProductFreshnessChange}
-              />
-              <label className="form-check-label" htmlFor="secondHank">
-                Second Hank
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="productFreshness"
-                id="refurbished"
-                value="Refurbished"
-                checked={productFreshness === "Refurbished"}
-                onChange={handleProductFreshnessChange}
-              />
-              <label className="form-check-label" htmlFor="refurbished">
-                Refurbished
-              </label>
-              <div className="invalid-feedback">
-                The Product Freshness field must be filled in
-              </div>
-            </div>
+            <label>Product Freshness</label>
+            <RadioInput
+              id="brandNew"
+              name="productFreshness"
+              label="Brand New"
+              value="Brand New"
+              checked={productFreshness === "Brand New"}
+              onChange={handleProductFreshnessChange}
+            />
+            <RadioInput
+              id="secondHank"
+              name="productFreshness"
+              label="Second Hank"
+              value="Second Hank"
+              checked={productFreshness === "Second Hank"}
+              onChange={handleProductFreshnessChange}
+            />
+            <RadioInput
+              id="refurbished"
+              name="productFreshness"
+              label="Refurbished"
+              value="Refurbished"
+              checked={productFreshness === "Refurbished"}
+              onChange={handleProductFreshnessChange}
+              errorMessage={productFreshnessError}
+            />
           </div>
 
           {/* Form Additional Description */}
@@ -331,7 +305,6 @@ function CreateProduct() {
             type="number"
             id="productPrice"
             placeholder="$1"
-            required
             value={productPrice}
             onChange={handleProductPriceChange}
             errorMessage={productPriceError}
