@@ -151,4 +151,30 @@ function Select({
   );
 }
 
-export { Input, File, TextArea, Select };
+function RadioInput({
+  label,
+  name,
+  id,
+  value,
+  onChange,
+  errorMessage,
+  checked,
+}) {
+  return (
+    <div className="flex items-center gap-x-3">
+      <input
+        type="radio"
+        id={id}
+        name={name}
+        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+        value={value}
+        checked={checked}
+        onChange={onChange}
+      />
+      <label className="block text-sm leading-6 text-gray-900">{label}</label>
+      <div className=" text-red-500">{errorMessage}</div>
+    </div>
+  );
+}
+
+export { Input, File, TextArea, Select, RadioInput };
