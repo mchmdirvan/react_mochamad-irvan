@@ -24,7 +24,15 @@ function CreateProduct() {
 
   const [currentLanguage, setCurrentLanguage] = useState("en");
   const [products, setCreateProducts] = useState([]);
+  const [selectedId, setSelectedId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+
+  const [additionalDescription, setAdditionalDescription] = useState("");
+  const [productFreshness, setProductFreshness] = useState("");
+  const [productCategory, setProductCategory] = useState("");
+  const [imageOfProduct, setImageOfProduct] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productName, setProductName] = useState("");
 
   const [additionalDescriptionError, setAdditionalDescriptionError] =
     useState("");
@@ -34,69 +42,48 @@ function CreateProduct() {
   const [productPriceError, setProductPriceError] = useState("");
   const [productNameError, setProductNameError] = useState("");
 
-  const [additionalDescription, setAdditionalDescription] = useState("");
-  const [productFreshness, setProductFreshness] = useState(false);
-  const [productCategory, setProductCategory] = useState("");
-  const [imageOfProduct, setImageOfProduct] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productName, setProductName] = useState("");
-  const [selectedId, setSelectedId] = useState("");
+  function handleInputChange(event, setInput, setError) {
+    const value = event.target.value;
+    setInput(value);
+    setError("");
+  }
 
-  function isFormValid() {
-    let valid = true;
+  function setError(field, value, setErrorFunction) {
+    if (!value) {
+      setErrorFunction(`The ${field} field must be filled in.`);
+    } else {
+      setErrorFunction("");
+    }
+  }
+
+  function validateForm() {
+    let isValid = true;
     if (productName.length < 6) {
       setProductNameError("Please enter a valid Product Name");
-      valid = false;
+      isValid = false;
     } else if (productName.length > 25) {
       setProductNameError("Product Name must not exceed 25 characters.");
-      valid = false;
-    } else {
-      setProductNameError("");
+      isValid = false;
     }
 
     if (!productPrice) {
       setProductPriceError("Please enter a valid Product price.");
-      valid = false;
-    } else {
-      setProductPriceError("");
+      isValid = false;
     }
-
-    if (productCategory === "") {
-      setProductCategoryError("The Product Category field must be filled in");
-      valid = false;
-    } else {
-      setProductCategoryError("");
-    }
-
-    if (!imageOfProduct) {
-      setImageOfProductError("The Image of Product field must be filled in");
-      valid = false;
-    } else {
-      setImageOfProductError("");
-    }
-
-    if (!additionalDescription) {
-      setAdditionalDescriptionError(
-        "The Additional Description field must be filled in"
-      );
-      valid = false;
-    } else {
-      setAdditionalDescriptionError("");
-    }
-
-    if (!productFreshness) {
-      setProductFreshnessError("The Product Freshness field must be filled in");
-      valid = false;
-    } else {
-      setProductFreshnessError("");
-    }
-
-    return valid;
+    setError("Product Category", productCategory, setProductCategoryError);
+    setError("Image of Product", imageOfProduct, setImageOfProductError);
+    setError("Product Freshness", productFreshness, setProductFreshnessError);
+    setError(
+      "Additional Description",
+      additionalDescription,
+      setAdditionalDescriptionError
+    );
+    return isValid;
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (!isFormValid()) {
+    if (!validateForm()) {
       return;
     }
 
@@ -161,37 +148,6 @@ function CreateProduct() {
     });
   }
 
-  function handleProductNameChange(event) {
-    const inputValue = event.target.value;
-    setProductName(inputValue);
-  }
-
-  function handleProductPriceChange(event) {
-    const inputValue = event.target.value;
-    setProductPrice(inputValue);
-  }
-
-  function handleProductCategoryChange(event) {
-    const inputValue = event.target.value;
-    setProductCategory(inputValue);
-  }
-
-  function handleImageChange(event) {
-    const inputValue = event.target.value;
-    setImageOfProduct(inputValue);
-  }
-
-  function handleAdditionalDescriptionChange(event) {
-    const inputValue = event.target.value;
-    setAdditionalDescription(inputValue);
-  }
-
-  function handleProductFreshnessChange(event) {
-    const inputValue = event.target.value;
-    setProductFreshness(inputValue);
-    productFreshness(true);
-  }
-
   function generateRandomNumber() {
     const randomNum = Math.floor(Math.random() * 1000);
     console.log(randomNum);
@@ -245,7 +201,9 @@ function CreateProduct() {
             maxLength={50}
             autoFocus
             value={productName}
-            onChange={handleProductNameChange}
+            onChange={(event) =>
+              handleInputChange(event, setProductName, setProductNameError)
+            }
             errorMessage={productNameError}
           />
 
@@ -257,7 +215,13 @@ function CreateProduct() {
             id="productCategory"
             value={productCategory}
             options={["Fruits", "Vegetable", "Dairy"]}
-            onChange={handleProductCategoryChange}
+            onChange={(event) =>
+              handleInputChange(
+                event,
+                setProductCategory,
+                setProductCategoryError
+              )
+            }
             placeholder="Choose..."
             errorMessage={productCategoryError}
           />
@@ -269,7 +233,13 @@ function CreateProduct() {
             type="file"
             id="imageOfProduct"
             errorMessage={imageOfProductError}
-            onChange={handleImageChange}
+            onChange={(event) =>
+              handleInputChange(
+                event,
+                setImageOfProduct,
+                setImageOfProductError
+              )
+            }
             value={imageOfProduct}
           />
 
@@ -282,8 +252,13 @@ function CreateProduct() {
               label="Brand New"
               value="Brand New"
               checked={productFreshness === "Brand New"}
-              onChange={handleProductFreshnessChange}
-              
+              onChange={(event) =>
+                handleInputChange(
+                  event,
+                  setProductFreshness,
+                  setProductFreshnessError
+                )
+              }
             />
             <RadioInput
               id="secondHank"
@@ -291,8 +266,13 @@ function CreateProduct() {
               label="Second Hank"
               value="Second Hank"
               checked={productFreshness === "Second Hank"}
-              onChange={handleProductFreshnessChange}
-              
+              onChange={(event) =>
+                handleInputChange(
+                  event,
+                  setProductFreshness,
+                  setProductFreshnessError
+                )
+              }
             />
             <RadioInput
               id="refurbished"
@@ -300,7 +280,13 @@ function CreateProduct() {
               label="Refurbished"
               value="Refurbished"
               checked={productFreshness === "Refurbished"}
-              onChange={handleProductFreshnessChange}
+              onChange={(event) =>
+                handleInputChange(
+                  event,
+                  setProductFreshness,
+                  setProductFreshnessError
+                )
+              }
               errorMessage={!productFreshness && productFreshnessError}
             />
           </div>
@@ -314,7 +300,13 @@ function CreateProduct() {
             cols={5}
             rows={5}
             errorMessage={additionalDescriptionError}
-            onChange={handleAdditionalDescriptionChange}
+            onChange={(event) =>
+              handleInputChange(
+                event,
+                setAdditionalDescription,
+                setAdditionalDescriptionError
+              )
+            }
             value={additionalDescription}
           />
 
@@ -326,7 +318,9 @@ function CreateProduct() {
             id="productPrice"
             placeholder="$1"
             value={productPrice}
-            onChange={handleProductPriceChange}
+            onChange={(event) =>
+              handleInputChange(event, setProductPrice, setProductPriceError)
+            }
             errorMessage={productPriceError}
           />
 
