@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import React from "react";
 
 import './styles/index.css';
-import CreateProduct from "./pages/CreateProduct";
+import LandingPage from "./pages/LandingPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CreateProduct/>
+    <LandingPage/>
   </React.StrictMode>
 );
