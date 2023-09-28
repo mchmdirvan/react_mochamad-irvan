@@ -20,8 +20,10 @@ import Button from "../components/Button";
 import Table from "../components/Table";
 
 function CreateProduct() {
-  const [currentLanguage, setCurrentLanguage] = useState("en");
+  useTitle("Create Product");
 
+  const [currentLanguage, setCurrentLanguage] = useState("en");
+  const [products, setCreateProducts] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
 
   const [additionalDescriptionError, setAdditionalDescriptionError] =
@@ -33,19 +35,70 @@ function CreateProduct() {
   const [productNameError, setProductNameError] = useState("");
 
   const [additionalDescription, setAdditionalDescription] = useState("");
-  const [productFreshness, setProductFreshness] = useState("");
+  const [productFreshness, setProductFreshness] = useState(false);
   const [productCategory, setProductCategory] = useState("");
   const [imageOfProduct, setImageOfProduct] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productName, setProductName] = useState("");
   const [selectedId, setSelectedId] = useState("");
 
-  const [products, setCreateProducts] = useState([]);
-  useTitle("Create Product");
+  function isFormValid() {
+    let valid = true;
+    if (productName.length < 6) {
+      setProductNameError("Please enter a valid Product Name");
+      valid = false;
+    } else if (productName.length > 25) {
+      setProductNameError("Product Name must not exceed 25 characters.");
+      valid = false;
+    } else {
+      setProductNameError("");
+    }
+
+    if (!productPrice) {
+      setProductPriceError("Please enter a valid Product price.");
+      valid = false;
+    } else {
+      setProductPriceError("");
+    }
+
+    if (productCategory === "") {
+      setProductCategoryError("The Product Category field must be filled in");
+      valid = false;
+    } else {
+      setProductCategoryError("");
+    }
+
+    if (!imageOfProduct) {
+      setImageOfProductError("The Image of Product field must be filled in");
+      valid = false;
+    } else {
+      setImageOfProductError("");
+    }
+
+    if (!additionalDescription) {
+      setAdditionalDescriptionError(
+        "The Additional Description field must be filled in"
+      );
+      valid = false;
+    } else {
+      setAdditionalDescriptionError("");
+    }
+
+    if (!productFreshness) {
+      setProductFreshnessError("The Product Freshness field must be filled in");
+      valid = false;
+    } else {
+      setProductFreshnessError("");
+    }
+
+    return valid;
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    event.currentTarget.classList.add("was-validated");
+    if (!isFormValid()) {
+      return;
+    }
 
     const product = {
       id: uuidv4() + 1,
@@ -111,67 +164,32 @@ function CreateProduct() {
   function handleProductNameChange(event) {
     const inputValue = event.target.value;
     setProductName(inputValue);
-    if (inputValue.length < 6) {
-      setProductNameError("Please enter a valid Product Name");
-    } else if (inputValue.length > 25) {
-      setProductNameError("Product Name must not exceed 25 characters.");
-    } else {
-      setProductNameError("");
-    }
   }
 
   function handleProductPriceChange(event) {
     const inputValue = event.target.value;
     setProductPrice(inputValue);
-    if (!inputValue) {
-      setProductPriceError("Please enter a valid Product price.");
-    } else {
-      setProductPriceError("");
-    }
   }
 
   function handleProductCategoryChange(event) {
     const inputValue = event.target.value;
     setProductCategory(inputValue);
-
-    if (inputValue === "") {
-      setProductCategoryError("The Product Category field must be filled in");
-    } else {
-      setProductCategoryError("");
-    }
   }
 
   function handleImageChange(event) {
     const inputValue = event.target.value;
     setImageOfProduct(inputValue);
-
-    if (!inputValue) {
-      setImageOfProductError("The Image of Product field must be filled in");
-    } else {
-      setImageOfProductError("");
-    }
   }
 
   function handleAdditionalDescriptionChange(event) {
     const inputValue = event.target.value;
     setAdditionalDescription(inputValue);
-    if (!inputValue) {
-      setAdditionalDescriptionError(
-        "The Additional Description field must be filled in"
-      );
-    } else {
-      setAdditionalDescriptionError("");
-    }
   }
 
   function handleProductFreshnessChange(event) {
     const inputValue = event.target.value;
     setProductFreshness(inputValue);
-    if (!productFreshness) {
-      setProductFreshnessError("The Product Freshness field must be filled in");
-    } else {
-      setProductFreshnessError("");
-    }
+    productFreshness(true);
   }
 
   function generateRandomNumber() {
@@ -265,6 +283,7 @@ function CreateProduct() {
               value="Brand New"
               checked={productFreshness === "Brand New"}
               onChange={handleProductFreshnessChange}
+              
             />
             <RadioInput
               id="secondHank"
@@ -273,6 +292,7 @@ function CreateProduct() {
               value="Second Hank"
               checked={productFreshness === "Second Hank"}
               onChange={handleProductFreshnessChange}
+              
             />
             <RadioInput
               id="refurbished"
@@ -281,7 +301,7 @@ function CreateProduct() {
               value="Refurbished"
               checked={productFreshness === "Refurbished"}
               onChange={handleProductFreshnessChange}
-              errorMessage={productFreshnessError}
+              errorMessage={!productFreshness && productFreshnessError}
             />
           </div>
 
