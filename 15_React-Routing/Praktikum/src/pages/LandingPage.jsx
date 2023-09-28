@@ -44,18 +44,17 @@ function LandingPage() {
         </div>
       </main>
 
-      {/* Footer 1 */}
-      <footer className="newsletter">
-        <h4>Join Our Newsletter</h4>
+      
+      <section className="flex flex-col items-center justify-center bg-[#F3F5FA] h-[35vh] font-[Jost] gap-3">
+        <h4 className="text-2xl font-medium text-[#37517E]">Join Our Newsletter</h4>
         <p>
           Tamen quem nulla quae legam multos aute sint culpa legam noster magna
         </p>
-        {/* Soal Eksplorasi menambahkan required */}
-        <div className="input-container">
-          <input className="hover-input" type="email" required="" />
-          <button className="button-subscribe">Subscribe</button>
+        <div className="">
+          <input className=" w-[30rem] rounded-full p-2 shadow-sm" type="email" required="" />
+          <button className=" rounded-full bg-[#47B2E4;] text-white p-2 px-5 shadow-sm">Subscribe</button>
         </div>
-      </footer>
+      </section>
       <Footer />
     </>
   );
