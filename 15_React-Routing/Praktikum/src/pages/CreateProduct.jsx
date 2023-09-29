@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 
-
 import CreateProductLanguage from "../utils/constants/CreateProductLanguage";
 import { useTitle } from "../utils/hooks/customHooks";
 import Swal from "../utils/swal";
