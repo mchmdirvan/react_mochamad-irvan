@@ -1,8 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import { useParams } from "react-router-dom";
+import React from "react";
 
-export default function detail() {
+import { useTitle } from "../utils/hooks/customHooks";
+
+export default function Detail() {
+  useTitle("Detail Data");
+  const { id} = useParams();
+
   return (
-    <div>detail</div>
-  )
+    <div>
+      <h2>Detail Page</h2>
+      <p>ID: {id}</p>
+    </div>
+  );
 }
