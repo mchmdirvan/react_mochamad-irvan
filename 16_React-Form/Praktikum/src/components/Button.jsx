@@ -2,6 +2,17 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
+/**
+ * Button
+ * @param {{ 
+ * type : button
+ * id : string
+ * label : string
+ * onClick : function onClick(params) {
+ } 
+ * }}
+ */
+
 function Button({ type, id, label, onClick }) {
   return (
     <div className="mt-5">

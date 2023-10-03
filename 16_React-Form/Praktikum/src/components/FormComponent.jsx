@@ -2,16 +2,32 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 
+/**
+ * Input component for forms
+ *
+ * @param {{
+ * label : string
+ * className : string
+ * type : string
+ * name : string
+ * id : string
+ * minLength : number
+ * maxLength : number
+ * value : string
+ * onChange : function
+ * errorMessage : string
+ * placeholder : string
+ * }}  props
+ */
+
 function Input({
   label,
   className,
   type,
   name,
   id,
-  required,
   minLength,
   maxLength,
-  autoFocus,
   value,
   onChange,
   errorMessage,
@@ -36,8 +52,6 @@ function Input({
             id={id}
             minLength={minLength}
             maxLength={maxLength}
-            required={required}
-            autoFocus={autoFocus}
             value={value}
             onChange={onChange}
             placeholder={placeholder}
@@ -49,14 +63,25 @@ function Input({
   );
 }
 
-function File({ label, type, required, id, errorMessage, onChange, value }) {
+/**
+ * Input component file
+ *
+ * @param {{
+ * label : string
+ * type : string
+ * id : string
+ * errorMessage : string
+ * value : string
+ * onChange : function
+ * }}  props
+ */
+function File({ label, type, id, errorMessage, onChange, value }) {
   return (
     <div className="mt-5">
       <label className="">{label}</label>
       <div className="mt-3">
         <input
           type={type}
-          required={required}
           className={`${
             errorMessage
               ? "focus:ring-[0.4rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
@@ -73,13 +98,26 @@ function File({ label, type, required, id, errorMessage, onChange, value }) {
   );
 }
 
+/**
+ * Textarea Component
+ *
+ * @param {{
+ * label : string
+ * name : string
+ * id : string
+ * cols : number
+ * rows : number
+ * errorMessage : string
+ * onChange : function
+ * value : string
+ * }}  props
+ */
 function TextArea({
   label,
   name,
   id,
   cols,
   rows,
-  required,
   errorMessage,
   onChange,
   value,
@@ -99,7 +137,6 @@ function TextArea({
           id={id}
           cols={cols}
           rows={rows}
-          required={required}
           onChange={onChange}
           value={value}
         />
@@ -109,11 +146,24 @@ function TextArea({
   );
 }
 
+/**
+ * Select component
+ *
+ * @param {{
+ * label : string
+ * name : string
+ * id : string
+ * value : string
+ * onChange : function
+ * options : string[]
+ * placeholder : string
+ * errorMessage : string
+ * }}  props
+ */
 function Select({
   label,
   name,
   id,
-  required,
   value,
   onChange,
   options = [],
@@ -133,7 +183,6 @@ function Select({
           transition duration-300 ease-in-out"`}
           name={name}
           id={id}
-          required={required}
           value={value}
           onChange={onChange}
         >
@@ -151,6 +200,21 @@ function Select({
   );
 }
 
+/**
+ * Radio Input component.
+ *
+ * @param {{
+ *   label: string
+ *   name: string
+ *   id: string
+ *   value: string
+ *   onChange: function
+ *   errorMessage: string
+ *   checked: boolean
+ * }} props
+ *
+ *
+ */
 function RadioInput({
   label,
   name,
