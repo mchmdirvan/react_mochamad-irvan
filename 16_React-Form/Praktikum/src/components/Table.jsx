@@ -5,6 +5,18 @@ import { BsFillPencilFill, BsFillTrash2Fill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 
+/**
+ * Table component for displaying data
+ *
+ * @param {{
+ *   headers: string[],
+ *   datas: Object[],
+ *   onEditClick: function,
+ *   onDeleteClick: function
+ * }} props
+ *
+ */
+
 function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
   const navigate = useNavigate();
 
