@@ -42,6 +42,10 @@ function CreateProduct() {
   const [productPriceError, setProductPriceError] = useState("");
   const [productNameError, setProductNameError] = useState("");
 
+  function saveDataToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+
   function handleInputChange(event, setInput, setError) {
     const value = event.target.value;
     setInput(value);
@@ -94,7 +98,12 @@ function CreateProduct() {
       productFreshness: productFreshness,
       productPrice: productPrice,
     };
+
     setCreateProducts([...products, product]);
+
+    const updatedProducts = [...products, product];
+    saveDataToLocalStorage("products", updatedProducts);
+
     setProductName("");
     setProductCategory("");
     setImageOfProduct("");
@@ -129,6 +138,8 @@ function CreateProduct() {
     setProductPrice("");
 
     setCreateProducts(updatedProducts);
+    saveDataToLocalStorage("products", updatedProducts);
+
     setIsEdit(false);
     setSelectedId("");
     Swal.fire({
