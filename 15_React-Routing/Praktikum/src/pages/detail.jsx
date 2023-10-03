@@ -6,6 +6,7 @@ import { useTitle } from "../utils/hooks/customHooks";
 
 export default function Detail() {
   useTitle("Detail Data");
+  window.scrollTo(0,0)
 
   function getDataFromLocalStorage(key) {
     const data = localStorage.getItem(key);
