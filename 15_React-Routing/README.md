@@ -17,3 +17,28 @@ dengan memanfaatkan module link dari react-dom. Lalu tambahkan tag link dan prop
 
 ## Programmatic Routes
 Contoh dari programmatic routes adalah mengarahkan dari halaman login ke homepage. contohnya dengan menggunakan hooks useNavigate
+
+## Apa perbedaan Single Page Application dengan Multi Page Application?
+1. SPA
+   + waktu loading website lebih cepat
+   + tidak ada query tambahakn ke server
+   + front-end yang cepat dan responsif
+   + meningkatkan pengalaman pengguna
+   - Tidak bagus dalam hal SEO
+   - Berat saat di load/buka pertama kali
+   - Kurang aman dibanding dengan website biasa
+   - Masalah kompabilitas browser
+
+2. MPA
+   + SEO Website akan lebih mudah di optimasi
+   + Memudahkan untuk mengubah halaman tertentu untuk setiap kebutuhan yang berbeda
+   + Menggunakan tools analisis seperti google analytics yang dapat terintegrasi langsung dengan website
+   - Kecepatan download website jauh lebih lama jika dibandingkan dengan SPA
+   - perlu mengintergasikan fe dan be
+   - lebih sering membutuhkan maintance dan update
+   - mungkin akan lebih sering menemukan masalah performa pada website
+
+## untuk apa useHistory digunakan?
+memberika akses ke instance riwayat yang dapat digunakan untuk bernavigasi
+
+ 
