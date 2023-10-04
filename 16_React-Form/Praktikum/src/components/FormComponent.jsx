@@ -13,8 +13,6 @@ import React from "react";
  * id : string
  * minLength : number
  * maxLength : number
- * value : string
- * onChange : function
  * errorMessage : string
  * placeholder : string
  * register: function
@@ -29,8 +27,6 @@ function Input({
   id,
   minLength,
   maxLength,
-  value,
-  onChange,
   error,
   placeholder,
   register,
@@ -54,8 +50,6 @@ function Input({
             id={id}
             minLength={minLength}
             maxLength={maxLength}
-            value={value}
-            onChange={onChange}
             placeholder={placeholder}
             {...(register ? register(name) : {})}
           />
@@ -74,8 +68,6 @@ function Input({
  * type : string
  * id : string
  * error : string
- * value : string
- * onChange : function
  * register: function
  * name : string
  * }}  props
@@ -114,8 +106,6 @@ function File({ label, type, id, error, onChange, value, register, name }) {
  * cols : number
  * rows : number
  * error : string
- * onChange : function
- * value : string
  * register: function
  * }}  props
  */
@@ -126,8 +116,6 @@ function TextArea({
   cols,
   rows,
   error,
-  onChange,
-  value,
   register,
 }) {
   return (
@@ -145,8 +133,6 @@ function TextArea({
           id={id}
           cols={cols}
           rows={rows}
-          onChange={onChange}
-          value={value}
           {...(register ? register(name) : {})}
         />
         {error && <div className=" text-red-500">{error}</div>}
@@ -162,8 +148,6 @@ function TextArea({
  * label : string
  * name : string
  * id : string
- * value : string
- * onChange : function
  * options : string[]
  * placeholder : string
  * error : string
@@ -174,8 +158,6 @@ function Select({
   label,
   name,
   id,
-  value,
-  onChange,
   options = [],
   placeholder,
   error,
@@ -194,8 +176,6 @@ function Select({
           transition duration-300 ease-in-out"`}
           name={name}
           id={id}
-          value={value}
-          onChange={onChange}
           {...(register ? register(name) : {})}
         >
           <option hidden value="">
@@ -212,46 +192,51 @@ function Select({
 }
 
 /**
- * Radio Input component.
+ * Radio Group component.
  *
  * @param {{
  *   label: string
  *   name: string
  *   id: string
- *   value: string
- *   onChange: function
  *   error: string
  *   checked: boolean
  *   register: function
  * }} props
  *
  */
-function RadioInput({
+function RadioGroup({
   label,
   name,
-  id,
-  value,
-  onChange,
+  defaulValue,
   error,
-  checked,
   register,
+  options
 }) {
   return (
-    <div className="flex items-center gap-x-3">
-      <input
-        type="radio"
-        id={id}
-        name={name}
-        className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        {...(register ? register(name) : {})}
-      />
-      <label className="block text-sm leading-6 text-gray-900">{label}</label>
+    <div className="flex flex-col gap-x-3">
+      <label className="text-black dark:text-white mb-3">
+        {label}
+      </label>
+      {options.map((option) => (
+        <div key={option.id} className="flex gap-3">
+          <input
+            type="radio"
+            value={option.label}
+            id={option.id}
+            {...(register ? register(name) : {})}
+            defaultValue={defaulValue}
+          />
+          <label
+            className="text-black dark:text-white"
+            htmlFor={option.id}
+          >
+            {option.label}
+          </label>
+        </div>
+      ))}
       {error && <div className=" text-red-500">{error}</div>}
     </div>
   );
 }
 
-export { Input, File, TextArea, Select, RadioInput };
+export { Input, File, TextArea, Select, RadioGroup };
