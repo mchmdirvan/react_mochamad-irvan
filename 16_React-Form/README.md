@@ -11,9 +11,11 @@ React Hook Form adalah library JavaScript yang digunakan dalam pengembangan apli
 based on performance, saat ini paling terbaik
 
 ## Apa itu Regex?
+
 Regex, atau singkatan dari "regular expression," adalah urutan karakter khusus yang digunakan untuk mencocokkan pola dalam teks. Regex digunakan dalam berbagai bahasa pemrograman, alat pengolahan teks, dan aplikasi untuk mencari, mengganti, atau memvalidasi teks berdasarkan pola tertentu.
 
 ## Bagaimana cara membaca regex?
+
 dapat menggunakan regex101
 
 ## Apa keunggulan react hook form dibandingkan dengan controlled form?
@@ -25,13 +27,27 @@ dapat menggunakan regex101
 5. Integrasi dengan mudah ke dalam komponen React yang ada.
 
 ## Bagaimana cara memunculkan props suggestion pada reusable component di pages?
+
 dengan menggunakan jsdocs
 
 ## Apa itu Yup atau Zod?
-Yup atau Zod adalah libraries JavaScript yang digunakan untuk validasi skema data di dalam aplikasi. Keduanya digunakan untuk memeriksa apakah data yang masuk memenuhi kriteria tertentu, seperti memastikan bahwa data yang dimasukkan ke dalam formulir atau API sesuai dengan format yang diharapkan. 
+
+Yup atau Zod adalah libraries JavaScript yang digunakan untuk validasi skema data di dalam aplikasi. Keduanya digunakan untuk memeriksa apakah data yang masuk memenuhi kriteria tertentu, seperti memastikan bahwa data yang dimasukkan ke dalam formulir atau API sesuai dengan format yang diharapkan.
 
 ## untuk apakah register digunakan?
+
 untuk registari input beserta nama form nya
 
 ## untuk apakah formstate: {error}?
+
 untuk mendapatkan message error pada schema
+
+## Bagaimana cara refactor dari controlled form menjadi react hook form?
+
+1. Install library react hook form, zod, dan hook resolver
+2. Import library zodResolver dan useForm and zod
+3. Mendeskripskan zod schema
+4. Membuat inisialisasi untuk react hook form
+5. Merefactor component dengan menambahkan register name
+6. Merefactor handleSubmit seperti memanggil data dengan spread operator
+7. Menghapus value dan onChange handlers
