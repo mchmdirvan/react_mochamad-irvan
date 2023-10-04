@@ -36,13 +36,13 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
         <tbody>
           {datas.map((data) => (
             <tr className="hover" key={data.id}>
-              <td>{data.id}</td>
               <td
                 className="hover:shadow-lg hover:shadow-blue-500/50"
                 onClick={() => navigate(`/create-product/${data.id}`)}
               >
-                {data.productName}
+                {data.id}
               </td>
+              <td>{data.productName}</td>
               <td>{data.productCategory}</td>
               <td>
                 <img src={data.imageOfProduct} alt="Product" width="100" />
