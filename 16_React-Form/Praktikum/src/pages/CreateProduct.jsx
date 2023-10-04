@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import * as z from "zod";
 
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 
@@ -23,93 +26,51 @@ function CreateProduct() {
   useTitle("Create Product");
 
   const [currentLanguage, setCurrentLanguage] = useState("en");
-  const [products, setCreateProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
 
-  const [additionalDescription, setAdditionalDescription] = useState("");
-  const [productFreshness, setProductFreshness] = useState("");
-  const [productCategory, setProductCategory] = useState("");
-  const [imageOfProduct, setImageOfProduct] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productName, setProductName] = useState("");
+  const schema = z.object({
+    productName: z
+      .string()
+      .min(1, { message: "Please enter a valid Product Name" })
+      .max(25, { message: "Product Name must not exceed 25 characters." }),
+  });
 
-  const [additionalDescriptionError, setAdditionalDescriptionError] =
-    useState("");
-  const [productFreshnessError, setProductFreshnessError] = useState("");
-  const [productCategoryError, setProductCategoryError] = useState("");
-  const [imageOfProductError, setImageOfProductError] = useState("");
-  const [productPriceError, setProductPriceError] = useState("");
-  const [productNameError, setProductNameError] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
 
   function saveDataToLocalStorage(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
   }
 
-  function handleInputChange(event, setInput, setError) {
-    const value = event.target.value;
-    setInput(value);
-    setError("");
-  }
-
-  function setError(field, value, setErrorFunction) {
-    if (!value) {
-      setErrorFunction(`The ${field} field must be filled in.`);
+  function onSubmit(data) {
+    if (!isEdit) {
+      const product = {
+        id: uuidv4(),
+        ...data,
+      };
+      setProducts([...products, product]);
+      saveDataToLocalStorage("products", [...products, product]);
     } else {
-      setErrorFunction("");
+      const updateProduct = {
+        id: selectedId,
+        ...data,
+      };
+      const updatedProducts = products.map((product) =>
+        product.id === selectedId ? updateProduct : product
+      );
+      setProducts(updatedProducts);
+      saveDataToLocalStorage("products", updatedProducts);
     }
-  }
-
-  function validateForm() {
-    let isValid = true;
-    if (productName.length < 6) {
-      setProductNameError("Please enter a valid Product Name");
-      isValid = false;
-    } else if (productName.length > 25) {
-      setProductNameError("Product Name must not exceed 25 characters.");
-      isValid = false;
-    }
-
-    if (!productPrice) {
-      setProductPriceError("Please enter a valid Product price.");
-      isValid = false;
-    }
-    setError("Product Category", productCategory, setProductCategoryError);
-    setError("Image of Product", imageOfProduct, setImageOfProductError);
-    setError("Product Freshness", productFreshness, setProductFreshnessError);
-    setError(
-      "Additional Description",
-      additionalDescription,
-      setAdditionalDescriptionError
-    );
-    return isValid;
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (!validateForm()) {
-      return;
-    }
-
-    const product = {
-      id: uuidv4() + 1,
-      productName: productName,
-      productCategory: productCategory,
-      productFreshness: productFreshness,
-      productPrice: productPrice,
-    };
-
-    setCreateProducts([...products, product]);
-
-    const updatedProducts = [...products, product];
-    saveDataToLocalStorage("products", updatedProducts);
-
-    setProductName("");
-    setProductCategory("");
-    setImageOfProduct("");
-    setProductFreshness("");
-    setAdditionalDescription("");
-    setProductPrice("");
+    reset();
+    setIsEdit(false);
 
     Swal.fire({
       title: "Success",
@@ -118,40 +79,9 @@ function CreateProduct() {
     });
   }
 
-  function handleEdit(event) {
-    event.preventDefault();
-    const updatedProduct = {
-      id: selectedId,
-      productName: productName,
-      productCategory: productCategory,
-      productFreshness: productFreshness,
-      productPrice: productPrice,
-    };
-    const updatedProducts = products.map((product) =>
-      product.id === selectedId ? updatedProduct : product
-    );
-    setProductName("");
-    setProductCategory("");
-    setImageOfProduct("");
-    setProductFreshness(false);
-    setAdditionalDescription("");
-    setProductPrice("");
-
-    setCreateProducts(updatedProducts);
-    saveDataToLocalStorage("products", updatedProducts);
-
-    setIsEdit(false);
-    setSelectedId("");
-    Swal.fire({
-      title: "Success",
-      text: "Berhasil merubah data",
-      showCancelButton: false,
-    });
-  }
-
   function handleDelete(id) {
     const updatedProducts = products.filter((product) => product.id !== id);
-    setCreateProducts(updatedProducts);
+    setProducts(updatedProducts);
     Swal.fire({
       title: "Success",
       text: "Berhasil menghapus data",
@@ -194,145 +124,90 @@ function CreateProduct() {
 
       <main className="px-[28rem]">
         <h4 className="font-semibold text-2xl">Detail Product</h4>
-        <form
-          className=""
-          noValidate=""
-          onSubmit={(event) =>
-            isEdit ? handleEdit(event) : handleSubmit(event)
-          }
-        >
+        <form className="" noValidate="" onSubmit={handleSubmit(onSubmit)}>
           {/* Form Product Name */}
           <Input
+            register={register}
             className="w-72"
             label="Product Name :"
             type="text"
             name="productName"
             id="productName"
-            minLength={6}
-            maxLength={50}
             autoFocus
-            value={productName}
-            onChange={(event) =>
-              handleInputChange(event, setProductName, setProductNameError)
-            }
-            errorMessage={productNameError}
+            error={errors.productName?.message}
           />
 
           {/* Form Product Category */}
           <Select
+            register={register}
             className=""
             label="Product Category"
             name="productCategory"
             id="productCategory"
-            value={productCategory}
             options={["Fruits", "Vegetable", "Dairy"]}
-            onChange={(event) =>
-              handleInputChange(
-                event,
-                setProductCategory,
-                setProductCategoryError
-              )
-            }
             placeholder="Choose..."
-            errorMessage={productCategoryError}
+            error={errors.productCategory?.message}
           />
 
           {/* Form Image of Product */}
           <File
+            register={register}
             className=""
             label="Image of Product"
             type="file"
             id="imageOfProduct"
-            errorMessage={imageOfProductError}
-            onChange={(event) =>
-              handleInputChange(
-                event,
-                setImageOfProduct,
-                setImageOfProductError
-              )
-            }
-            value={imageOfProduct}
+            error={errors.imageOfProduct?.message}
+            name="imageOfProduct"
           />
 
           {/* Form Product Freshness */}
           <div className="mt-5">
             <label>Product Freshness</label>
             <RadioInput
+              register={register}
               id="brandNew"
               name="productFreshness"
               label="Brand New"
               value="Brand New"
-              checked={productFreshness === "Brand New"}
-              onChange={(event) =>
-                handleInputChange(
-                  event,
-                  setProductFreshness,
-                  setProductFreshnessError
-                )
-              }
             />
             <RadioInput
+              register={register}
               id="secondHank"
               name="productFreshness"
               label="Second Hank"
               value="Second Hank"
-              checked={productFreshness === "Second Hank"}
-              onChange={(event) =>
-                handleInputChange(
-                  event,
-                  setProductFreshness,
-                  setProductFreshnessError
-                )
-              }
             />
             <RadioInput
+              register={register}
               id="refurbished"
               name="productFreshness"
               label="Refurbished"
               value="Refurbished"
-              checked={productFreshness === "Refurbished"}
-              onChange={(event) =>
-                handleInputChange(
-                  event,
-                  setProductFreshness,
-                  setProductFreshnessError
-                )
-              }
-              errorMessage={!productFreshness && productFreshnessError}
             />
           </div>
 
           {/* Form Additional Description */}
           <TextArea
+            register={register}
             className="mt-3"
             label="Addittional Description"
             name="additionalDescription"
             id="additionalDescription"
             cols={5}
             rows={5}
-            errorMessage={additionalDescriptionError}
-            onChange={(event) =>
-              handleInputChange(
-                event,
-                setAdditionalDescription,
-                setAdditionalDescriptionError
-              )
-            }
-            value={additionalDescription}
+            error={errors.additionalDescription?.message}
           />
 
           {/* Form Product Price */}
           <Input
+            register={register}
             className="w-full"
             label="Product Price"
             type="number"
             id="productPrice"
             placeholder="$1"
-            value={productPrice}
-            onChange={(event) =>
-              handleInputChange(event, setProductPrice, setProductPriceError)
-            }
-            errorMessage={productPriceError}
+            error={errors.productPrice?.message}
+            name="productPrice"
           />
 
           {/* Button to Submit the Form */}
@@ -360,11 +235,8 @@ function CreateProduct() {
         datas={products}
         onEditClick={(data) => {
           setIsEdit(true);
-          setProductName(data.productName);
-          setProductCategory(data.productCategory);
-          setProductFreshness(data.productFreshness);
-          setProductPrice(data.productPrice);
           setSelectedId(data.id);
+          reset(data);
         }}
         onDeleteClick={(data) =>
           Swal.fire({

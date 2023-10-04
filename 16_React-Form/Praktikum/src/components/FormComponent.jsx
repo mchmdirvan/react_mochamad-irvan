@@ -17,6 +17,7 @@ import React from "react";
  * onChange : function
  * errorMessage : string
  * placeholder : string
+ * register: function
  * }}  props
  */
 
@@ -30,8 +31,9 @@ function Input({
   maxLength,
   value,
   onChange,
-  errorMessage,
+  error,
   placeholder,
+  register,
 }) {
   return (
     <>
@@ -42,7 +44,7 @@ function Input({
         <div className="mt-2">
           <input
             className={`${className} ${
-              errorMessage
+              error
                 ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
                 : "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 ring-gray-300 "
             } rounded-md py-2 pl-2 text-gray-900 ring-1
@@ -55,8 +57,9 @@ function Input({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
+            {...(register ? register(name) : {})}
           />
-          <div className=" text-red-500">{errorMessage}</div>
+          {error && <div className=" text-red-500">{error}</div>}
         </div>
       </div>
     </>
@@ -70,12 +73,14 @@ function Input({
  * label : string
  * type : string
  * id : string
- * errorMessage : string
+ * error : string
  * value : string
  * onChange : function
+ * register: function
+ * name : string
  * }}  props
  */
-function File({ label, type, id, errorMessage, onChange, value }) {
+function File({ label, type, id, error, onChange, value, register, name }) {
   return (
     <div className="mt-5">
       <label className="">{label}</label>
@@ -83,7 +88,7 @@ function File({ label, type, id, errorMessage, onChange, value }) {
         <input
           type={type}
           className={`${
-            errorMessage
+            error
               ? "focus:ring-[0.4rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
               : "focus:ring-[0.4rem] focus:ring-offset-0 focus:ring-blue-200 ring-blue-500 "
           } w-56 rounded-md ring-2 text-blue-500
@@ -91,9 +96,10 @@ function File({ label, type, id, errorMessage, onChange, value }) {
           id={id}
           onChange={onChange}
           value={value}
+          {...(register ? register(name) : {})}
         />
       </div>
-      <div className=" text-red-500">{errorMessage}</div>
+      {error && <div className=" text-red-500">{error}</div>}
     </div>
   );
 }
@@ -107,9 +113,10 @@ function File({ label, type, id, errorMessage, onChange, value }) {
  * id : string
  * cols : number
  * rows : number
- * errorMessage : string
+ * error : string
  * onChange : function
  * value : string
+ * register: function
  * }}  props
  */
 function TextArea({
@@ -118,9 +125,10 @@ function TextArea({
   id,
   cols,
   rows,
-  errorMessage,
+  error,
   onChange,
   value,
+  register,
 }) {
   return (
     <div className="mt-5">
@@ -128,7 +136,7 @@ function TextArea({
       <div className="mt-3">
         <textarea
           className={`${
-            errorMessage
+            error
               ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
               : "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 ring-gray-300 "
           }  w-full rounded-md py-2 pl-5 text-gray-900 ring-1
@@ -139,8 +147,9 @@ function TextArea({
           rows={rows}
           onChange={onChange}
           value={value}
+          {...(register ? register(name) : {})}
         />
-        <div className=" text-red-500">{errorMessage}</div>
+        {error && <div className=" text-red-500">{error}</div>}
       </div>
     </div>
   );
@@ -157,7 +166,8 @@ function TextArea({
  * onChange : function
  * options : string[]
  * placeholder : string
- * errorMessage : string
+ * error : string
+ * register: function
  * }}  props
  */
 function Select({
@@ -168,7 +178,8 @@ function Select({
   onChange,
   options = [],
   placeholder,
-  errorMessage,
+  error,
+  register,
 }) {
   return (
     <div className="mt-5">
@@ -176,7 +187,7 @@ function Select({
       <div className="mt-2">
         <select
           className={`${
-            errorMessage
+            error
               ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
               : "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-blue-200 ring-gray-300 "
           }  w-60 rounded-md py-2 pl-2 text-gray-900 ring-1
@@ -185,6 +196,7 @@ function Select({
           id={id}
           value={value}
           onChange={onChange}
+          {...(register ? register(name) : {})}
         >
           <option hidden value="">
             {placeholder}
@@ -193,8 +205,7 @@ function Select({
             <option key={option}>{option}</option>
           ))}
         </select>
-
-        <div className=" text-red-500">{errorMessage}</div>
+        {error && <div className=" text-red-500">{error}</div>}
       </div>
     </div>
   );
@@ -209,10 +220,10 @@ function Select({
  *   id: string
  *   value: string
  *   onChange: function
- *   errorMessage: string
+ *   error: string
  *   checked: boolean
+ *   register: function
  * }} props
- *
  *
  */
 function RadioInput({
@@ -221,8 +232,9 @@ function RadioInput({
   id,
   value,
   onChange,
-  errorMessage,
+  error,
   checked,
+  register,
 }) {
   return (
     <div className="flex items-center gap-x-3">
@@ -234,9 +246,10 @@ function RadioInput({
         value={value}
         checked={checked}
         onChange={onChange}
+        {...(register ? register(name) : {})}
       />
       <label className="block text-sm leading-6 text-gray-900">{label}</label>
-      <div className=" text-red-500">{errorMessage}</div>
+      {error && <div className=" text-red-500">{error}</div>}
     </div>
   );
 }
