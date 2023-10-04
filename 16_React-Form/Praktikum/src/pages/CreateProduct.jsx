@@ -16,7 +16,7 @@ import {
   File,
   TextArea,
   Select,
-  RadioInput,
+  RadioGroup,
 } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
@@ -29,12 +29,56 @@ function CreateProduct() {
   const [products, setProducts] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+  const [radioOption] = useState([
+    {
+      id: "freshness-new",
+      label: "Brand New",
+    },
+    {
+      id: "freshness-second",
+      label: "Second Hand",
+    },
+    {
+      id: "freshness-refurbished",
+      label: "Refurbished",
+    },
+  ]);
+
+  const MAX_FILE_SIZE = 500000;
+  const ACCEPTED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+  ];
 
   const schema = z.object({
     productName: z
       .string()
       .min(1, { message: "Please enter a valid Product Name" })
       .max(25, { message: "Product Name must not exceed 25 characters." }),
+    productPrice: z
+      .string()
+      .min(1, { message: "Please enter a valid Product Price" }),
+    productCategory: z
+      .string()
+      .min(1, { message: "The Product Category field must be filled in" }),
+    imageOfProduct: z
+      .any()
+      .refine(
+        (files) => files?.[0]?.size <= MAX_FILE_SIZE,
+        `Max image size is 5MB.`
+      )
+      .refine(
+        (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
+        "Only .jpg, .jpeg, .png and .webp formats are supported."
+      ),
+    productFreshness: z
+      .string()
+      .min(1, { message: "Please enter a valid product freshness" }),
+    additionalDescription: z.string().min(1, {
+      message: "The Additional Description field must be filled in",
+    }),
   });
 
   const {
@@ -44,6 +88,9 @@ function CreateProduct() {
     reset,
   } = useForm({
     resolver: zodResolver(schema),
+    defaultValues: {
+      productFreshness: "",
+    },
   });
 
   function saveDataToLocalStorage(key, data) {
@@ -55,6 +102,7 @@ function CreateProduct() {
       const product = {
         id: uuidv4(),
         ...data,
+        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
       };
       setProducts([...products, product]);
       saveDataToLocalStorage("products", [...products, product]);
@@ -62,6 +110,7 @@ function CreateProduct() {
       const updateProduct = {
         id: selectedId,
         ...data,
+        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
       };
       const updatedProducts = products.map((product) =>
         product.id === selectedId ? updateProduct : product
@@ -162,27 +211,14 @@ function CreateProduct() {
 
           {/* Form Product Freshness */}
           <div className="mt-5">
-            <label>Product Freshness</label>
-            <RadioInput
-              register={register}
-              id="brandNew"
+            <RadioGroup
+              id="input-product-freshness"
+              label="Product Freshness"
               name="productFreshness"
-              label="Brand New"
-              value="Brand New"
-            />
-            <RadioInput
+              options={radioOption}
               register={register}
-              id="secondHank"
-              name="productFreshness"
-              label="Second Hank"
-              value="Second Hank"
-            />
-            <RadioInput
-              register={register}
-              id="refurbished"
-              name="productFreshness"
-              label="Refurbished"
-              value="Refurbished"
+              defaultValue={""}
+              error={errors.productFreshness?.message}
             />
           </div>
 
@@ -228,6 +264,7 @@ function CreateProduct() {
           "No",
           "Product Name",
           "Product Category",
+          "Product Image",
           "Product Freshness",
           "Product Price",
           "Actions",
