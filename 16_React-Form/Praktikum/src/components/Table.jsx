@@ -35,13 +35,14 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
         </thead>
         <tbody>
           {datas.map((data) => (
-            <tr
-              className="hover"
-              key={data.id}
-              onClick={() => navigate(`/create-product/${data.id}`)}
-            >
+            <tr className="hover" key={data.id}>
               <td>{data.id}</td>
-              <td>{data.productName}</td>
+              <td
+                className="hover:shadow-lg hover:shadow-blue-500/50"
+                onClick={() => navigate(`/create-product/${data.id}`)}
+              >
+                {data.productName}
+              </td>
               <td>{data.productCategory}</td>
               <td>
                 <img src={data.imageOfProduct} alt="Product" width="100" />
@@ -49,8 +50,14 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
               <td>{data.productFreshness}</td>
               <td>{data.productPrice}</td>
               <td className="flex gap-2">
-                <BsFillPencilFill onClick={() => onEditClick(data)} />
-                <BsFillTrash2Fill onClick={() => onDeleteClick(data)} />
+                <BsFillPencilFill
+                  className="hover:border-blue-400 hover:border-2"
+                  onClick={() => onEditClick(data)}
+                />
+                <BsFillTrash2Fill
+                  className="hover:border-blue-400 hover:border-2"
+                  onClick={() => onDeleteClick(data)}
+                />
               </td>
             </tr>
           ))}
