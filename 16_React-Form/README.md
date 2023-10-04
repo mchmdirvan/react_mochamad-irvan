@@ -51,3 +51,6 @@ untuk mendapatkan message error pada schema
 5. Merefactor component dengan menambahkan register name
 6. Merefactor handleSubmit seperti memanggil data dengan spread operator
 7. Menghapus value dan onChange handlers
+
+## clsx
+library validasi classname
