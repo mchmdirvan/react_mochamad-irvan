@@ -53,3 +53,5 @@ const value = useContext(SomeContext)
 4. Create Provider -> useState + useMemo 
 5. Use the context in a component -> custom hooks
 6. Wrap app with provider
+
+###
