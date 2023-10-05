@@ -45,3 +45,11 @@ const value = useContext(SomeContext)
 ## Kekurangan react context?
 - Tidak di rekomendasikan untuk mengkombinasikan Context dengan hook lain seperti useReducer untuk merubah nilai dengan alasan performance
 - Ketika nilai dari sebuah context berubah atau diganti, maka seluruh component yang mengkonsumsi context akan re-render 
+
+## Bagaimanakah langkah untuk membuat dan menggunakan useContext di react?
+1. Create folder inside utils -> contexts -> .jsx
+2. Import useContext dan createContext
+3. Create context 
+4. Create Provider -> useState + useMemo 
+5. Use the context in a component -> custom hooks
+6. Wrap app with provider
