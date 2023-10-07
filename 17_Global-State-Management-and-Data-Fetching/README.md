@@ -139,7 +139,7 @@ Beberapa kekurangan dari Redux yaitu membutuhkan waktu dan pembelajaran yang leb
     - initialstate
     - reducers (menaruh updater yang ada) dengan param state dan action dan function.
 4.  Reducer
-5.  Export const {getProducts} = sliceState.actions
+5.  Export const {updaterName} = sliceState.actions
 6.  Export default reducer
 
 ## di store.js ada apa saja?
@@ -148,9 +148,3 @@ Beberapa kekurangan dari Redux yaitu membutuhkan waktu dan pembelajaran yang leb
 2. Import reducer
 3. Variable store = cs dalam bentuk object dan tulis reducer nya tadi apa saja
 4. Export store
-
-####
-
-tailwind darkmode
-prio 1
-prio 2
