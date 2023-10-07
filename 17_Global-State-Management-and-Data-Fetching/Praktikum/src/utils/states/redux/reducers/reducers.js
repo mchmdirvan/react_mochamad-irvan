@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 
-// eslint-disable-next-line no-unused-vars
 function getItems() {
   const getItem = localStorage.getItem("products");
 
@@ -19,7 +19,7 @@ const initialState = {
       productCategory: "Doe",
       productFreshness: "Doe",
       productPrice: "Doe",
-      image: "Doe",
+      imageOfProduct: "Doe",
       additionalDescription: "Doe",
     },
   ],
