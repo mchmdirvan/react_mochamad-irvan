@@ -11,9 +11,7 @@ import React from "react";
  * type : string
  * name : string
  * id : string
- * minLength : number
- * maxLength : number
- * errorMessage : string
+ * error : string
  * placeholder : string
  * register: function
  * }}  props
@@ -25,8 +23,6 @@ function Input({
   type,
   name,
   id,
-  minLength,
-  maxLength,
   error,
   placeholder,
   register,
@@ -48,8 +44,6 @@ function Input({
             type={type}
             name={name}
             id={id}
-            minLength={minLength}
-            maxLength={maxLength}
             placeholder={placeholder}
             {...(register ? register(name) : {})}
           />
