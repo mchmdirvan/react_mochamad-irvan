@@ -81,50 +81,76 @@ Redux merupakan sebuah framework JavaScript yang ditujukan untuk membantu dalam 
 - useContext: useContext adalah bagian dari React Core dan lebih sederhana. Ini digunakan untuk mengelola state dalam komponen tertentu atau dalam komponen yang memiliki hubungan hierarki yang lebih dangkal. Lebih cocok untuk state lokal dan manajemen state yang lebih sederhana.
 
 ## Apa kemiripan redux dengan state?
+
 - Redux menyimpan seluruh state aplikasi dalam satu tempat yang disebut "store."
-- Untuk memperbarui state dalam Redux, menggunakan "actions" yang dikirimkan ke "reducers." Actions adalah objek yang berisi instruksi tentang bagaimana state harus diperbarui. 
+- Untuk memperbarui state dalam Redux, menggunakan "actions" yang dikirimkan ke "reducers." Actions adalah objek yang berisi instruksi tentang bagaimana state harus diperbarui.
 - Redux mirip state perlu updater, updater nya namanya dispatch. fungsi "dispatch" digunakan untuk mengirimkan actions ke reducers sehingga state dapat diperbarui.
 
 ## Kapan Menggunakan redux?
+
 Redux helps you deal with shared state management, but like any tool, it has tradeoffs. There are more concepts to learn, and more code to write. It also adds some indirection to your code, and asks you to follow certain restrictions. It's a trade-off between short term and long term productivity.
 
 Redux is more useful when:
+
 - You have large amounts of application state that are needed in many places in the app
 - The app state is updated frequently over time
 - The logic to update that state may be complex
 - The app has a medium or large-sized codebase, and might be worked on by many people
 
-## Kelebihan dan kekurangan Redux 
+## Kelebihan dan kekurangan Redux
+
 Kelebihan dari Redux adalah memiliki fitur seperti immutability, central store, dan time-travel debugging yang membantu developer dalam mengelola state secara efektif dan efisien. Selain itu, Redux juga memiliki dokumentasi yang lengkap dan komunitas yang aktif yang dapat membantu developer dalam mempelajari dan menggunakan Redux.
 
 Beberapa kekurangan dari Redux yaitu membutuhkan waktu dan pembelajaran yang lebih untuk memahami dan mengaplikasikannya pada aplikasi web. Selain itu, Redux juga memiliki kode yang lebih panjang dan kompleks dibandingkan dengan state management lainnya.
 
 ## Langkah-langkah penggunaan redux
+
 1. Membuat Folder
+
 - utils
-|- states
-| -- Redux
-| --- reducers
-| ---- reducers.js
-| --- store
-| ---- store.js
-| -- context
+  |- states
+  | -- Redux
+  | --- reducers
+  | ---- reducers.js
+  | --- store
+  | ---- store.js
+  | -- context
 
 2. Install library redux
-  - Redux core : redux
-  - Complmenetary packages : react-redux
-  - Redux Toolkit : @reduxjs/toolkit
 
-3. Pada folder reducer.js import createSlice 
+- Redux core : redux
+- Complmenetary packages : react-redux
+- Redux Toolkit : @reduxjs/toolkit
+
+3. reducer.js
    Fungsi reducer adalah sebuah function yang menerima 2 parameter, yaitu state dan action. yang mana memiliki tugas untuk merubah value dari initial state menjadi nilai yang baru
 
-    
+4. store.js
+   store ini digunakan untuk membuat sebuah wadah/tempat yang nantinya dipakai untuk menyimpan state/nilai setiap komponen. store seperti provider.
 
-###
-fungsi reducer
-intial - updater - reducer
-store = provider
-refactor pelan-pelan
+5. Buat provider di main.jsx dan import store
+
+## di reducers.js ada apa saja?
+
+1.  Import createSlice
+2.  Initial State (inisialisasi nilai awal)
+3.  Initial updater function menggunakan createSlice dalam bentuk object
+    - terdapat nama
+    - initialstate
+    - reducers (menaruh updater yang ada) dengan param state dan action dan function.
+4.  Reducer
+5.  Export const {getProducts} = sliceState.actions
+6.  Export default reducer
+
+## di store.js ada apa saja?
+
+1. Import configureStore
+2. Import reducer
+3. Variable store = cs dalam bentuk object dan tulis reducer nya tadi apa saja
+4. Export store
+
+####
+
 tailwind darkmode
 prio 1
 prio 2
