@@ -262,6 +262,7 @@ function CreateProduct() {
           "Product Category",
           "Product Image",
           "Product Freshness",
+          "Additional Description",
           "Product Price",
           "Actions",
         ]}

@@ -46,6 +46,7 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
               <td>{data.productCategory}</td>
               <td>{data.imageOfProduct}</td>
               <td>{data.productFreshness}</td>
+              <td>{data.additionalDescription}</td>
               <td>{data.productPrice}</td>
               <td className="flex gap-2">
                 <BsFillPencilFill
