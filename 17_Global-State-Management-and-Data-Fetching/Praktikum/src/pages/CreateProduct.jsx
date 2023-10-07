@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useSelector, useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
@@ -8,6 +9,11 @@ import * as z from "zod";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 
 import CreateProductLanguage from "../utils/constants/CreateProductLanguage";
+import {
+  setProducts,
+  editProduct,
+  deleteProduct,
+} from "../utils/states/redux/reducers/reducers";
 import { useTitle } from "../utils/hooks/customHooks";
 import Swal from "../utils/swal";
 
@@ -25,8 +31,10 @@ import Table from "../components/Table";
 function CreateProduct() {
   useTitle("Create Product");
 
+  const { products } = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+
   const [currentLanguage, setCurrentLanguage] = useState("en");
-  const [products, setProducts] = useState([]);
   const [selectedId, setSelectedId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [radioOption] = useState([
@@ -93,30 +101,21 @@ function CreateProduct() {
     },
   });
 
-  function saveDataToLocalStorage(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-  }
-
   function onSubmit(data) {
     if (!isEdit) {
       const product = {
         id: uuidv4(),
         ...data,
-        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
       };
-      setProducts([...products, product]);
-      saveDataToLocalStorage("products", [...products, product]);
+      const newProducts = [...products, product];
+      dispatch(setProducts(newProducts));
     } else {
       const updateProduct = {
         id: selectedId,
         ...data,
-        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
       };
-      const updatedProducts = products.map((product) =>
-        product.id === selectedId ? updateProduct : product
-      );
-      setProducts(updatedProducts);
-      saveDataToLocalStorage("products", updatedProducts);
+      dispatch(editProduct(updateProduct));
+      reset()
     }
     reset();
     setIsEdit(false);
@@ -129,8 +128,7 @@ function CreateProduct() {
   }
 
   function handleDelete(id) {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
+    dispatch(deleteProduct(id));
     Swal.fire({
       title: "Success",
       text: "Berhasil menghapus data",
@@ -189,7 +187,6 @@ function CreateProduct() {
           {/* Form Product Category */}
           <Select
             register={register}
-            className=""
             label="Product Category"
             name="productCategory"
             id="productCategory"
@@ -201,8 +198,7 @@ function CreateProduct() {
           {/* Form Image of Product */}
           <File
             register={register}
-            className=""
-            label="Image of Product"
+            label="Product Image"
             type="file"
             id="imageOfProduct"
             error={errors.imageOfProduct?.message}
