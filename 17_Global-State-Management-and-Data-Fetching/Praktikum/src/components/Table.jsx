@@ -44,9 +44,7 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
               </td>
               <td>{data.productName}</td>
               <td>{data.productCategory}</td>
-              <td>
-                <img src={data.imageOfProduct} alt="Product" width="100" />
-              </td>
+              <td>{data.imageOfProduct}</td>
               <td>{data.productFreshness}</td>
               <td>{data.productPrice}</td>
               <td className="flex gap-2">
