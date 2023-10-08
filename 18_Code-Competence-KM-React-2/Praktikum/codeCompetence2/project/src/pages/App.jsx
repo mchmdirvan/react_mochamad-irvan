@@ -12,6 +12,7 @@ import Button from "../components/button";
 
 import ImageHero from "../assets/medium-shot-smiley-man-eating-food.jpg";
 import RiceBowl from "../assets/Rice-Bowl.jpg";
+import Swal from "../utils/swal";
 
 export default function App() {
   const schema = z.object({
@@ -37,7 +38,19 @@ export default function App() {
   });
 
   function onSubmit(data) {
-    console.log(data);
+    Swal.fire({
+      title: "Success",
+      html: (
+        <div>
+          <p>First Name: {data.firstName}</p>
+          <p>Last Name: {data.lastName}</p>
+          <p>Email: {data.email}</p>
+          <p>Feedback: {data.feedback}</p>
+        </div>
+      ),
+      text: "Berhasil menampilkan data",
+      showCancelButton: false,
+    });
     reset();
   }
 
