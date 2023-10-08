@@ -1,13 +1,46 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import React from "react";
+import * as z from "zod";
+
+import { Input, TextArea } from "../components/Form";
 import Navbar from "../components/Navbar";
 import Button from "../components/button";
+
 import ImageHero from "../assets/medium-shot-smiley-man-eating-food.jpg";
 import RiceBowl from "../assets/Rice-Bowl.jpg";
 
 export default function App() {
+  const schema = z.object({
+    firstName: z
+      .string()
+      .min(1, { message: "The First Name field must be filled in" }),
+    lastName: z
+      .string()
+      .min(1, { message: "The Last Name field must be filled in" }),
+    email: z.string().min(1, { message: "The Email field must be filled in" }),
+    feedback: z
+      .string()
+      .min(1, { message: "The feedback field must be filled in" }),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  function onSubmit(data) {
+    console.log(data);
+    reset();
+  }
+
   return (
     <>
       <Navbar />
@@ -98,8 +131,73 @@ export default function App() {
           <Button
             label="Order Now"
             className="bg-[#838671] px-[8rem] hover:bg-[#56584a] text-white mt-5"
-          ></Button>
+          />
         </div>
+      </section>
+
+      <section className="flex flex-row justify-around text-white pb-5 bg-[#838671]">
+        <div className="w-1/4">
+          <h2 className="pt-10 mt-10 font-semibold text-4xl">Contact Us</h2>
+          <p className="pt-5 my-10">
+            Need to get in touch with us? Either fill out the form with your
+            inquiry or find the-
+            <a
+              className=" text-blue-300 underline hover:text-blue-400"
+              href="#"
+            >
+              departemen email
+            </a>{" "}
+            you'd like to contact below
+          </p>
+        </div>
+        {/* Form Contact */}
+        <form noValidate="" onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <div className="flex flex-row gap-4">
+              <Input
+                register={register}
+                className="w-72"
+                label="First Name"
+                type="text"
+                name="firstName"
+                id="firstName"
+                error={errors.firstName?.message}
+              />
+              <Input
+                register={register}
+                className="w-72"
+                label="Last Name"
+                type="text"
+                name="lastName"
+                id="lastName"
+                error={errors.lastName?.message}
+              />
+            </div>
+            <Input
+              register={register}
+              className="w-full"
+              label="Email"
+              type="email"
+              name="email"
+              id="email"
+              error={errors.email?.message}
+            />
+            <TextArea
+              register={register}
+              label="What can we help you with?"
+              name="feedback"
+              id="feedback"
+              cols={5}
+              rows={5}
+              error={errors.feedback?.message}
+            />
+            <Button
+              label="Submit"
+              type="submit"
+              className="bg-[#e9ec79] px-[8rem] hover:bg-[#a8ad58] hover:text-white mt-5 text-black"
+            />
+          </div>
+        </form>
       </section>
     </>
   );
