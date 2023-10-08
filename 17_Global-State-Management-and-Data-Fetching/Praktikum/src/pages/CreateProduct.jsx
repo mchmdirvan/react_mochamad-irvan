@@ -114,6 +114,7 @@ function CreateProduct() {
       const updateProduct = {
         id: selectedId,
         ...data,
+        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
       };
       dispatch(editProduct(updateProduct));
       reset();
