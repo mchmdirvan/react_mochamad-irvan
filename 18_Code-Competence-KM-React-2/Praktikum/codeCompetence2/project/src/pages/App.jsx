@@ -9,6 +9,7 @@ import * as z from "zod";
 import { Input, TextArea } from "../components/Form";
 import Navbar from "../components/Navbar";
 import Button from "../components/button";
+import Footer from '../components/Footer'
 
 import ImageHero from "../assets/medium-shot-smiley-man-eating-food.jpg";
 import RiceBowl from "../assets/Rice-Bowl.jpg";
@@ -212,6 +213,7 @@ export default function App() {
           </div>
         </form>
       </section>
+      <Footer/>
     </>
   );
 }
