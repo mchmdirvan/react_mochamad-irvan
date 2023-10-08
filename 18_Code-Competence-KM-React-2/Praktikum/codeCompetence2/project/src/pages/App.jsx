@@ -219,28 +219,24 @@ export default function App() {
         <div className=" max-w-2xl flex flex-col justify-center items-center">
           <h2 className="text-6xl font-semibold">About Us</h2>
           <p className="text-justify py-10">
-            At Salad Works, we are deeply committed to your well-being. Our
-            journey began with a simple yet powerful idea: to provide you with
-            healthy and delicious food options that not only nourish your body
-            but also delight your taste buds. We believe that good health starts
-            with what you eat, and that's why we've made it our mission to make
-            it easy for you to enjoy fresh and nutritious meals every day. Our
-            team of culinary experts and nutritionists work tirelessly to craft
-            a menu that caters to your dietary needs and preferences. Whether
+            At Salad Works, we're passionate about your well-being. Our journey
+            began with a powerful idea: to offer you wholesome and delectable
+            food that not only nourishes your body but also satisfies your taste
+            buds. We understand that good health begins with what you eat, and
+            that's why we've made it our mission to provide you with fresh and
+            nutritious meals daily. <br /><br />
+            Our dedicated team of culinary experts and nutritionists works
+            diligently to create a menu tailored to your dietary needs. Whether
             you're a fitness enthusiast, a busy professional, or simply someone
-            who appreciates the goodness of fresh ingredients, we've got you
-            covered. From crisp salads bursting with vibrant flavors to hearty
-            bowls that keep you fueled throughout the day, Salad Works is your
-            go-to destination for wholesome eating. We take pride in sourcing
-            the finest ingredients, ensuring that every bite you take is a step
-            towards a healthier you. Our commitment extends beyond just food;
-            it's a dedication to enhancing your overall well-being. We
-            understand that a healthy lifestyle is a journey, and we're here to
-            support you every step of the way. So, join us on this flavorful and
-            nutritious adventure. Discover the joy of eating well, and
-            experience the difference that Salad Works can make in your active
-            lifestyle. We invite you to savor the freshness, embrace the
-            goodness, and elevate your health with Salad Works.
+            who appreciates the goodness of fresh ingredients, Salad Works is
+            your go-to destination for wholesome dining. We take pride in
+            sourcing the finest ingredients to ensure that every bite takes you
+            closer to a healthier you. <br /><br />
+            Our commitment extends beyond food; it's a dedication to enhancing
+            your overall well-being. We're here to support your journey to a
+            healthier lifestyle. Join us on this flavorful adventure, savor the
+            freshness, embrace the goodness, and elevate your health with Salad
+            Works
           </p>
         </div>
         <div>
