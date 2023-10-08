@@ -129,6 +129,8 @@ Beberapa kekurangan dari Redux yaitu membutuhkan waktu dan pembelajaran yang leb
    store ini digunakan untuk membuat sebuah wadah/tempat yang nantinya dipakai untuk menyimpan state/nilai setiap komponen. store seperti provider.
 
 5. Buat provider di main.jsx dan import store
+6. Import useSelector dan useDispatch pada pages
+7. Panggil updater dengan menggunakan dispatch
 
 ## di reducers.js ada apa saja?
 
