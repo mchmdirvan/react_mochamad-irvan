@@ -1,9 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import Navbar from "../components/Navbar";
 import Button from "../components/button";
 import ImageHero from "../assets/medium-shot-smiley-man-eating-food.jpg";
+import RiceBowl from "../assets/Rice-Bowl.jpg";
 
 export default function App() {
   return (
@@ -22,27 +24,30 @@ export default function App() {
           </p>
           <div className="flex flex-row flex-wrap flex-initial w-1/2 my-4 gap-4">
             <div className=" w-24">
-              <p className="m-0 text-[#e9ec79]">380</p>
+              <p className=" w-24 text-[#e9ec79]">380</p>
               <p className="text-[#fdfbef]">CALORIES</p>
             </div>
             <div className="w-24">
-              <p className="text-[#e9ec79] m-0">12G</p>
+              <p className="text-[#e9ec79]  w-24">12G</p>
               <p className="text-[#fdfbef]">PROTEIN</p>
             </div>
             <div className="w-24">
-              <p className="text-[#e9ec79] m-0">18G</p>
+              <p className="text-[#e9ec79]  w-24">18G</p>
               <p className="text-[#fdfbef]">FAT</p>
             </div>
             <div className="w-24">
-              <p className="text-[#e9ec79] m-0">0.3KG</p>
+              <p className="text-[#e9ec79]  w-24">0.3KG</p>
               <p className="text-[#fdfbef]">CO2E</p>
             </div>
             <div className="w-24">
-              <p className="text-[#e9ec79] m-0">LOW</p>
+              <p className="text-[#e9ec79]  w-24">LOW</p>
               <p className="text-[#fdfbef]">CARBON</p>
             </div>
           </div>
-          <Button label="Order Now" className="bg-[#e9ec79] px-[8rem] hover:bg-[#a8ad58] hover:text-white mt-5  " />
+          <Button
+            label="Order Now"
+            className="bg-[#e9ec79] px-[8rem] hover:bg-[#a8ad58] hover:text-white mt-5  "
+          />
         </div>
 
         <div className="p-2">
@@ -51,6 +56,49 @@ export default function App() {
             alt="Smiley Man Eating Food"
             className=" w-[27rem]"
           />
+        </div>
+      </section>
+
+      <section className="flex flex-row justify-center items-center bg-[#fdfbef] h-[60vh] gap-20">
+        <div className="p-2 ">
+          <img
+            src={RiceBowl}
+            alt="Chicken and Rice Bowl"
+            className="w-[28rem]"
+          />
+        </div>
+        <div className="p-2 max-w-2xl">
+          <h1 className="mb-4 text-7xl font-semibold">Limited Time Only</h1>
+          <p className="my-4 w-3/4">
+            Get your forks on new hits like the Chicken + Chipotle Pepper Bowl
+            before it's too late
+          </p>
+          <div className="flex flex-row flex-wrap flex-initial w-3/5 my-4 gap-4">
+            <div>
+              <p className=" w-24">600</p>
+              <p className="text-gray-400">Calories</p>
+            </div>
+            <div>
+              <p className=" w-24">31G</p>
+              <p className="text-gray-400">Protein</p>
+            </div>
+            <div>
+              <p className=" w-24">62G</p>
+              <p className="text-gray-400">Carbs</p>
+            </div>
+            <div>
+              <p className=" w-24">27G</p>
+              <p className="text-gray-400">Fat</p>
+            </div>
+            <div className="">
+              <p className=" w-24">0.7kg</p>
+              <p className="text-gray-400">CO2E</p>
+            </div>
+          </div>
+          <Button
+            label="Order Now"
+            className="bg-[#838671] px-[8rem] hover:bg-[#56584a] text-white mt-5"
+          ></Button>
         </div>
       </section>
     </>
