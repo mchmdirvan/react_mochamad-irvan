@@ -26,6 +26,7 @@ function Input({
   error,
   placeholder,
   register,
+  ariaLabel
 }) {
   return (
     <>
@@ -46,6 +47,7 @@ function Input({
             id={id}
             placeholder={placeholder}
             {...(register ? register(name) : {})}
+            aria-label={ariaLabel}
           />
           {error && <div className=" text-red-500">{error}</div>}
         </div>
@@ -66,7 +68,7 @@ function Input({
  * name : string
  * }}  props
  */
-function File({ label, type, id, error, register, name }) {
+function File({ label, type, id, error, register, name, ariaLabel }) {
   return (
     <div className="mt-5">
       <label className="">{label}</label>
@@ -81,6 +83,7 @@ function File({ label, type, id, error, register, name }) {
           transition duration-300 ease-in-out"`}
           id={id}
           {...(register ? register(name) : {})}
+          aria-label={ariaLabel}
         />
       </div>
       {error && <div className=" text-red-500">{error}</div>}
@@ -101,7 +104,7 @@ function File({ label, type, id, error, register, name }) {
  * register: function
  * }}  props
  */
-function TextArea({ label, name, id, cols, rows, error, register }) {
+function TextArea({ label, name, id, cols, rows, error, register,  ariaLabel }) {
   return (
     <div className="mt-5">
       <label className="form-label">{label}</label>
@@ -118,6 +121,7 @@ function TextArea({ label, name, id, cols, rows, error, register }) {
           cols={cols}
           rows={rows}
           {...(register ? register(name) : {})}
+          aria-label={ariaLabel}
         />
         {error && <div className=" text-red-500">{error}</div>}
       </div>
@@ -146,12 +150,14 @@ function Select({
   placeholder,
   error,
   register,
+  ariaLabel
 }) {
   return (
     <div className="mt-5">
       <label className="form-label">{label}</label>
       <div className="mt-2">
         <select
+        aria-label={ariaLabel}
           className={`${
             error
               ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
