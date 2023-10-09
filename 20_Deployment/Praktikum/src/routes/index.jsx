@@ -15,10 +15,10 @@ function Router() {
       path: "/create-product",
       element: <CreateProduct />,
     },
-    {
-      path: "/create-product/:id",
-      element: <DetailData />,
-    },
+    // {
+    //   path: "/create-product/:id",
+    //   element: <DetailData />,
+    // },
   ]);
   return <RouterProvider router={router} />;
 }
