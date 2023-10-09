@@ -224,6 +224,7 @@ function CreateProduct() {
               register={register}
               defaultValue={""}
               error={errors.productFreshness?.message}
+              ariaLabel="input-product-freshness"
             />
           </div>
 
@@ -254,13 +255,14 @@ function CreateProduct() {
           />
 
           {/* Button to Submit the Form */}
-          <Button type="submit" id="submitButton" label="Submit" className="" />
+          <Button type="submit" id="submitButton" label="Submit" ariaLabel="btn-submit" />
 
           {/* Button to Generate Random Number */}
           <Button
             type="Button"
             id="generateRandomNumberButton"
             label="Generate Random Number"
+            ariaLabel="btn-random"
             onClick={() => generateRandomNumber()}
           />
         </form>
