@@ -1,5 +1,7 @@
 # (20) Deployment
 
+## Link deployment
+
 ## Apa itu vercel?
 Vercel merupakan layanan hosting gratis berbasis static site
 
