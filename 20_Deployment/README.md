@@ -1,7 +1,7 @@
 # (20) Deployment
 
 ## Link deployment
-
+https://deployment-redux.vercel.app/
 ## Apa itu vercel?
 Vercel merupakan layanan hosting gratis berbasis static site
 
