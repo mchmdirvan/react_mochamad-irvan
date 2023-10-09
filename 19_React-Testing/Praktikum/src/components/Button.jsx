@@ -8,16 +8,18 @@ import React from "react";
  * type : string
  * id : string
  * label : string
+ * ariaLabel: string
  * }}
  */
 
-function Button({ type, id, label }) {
+function Button({ type, id, label, ariaLabel }) {
   return (
     <div className="mt-5">
       <button
         className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700"
         type={type}
         id={id}
+        aria-label={ariaLabel}
       >
         {label}
       </button>
