@@ -185,12 +185,21 @@ function Select({
  *   error: string
  *   checked: boolean
  *   register: function
+ *   ariaLabel: string
  * }} props
  *
  */
-function RadioGroup({ label, name, defaulValue, error, register, options }) {
+function RadioGroup({
+  label,
+  name,
+  defaulValue,
+  error,
+  register,
+  options,
+  ariaLabel,
+}) {
   return (
-    <div className="flex flex-col gap-x-3">
+    <div className="flex flex-col gap-x-3" aria-label={ariaLabel}>
       <label className="text-black dark:text-white mb-3">{label}</label>
       {options.map((option) => (
         <div key={option.id} className="flex gap-3">
