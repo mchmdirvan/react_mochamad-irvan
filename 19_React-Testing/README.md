@@ -41,16 +41,18 @@ banyaklah pokoknya
 7. Melakukan konfigurasi pada utils.jsx untuk :
    - support provider
    - customRender
-8. Membuat file testing di pages sesuai nama pages nya ditambahkan .test
+8. Melakukan konfigurasi pada component untuk menambahkan aria label 
+9. Membuat file testing di pages sesuai nama pages nya ditambahkan .test
 
 ## Jenis Routing di React :
 - Browser Router -> History Navigasi pada browser
 - Hash Router -> History Navigasi pada #
 - Memory Router
 
-
-## Aria label + Radio
-## Looping
-## Test Page + Test Action
 ## Vitest Coverage - html
+Mengecek coverage testing nya sudah berapa  %, baru lakukan testing manual. 
+Minimal bagusnya adalah 85%
+
 ## README
+contoh readme yang proper : github.com/SyaifulGhifari/LesGoo
+untuk membuatnya dapat menggunakan:  readme.so
