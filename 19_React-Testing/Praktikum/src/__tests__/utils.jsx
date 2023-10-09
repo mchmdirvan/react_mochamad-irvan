@@ -1,10 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 
-import store from "src/utils/states/redux/store/store";
+import store from "../utils/states/redux/store/store";
 
 const Providers = ({ children }) => {
   return (
@@ -21,4 +21,4 @@ const customRender = (component) => {
 };
 
 export * from "@testing-library/react";
-export { customRender as Render };
+export { customRender as render };
