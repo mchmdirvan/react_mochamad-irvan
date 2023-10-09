@@ -36,12 +36,19 @@ banyaklah pokoknya
 2. Buat Folder __tests__ -> Pages
 3. didalam folder pages buat setup.js dan utils.jsx
 4. Melakukan konfigurasi pada setup.js
-5. Melakukan konfigurasi pada package.json -> scripts
+5. Melakukan konfigurasi pada package.json -> scripts -> test:vitest
+6. Melakukan konfigurasi pada vite.config.js 
+7. Melakukan konfigurasi pada utils.jsx untuk :
+   - support provider
+   - customRender
+8. Membuat file testing di pages sesuai nama pages nya ditambahkan .test
+
+## Jenis Routing di React :
+- Browser Router -> History Navigasi pada browser
+- Hash Router -> History Navigasi pada #
+- Memory Router
 
 
-
-## Konfigurasi
-## Router
 ## Aria label + Radio
 ## Looping
 ## Test Page + Test Action
