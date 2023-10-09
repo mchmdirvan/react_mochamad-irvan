@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import CreateProduct from "../pages/CreateProduct";
 import LandingPage from "../pages/LandingPage";
-// import DetailData from "../pages/detail";
+import DetailData from "../pages/detail";
 
 function Router() {
   const router = createBrowserRouter([
@@ -15,10 +15,10 @@ function Router() {
       path: "/create-product",
       element: <CreateProduct />,
     },
-    // {
-    //   path: "/create-product/:id",
-    //   element: <DetailData />,
-    // },
+    {
+      path: "/create-product/:id",
+      element: <DetailData />,
+    },
   ]);
   return <RouterProvider router={router} />;
 }
