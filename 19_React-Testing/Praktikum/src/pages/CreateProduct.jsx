@@ -173,7 +173,11 @@ function CreateProduct() {
 
       <main className="px-[28rem]">
         <h4 className="font-semibold text-2xl">Detail Product</h4>
-        <form aria-label="product-form" noValidate="" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          aria-label="product-form"
+          noValidate=""
+          onSubmit={handleSubmit(onSubmit)}
+        >
           {/* Form Product Name */}
           <Input
             register={register}
@@ -184,7 +188,7 @@ function CreateProduct() {
             id="productName"
             autoFocus
             error={errors.productName?.message}
-            aria-label = "input-product-name"
+            ariaLabel="input-product-name"
           />
 
           {/* Form Product Category */}
@@ -196,7 +200,7 @@ function CreateProduct() {
             options={["Fruits", "Vegetable", "Dairy"]}
             placeholder="Choose..."
             error={errors.productCategory?.message}
-            aria-label = "input-product-category"
+            ariaLabel="input-product-category"
           />
 
           {/* Form Image of Product */}
@@ -207,7 +211,7 @@ function CreateProduct() {
             id="imageOfProduct"
             error={errors.imageOfProduct?.message}
             name="imageOfProduct"
-            aria-label = "input-product-image"
+            ariaLabel="input-product-image"
           />
 
           {/* Form Product Freshness */}
@@ -220,7 +224,6 @@ function CreateProduct() {
               register={register}
               defaultValue={""}
               error={errors.productFreshness?.message}
-              aria-label = "input-product-freshness"
             />
           </div>
 
@@ -234,7 +237,7 @@ function CreateProduct() {
             cols={5}
             rows={5}
             error={errors.additionalDescription?.message}
-            aria-label = "input-product-description"
+            ariaLabel="input-product-description"
           />
 
           {/* Form Product Price */}
@@ -247,7 +250,7 @@ function CreateProduct() {
             placeholder="$1"
             error={errors.productPrice?.message}
             name="productPrice"
-            ariaLabel = "input-product-price"
+            ariaLabel="input-product-price"
           />
 
           {/* Button to Submit the Form */}
