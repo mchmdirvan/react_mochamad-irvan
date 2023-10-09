@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import CreateProduct from "../pages/CreateProduct";
 import LandingPage from "../pages/LandingPage";
-import DetailData from "../pages/detail";
+import DetailData from "../pages/Detail";
 
 function Router() {
   const router = createBrowserRouter([
