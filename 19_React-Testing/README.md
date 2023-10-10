@@ -11,7 +11,7 @@ A process of "analyzing a software item" to "detect the differences" between exi
 - Scaling the team
 
 ## Apa itu Level of testing? 
-...
+Ada empat tahap pengujian dalam pengembangan perangkat lunak: Unit Testing yang difokuskan pada verifikasi unit program, Integration Testing untuk menguji interaksi antar unit, System Testing untuk memastikan sistem memenuhi spesifikasi, dan Acceptance Testing di mana pengguna akhir menguji aplikasi dalam simulasi penggunaan nyata.
 
 ## Terdiri dari apa saja Level of Testing?
 - UI : end to end test the interaction between the overall through the user interface -> QA
