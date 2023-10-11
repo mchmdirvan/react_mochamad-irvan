@@ -105,12 +105,21 @@ describe("Index Product Page", () => {
       fireEvent.click(button);
 
       await waitFor(() => {
-        // const form = screen.getByLabelText("product-form");
-        // const productNameInput =
-        //   within(form).getByLabelText("input-product-name");
+        expect(screen.getByText("Please enter a valid Product Name"));
+      });
+    });
 
-        // fireEvent.change(productNameInput, { target: { value: "" } });
-        expect(screen.getByText("Please enter a valid Product Name"))
+    it("should validation form product name when contain symbol", async () => {
+      const form = screen.getByLabelText("product-form");
+      const productNameInput =
+        within(form).getByLabelText("input-product-name");
+
+      fireEvent.change(productNameInput, { target: { value: "product@name" } });
+
+      const button = screen.getByLabelText("btn-submit");
+      fireEvent.click(button);
+      await waitFor(() => {
+        expect(screen.getByText("Product Name should not contain symbols"));
       });
     });
   });
