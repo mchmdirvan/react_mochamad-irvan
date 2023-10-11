@@ -20,3 +20,13 @@ niagahoster
 - netlify
 - firebase hosting
 - github pages
+
+## Friday Class
+- Take time for rest
+- Critical Thinking & Growth Mindset
+- Problem Solving Paradigma
+  1. Bruth Force :  mencoba setiap kemungkinan 
+  2. Greedy : mencoba setiap kemungkinan namun akan makin optimal
+  3. Dispatch and con...
+  4. Dynamic Progamming
+- Agile & Scrum
