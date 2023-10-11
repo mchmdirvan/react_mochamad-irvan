@@ -56,16 +56,14 @@ describe("Index Product Page", () => {
       const form = screen.getByLabelText("product-form");
       const productImage = within(form).getByLabelText("input-product-image");
 
-      fireEvent.change(productImage, {
-        target: {
-          files: [
-            new File(["sample-image"], "sample.png", { type: "image/png" }),
-          ],
-        },
+      const file = new File(["sample-image"], "sample.png", {
+        type: "image/png",
       });
-      expect(productImage).toBeInTheDocument([
-        new File(["sample-image"], "sample.png", { type: "image/png" }),
-      ]);
+
+      fireEvent.change(productImage, {
+        target: { files: [file] },
+      });
+      expect(productImage).toBeInTheDocument([file]);
     });
 
     it("should save and display Product Freshness", () => {
@@ -91,14 +89,23 @@ describe("Index Product Page", () => {
 
     it("should save and display Product Price", () => {
       const form = screen.getByLabelText("product-form");
-      const productPrice = within(form).getByLabelText(
-        "input-product-price"
-      );
+      const productPrice = within(form).getByLabelText("input-product-price");
 
       fireEvent.change(productPrice, {
-        target: { value: "10" },
+        target: { value: 10 },
       });
-      expect(productPrice).toBeInTheDocument("10");
+      expect(productPrice).toHaveValue(10);
+    });
+  });
+
+  describe("Validation Forms", () => {
+    it("should validation form product name not null", () => {
+      const form = screen.getByLabelText("product-form");
+      const productNameInput =
+        within(form).getByLabelText("input-product-name");
+
+      fireEvent.change(productNameInput, { target: { value: "" } });
+      expect(productNameInput).toHaveValue("");
     });
   });
 });
