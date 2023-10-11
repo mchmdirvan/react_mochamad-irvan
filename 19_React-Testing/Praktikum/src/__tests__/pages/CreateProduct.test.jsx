@@ -122,5 +122,19 @@ describe("Index Product Page", () => {
         expect(screen.getByText("Product Name should not contain symbols"));
       });
     });
+
+    it("should validation form product name when input more than 25 character", async () => {
+      const form = screen.getByLabelText("product-form");
+      const productNameInput =
+        within(form).getByLabelText("input-product-name");
+
+      fireEvent.change(productNameInput, { target: { value: "Advanced Multifunctional Digital Electronic Device" } });
+
+      const button = screen.getByLabelText("btn-submit");
+      fireEvent.click(button);
+      await waitFor(() => {
+        expect(screen.getByText("Product Name must not exceed 25 characters."));
+      });
+    });
   });
 });
