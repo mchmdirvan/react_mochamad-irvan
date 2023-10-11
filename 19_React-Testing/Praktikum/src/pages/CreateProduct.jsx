@@ -64,7 +64,10 @@ function CreateProduct() {
     productName: z
       .string()
       .min(1, { message: "Please enter a valid Product Name" })
-      .max(25, { message: "Product Name must not exceed 25 characters." }),
+      .max(25, { message: "Product Name must not exceed 25 characters." })
+      .refine((value) => !/@|#|\{|\}/.test(value), {
+        message: "Product Name should not contain symbols"
+      }),
     productPrice: z
       .string()
       .min(1, { message: "Please enter a valid Product Price" }),
