@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import "@testing-library/jest-dom";
-import { render, screen, within, fireEvent } from "../utils";
+import { render, screen, within, fireEvent, waitFor } from "../utils";
 
 import CreateProduct from "../../pages/CreateProduct";
+import { expect } from "vitest";
 
 const productInput = [
   "input-product-name",
@@ -99,13 +100,18 @@ describe("Index Product Page", () => {
   });
 
   describe("Validation Forms", () => {
-    it("should validation form product name not null", () => {
-      const form = screen.getByLabelText("product-form");
-      const productNameInput =
-        within(form).getByLabelText("input-product-name");
+    it("should validation form product name not null", async () => {
+      const button = screen.getByLabelText("btn-submit");
+      fireEvent.click(button);
 
-      fireEvent.change(productNameInput, { target: { value: "" } });
-      expect(productNameInput).toHaveValue("");
+      await waitFor(() => {
+        // const form = screen.getByLabelText("product-form");
+        // const productNameInput =
+        //   within(form).getByLabelText("input-product-name");
+
+        // fireEvent.change(productNameInput, { target: { value: "" } });
+        expect(screen.getByText("Please enter a valid Product Name"))
+      });
     });
   });
 });
