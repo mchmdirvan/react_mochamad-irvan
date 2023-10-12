@@ -23,7 +23,9 @@ export default function Detail() {
       <p>ID: {product.id}</p>
       <p>Product Name: {product.productName}</p>
       <p>Product Category: {product.productCategory}</p>
+      <p>Product Image: {product.imageOfProduct}</p>
       <p>Product Freshness: {product.productFreshness}</p>
+      <p>Product Description: {product.additionalDescription}</p>
       <p>Product Price: {product.productPrice}</p>
     </div>
   );
