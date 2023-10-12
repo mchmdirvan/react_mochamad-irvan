@@ -113,7 +113,7 @@ function CreateProduct() {
   async function fetchData() {
     try {
       const response = await getProducts();
-      dispatch(setProducts(response))
+      dispatch(setProducts(response));
     } catch (error) {
       console.log(error.toString());
     }
@@ -124,7 +124,7 @@ function CreateProduct() {
       const product = {
         id: uuidv4(),
         ...data,
-        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
+        
       };
       const newProducts = [...products, product];
       dispatch(setProducts(newProducts));
@@ -132,7 +132,7 @@ function CreateProduct() {
       const updateProduct = {
         id: selectedId,
         ...data,
-        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
+        
       };
       dispatch(editProduct(updateProduct));
       reset();
@@ -215,7 +215,7 @@ function CreateProduct() {
             label="Product Category"
             name="productCategory"
             id="productCategory"
-            options={["Fruits", "Vegetable", "Dairy"]}
+            options={["Furniture", "Appliance", "Electronics"]}
             placeholder="Choose..."
             error={errors.productCategory?.message}
             ariaLabel="input-product-category"
@@ -223,13 +223,13 @@ function CreateProduct() {
 
           {/* Form Image of Product */}
           <File
+            name="imageOfProduct"
+            id4="imageOfProduct"
             register={register}
             label="Product Image"
-            type="file"
-            id="imageOfProduct"
             error={errors.imageOfProduct?.message}
-            name="imageOfProduct"
             ariaLabel="input-product-image"
+            type="file"
           />
 
           {/* Form Product Freshness */}
