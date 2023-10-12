@@ -39,20 +39,7 @@ function CreateProduct() {
   const [currentLanguage, setCurrentLanguage] = useState("en");
   const [selectedId, setSelectedId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
-  const [radioOption] = useState([
-    {
-      id: "freshness-new",
-      label: "Brand New",
-    },
-    {
-      id: "freshness-second",
-      label: "Second Hand",
-    },
-    {
-      id: "freshness-refurbished",
-      label: "Refurbished",
-    },
-  ]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const MAX_FILE_SIZE = 5000000;
   const ACCEPTED_IMAGE_TYPES = [
@@ -71,7 +58,7 @@ function CreateProduct() {
         message: "Product Name should not contain symbols",
       }),
     productPrice: z
-      .string()
+      .number()
       .min(1, { message: "Please enter a valid Product Price" }),
     productCategory: z
       .string()
@@ -124,7 +111,6 @@ function CreateProduct() {
       const product = {
         id: uuidv4(),
         ...data,
-        
       };
       const newProducts = [...products, product];
       dispatch(setProducts(newProducts));
@@ -132,7 +118,6 @@ function CreateProduct() {
       const updateProduct = {
         id: selectedId,
         ...data,
-        
       };
       dispatch(editProduct(updateProduct));
       reset();
@@ -238,9 +223,8 @@ function CreateProduct() {
               id="input-product-freshness"
               label="Product Freshness"
               name="productFreshness"
-              options={radioOption}
+              options={["Brand New", "Second Hand", "Refurbished"]}
               register={register}
-              defaultValue={""}
               error={errors.productFreshness?.message}
               ariaLabel="input-product-freshness"
             />

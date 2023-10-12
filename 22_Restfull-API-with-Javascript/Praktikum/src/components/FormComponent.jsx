@@ -32,7 +32,7 @@ function Input({
     <>
       <div className=" mt-5 col-span-full">
         <label className="form-label block leading-6" htmlFor={id}>
-          {label}
+  
         </label>
         <div className="mt-2">
           <input
@@ -209,16 +209,16 @@ function RadioGroup({
     <div className="flex flex-col gap-x-3" aria-label={ariaLabel}>
       <label className="text-black dark:text-white mb-3">{label}</label>
       {options.map((option) => (
-        <div key={option.id} className="flex gap-3">
+        <div key={option} className="flex gap-3">
           <input
             type="radio"
-            value={option.label}
-            id={option.id}
+            value={option}
+            id={option}
             {...(register ? register(name) : {})}
             defaultValue={defaulValue}
           />
-          <label className="text-black dark:text-white" htmlFor={option.id}>
-            {option.label}
+          <label className="text-black dark:text-white" htmlFor={option}>
+            {option}
           </label>
         </div>
       ))}
