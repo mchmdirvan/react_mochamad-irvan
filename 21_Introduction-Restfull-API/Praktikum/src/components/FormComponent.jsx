@@ -26,7 +26,7 @@ function Input({
   error,
   placeholder,
   register,
-  ariaLabel
+  ariaLabel,
 }) {
   return (
     <>
@@ -75,6 +75,7 @@ function File({ label, type, id, error, register, name, ariaLabel }) {
       <div className="mt-3">
         <input
           type={type}
+          name={name}
           className={`${
             error
               ? "focus:ring-[0.4rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
@@ -104,7 +105,7 @@ function File({ label, type, id, error, register, name, ariaLabel }) {
  * register: function
  * }}  props
  */
-function TextArea({ label, name, id, cols, rows, error, register,  ariaLabel }) {
+function TextArea({ label, name, id, cols, rows, error, register, ariaLabel }) {
   return (
     <div className="mt-5">
       <label className="form-label">{label}</label>
@@ -150,14 +151,14 @@ function Select({
   placeholder,
   error,
   register,
-  ariaLabel
+  ariaLabel,
 }) {
   return (
     <div className="mt-5">
       <label className="form-label">{label}</label>
       <div className="mt-2">
         <select
-        aria-label={ariaLabel}
+          aria-label={ariaLabel}
           className={`${
             error
               ? "focus:ring-[0.3rem] focus:ring-offset-0 focus:ring-red-200 ring-red-500 "
