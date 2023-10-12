@@ -32,7 +32,7 @@ function Input({
     <>
       <div className=" mt-5 col-span-full">
         <label className="form-label block leading-6" htmlFor={id}>
-  
+        {label}
         </label>
         <div className="mt-2">
           <input
@@ -46,7 +46,7 @@ function Input({
             name={name}
             id={id}
             placeholder={placeholder}
-            {...(register ? register(name) : {})}
+            {...(register ? register(name, {valueAsNumber: type === "number" ? true : false}) : {})}
             aria-label={ariaLabel}
           />
           {error && <div className=" text-red-500">{error}</div>}

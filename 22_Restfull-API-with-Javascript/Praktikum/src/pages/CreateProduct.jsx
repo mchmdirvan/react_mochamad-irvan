@@ -90,6 +90,7 @@ function CreateProduct() {
     resolver: zodResolver(schema),
     defaultValues: {
       productFreshness: "",
+      productPrice: 0,
     },
   });
 
