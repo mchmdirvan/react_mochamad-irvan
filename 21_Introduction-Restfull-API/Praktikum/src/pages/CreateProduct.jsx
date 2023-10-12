@@ -108,11 +108,15 @@ function CreateProduct() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   async function fetchData() {
-    const response = await getProducts();
-    console.log(response);
+    try {
+      const response = await getProducts();
+      dispatch(setProducts(response))
+    } catch (error) {
+      console.log(error.toString());
+    }
   }
 
   function onSubmit(data) {
