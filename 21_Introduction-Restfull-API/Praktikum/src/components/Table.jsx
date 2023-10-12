@@ -44,7 +44,7 @@ function Table({ headers = [], datas = [], onEditClick, onDeleteClick }) {
               </td>
               <td>{data.productName}</td>
               <td>{data.productCategory}</td>
-              <td>{data.imageOfProduct}</td>
+              <td><img src={data.imageOfProduct} alt="" className="w-10" /></td>
               <td>{data.productFreshness}</td>
               <td>{data.additionalDescription}</td>
               <td>{data.productPrice}</td>
