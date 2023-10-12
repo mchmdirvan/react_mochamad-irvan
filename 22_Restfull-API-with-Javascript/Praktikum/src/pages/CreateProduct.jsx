@@ -28,7 +28,7 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
 
-import { getProducts } from "../utils/API/posts/api";
+import { getProducts } from "../utils/API/products/api";
 
 function CreateProduct() {
   useTitle("Create Product");
