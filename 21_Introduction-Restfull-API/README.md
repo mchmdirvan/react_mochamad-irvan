@@ -25,3 +25,10 @@ HTTP Response code adalah sebuah kode yang memiliki arti
 - Filtering, sorting, paging and field selection
 - Handle Trailing Slashes Gracefully
 - Versioning
+
+## Apa itu MockAPI?
+mockapi.io is a simple tool that lets you easily mock up APIs, generate custom data, and perform operations on it using RESTful interface. It is meant to be used as a prototyping/testing/learning tool.
+
+## Bagaimana cara Implementasi MockAPI di react?
+1. Membuat skema data dan endpoint di mockAPI
+2. Menggunakan axios untuk get data
