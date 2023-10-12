@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import * as z from "zod";
 
@@ -28,6 +28,8 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
 
+import { getProducts } from "../utils/API/posts/api";
+
 function CreateProduct() {
   useTitle("Create Product");
 
@@ -52,7 +54,7 @@ function CreateProduct() {
     },
   ]);
 
-  const MAX_FILE_SIZE = 500000;
+  const MAX_FILE_SIZE = 5000000;
   const ACCEPTED_IMAGE_TYPES = [
     "image/jpeg",
     "image/jpg",
@@ -66,7 +68,7 @@ function CreateProduct() {
       .min(1, { message: "Please enter a valid Product Name" })
       .max(25, { message: "Product Name must not exceed 25 characters." })
       .refine((value) => !/@|#|\{|\}/.test(value), {
-        message: "Product Name should not contain symbols"
+        message: "Product Name should not contain symbols",
       }),
     productPrice: z
       .string()
@@ -103,6 +105,15 @@ function CreateProduct() {
       productFreshness: "",
     },
   });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    const response = await getProducts();
+    console.log(response);
+  }
 
   function onSubmit(data) {
     if (!isEdit) {
@@ -258,7 +269,12 @@ function CreateProduct() {
           />
 
           {/* Button to Submit the Form */}
-          <Button type="submit" id="submitButton" label="Submit" ariaLabel="btn-submit" />
+          <Button
+            type="submit"
+            id="submitButton"
+            label="Submit"
+            ariaLabel="btn-submit"
+          />
 
           {/* Button to Generate Random Number */}
           <Button
