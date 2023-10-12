@@ -106,7 +106,7 @@ function CreateProduct() {
       const product = {
         id: uuidv4(),
         ...data,
-        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
+        imageOfProduct: data.imageOfProduct[0].name,
       };
       const newProducts = [...products, product];
       dispatch(setProducts(newProducts));
@@ -114,7 +114,7 @@ function CreateProduct() {
       const updateProduct = {
         id: selectedId,
         ...data,
-        imageOfProduct: URL.createObjectURL(data.imageOfProduct[0]),
+        imageOfProduct: data.imageOfProduct[0].name,
       };
       dispatch(editProduct(updateProduct));
       reset();
