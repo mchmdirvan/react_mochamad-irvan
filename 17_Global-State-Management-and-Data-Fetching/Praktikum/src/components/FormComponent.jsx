@@ -66,12 +66,13 @@ function Input({
  * name : string
  * }}  props
  */
-function File({ label, type, id, error, onChange, value, register, name }) {
+function File({ label, type, id, error, register, name }) {
   return (
     <div className="mt-5">
       <label className="">{label}</label>
       <div className="mt-3">
         <input
+          name={name}
           type={type}
           className={`${
             error
@@ -80,8 +81,6 @@ function File({ label, type, id, error, onChange, value, register, name }) {
           } w-56 rounded-md ring-2 text-blue-500
           transition duration-300 ease-in-out"`}
           id={id}
-          onChange={onChange}
-          value={value}
           {...(register ? register(name) : {})}
         />
       </div>
@@ -103,15 +102,7 @@ function File({ label, type, id, error, onChange, value, register, name }) {
  * register: function
  * }}  props
  */
-function TextArea({
-  label,
-  name,
-  id,
-  cols,
-  rows,
-  error,
-  register,
-}) {
+function TextArea({ label, name, id, cols, rows, error, register }) {
   return (
     <div className="mt-5">
       <label className="form-label">{label}</label>
@@ -198,19 +189,10 @@ function Select({
  * }} props
  *
  */
-function RadioGroup({
-  label,
-  name,
-  defaulValue,
-  error,
-  register,
-  options
-}) {
+function RadioGroup({ label, name, defaulValue, error, register, options }) {
   return (
     <div className="flex flex-col gap-x-3">
-      <label className="text-black dark:text-white mb-3">
-        {label}
-      </label>
+      <label className="text-black dark:text-white mb-3">{label}</label>
       {options.map((option) => (
         <div key={option.id} className="flex gap-3">
           <input
@@ -220,10 +202,7 @@ function RadioGroup({
             {...(register ? register(name) : {})}
             defaultValue={defaulValue}
           />
-          <label
-            className="text-black dark:text-white"
-            htmlFor={option.id}
-          >
+          <label className="text-black dark:text-white" htmlFor={option.id}>
             {option.label}
           </label>
         </div>
