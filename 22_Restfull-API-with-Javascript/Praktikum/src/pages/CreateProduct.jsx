@@ -96,7 +96,7 @@ function CreateProduct() {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   async function fetchData() {
     try {
@@ -122,19 +122,24 @@ function CreateProduct() {
     });
   }
 
-  function handleEdit(data) {
-    const updateProduct = {
-      id: selectedId,
-      ...data,
-    };
-    dispatch(editProduct(updateProduct));
-    reset();
-    setIsEdit(false);
-    Swal.fire({
-      title: "Success",
-      text: "Berhasil merubah data",
-      showCancelButton: false,
-    });
+  async function handleEdit(data) {
+    try {
+      await updateProduct({ ...data, id: selectedId });
+      Swal.fire({
+        title: "Success",
+        text: "Successfully updated the product",
+        showCancelButton: false,
+      });
+      setSelectedId("");
+      reset();
+      fetchData();
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
+    }
   }
 
   function handleDelete(id) {
