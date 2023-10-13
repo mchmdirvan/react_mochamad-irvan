@@ -10,11 +10,7 @@ import * as z from "zod";
 import BootstrapLogo from "../assets/bootstrap-logo.svg";
 
 import CreateProductLanguage from "../utils/constants/CreateProductLanguage";
-import {
-  setProducts,
-  editProduct,
-  deleteProduct,
-} from "../utils/states/redux/reducers/reducers";
+import { setProducts } from "../utils/states/redux/reducers/reducers";
 import { useTitle } from "../utils/hooks/customHooks";
 import Swal from "../utils/swal";
 
@@ -29,7 +25,11 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
 
-import { getProducts, updateProduct } from "../utils/API/products/api";
+import {
+  getProducts,
+  updateProduct,
+  deleteProduct,
+} from "../utils/API/products/api";
 
 function CreateProduct() {
   useTitle("Create Product");
@@ -158,13 +158,22 @@ function CreateProduct() {
     }
   }
 
-  function handleDelete(id) {
-    dispatch(deleteProduct(id));
-    Swal.fire({
-      title: "Success",
-      text: "Berhasil menghapus data",
-      showCancelButton: false,
-    });
+  async function handleDelete(id) {
+    try {
+      await deleteProduct(id);
+      Swal.fire({
+        title: "Success",
+        text: "Successfully deleted the product",
+        showCancelButton: false,
+      });
+      fetchData();
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
+    }
   }
 
   function generateRandomNumber() {
