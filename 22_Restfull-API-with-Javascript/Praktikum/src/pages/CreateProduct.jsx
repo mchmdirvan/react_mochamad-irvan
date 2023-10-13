@@ -28,7 +28,7 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import Table from "../components/Table";
 
-import { getProducts } from "../utils/API/products/api";
+import { getProducts, updateProduct } from "../utils/API/products/api";
 
 function CreateProduct() {
   useTitle("Create Product");
@@ -108,27 +108,31 @@ function CreateProduct() {
   }
 
   function onSubmit(data) {
-    if (!isEdit) {
-      const product = {
-        id: uuidv4(),
-        ...data,
-      };
-      const newProducts = [...products, product];
-      dispatch(setProducts(newProducts));
-    } else {
-      const updateProduct = {
-        id: selectedId,
-        ...data,
-      };
-      dispatch(editProduct(updateProduct));
-      reset();
-    }
+    const product = {
+      id: uuidv4(),
+      ...data,
+    };
+    const newProducts = [...products, product];
+    dispatch(setProducts(newProducts));
     reset();
-    setIsEdit(false);
-
     Swal.fire({
       title: "Success",
       text: "Berhasil menambahkan data",
+      showCancelButton: false,
+    });
+  }
+
+  function handleEdit(data) {
+    const updateProduct = {
+      id: selectedId,
+      ...data,
+    };
+    dispatch(editProduct(updateProduct));
+    reset();
+    setIsEdit(false);
+    Swal.fire({
+      title: "Success",
+      text: "Berhasil merubah data",
       showCancelButton: false,
     });
   }
@@ -180,7 +184,7 @@ function CreateProduct() {
         <form
           aria-label="product-form"
           noValidate=""
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(selectedId == "" ? onSubmit : handleEdit)}
         >
           {/* Form Product Name */}
           <Input
