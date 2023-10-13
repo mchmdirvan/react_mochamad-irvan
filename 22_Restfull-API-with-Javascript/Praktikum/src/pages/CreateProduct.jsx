@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useSelector, useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -50,6 +51,7 @@ function CreateProduct() {
   ];
 
   const schema = z.object({
+    id: z.string().optional(),
     productName: z
       .string()
       .min(1, { message: "Please enter a valid Product Name" })
@@ -114,7 +116,14 @@ function CreateProduct() {
     };
     const newProducts = [...products, product];
     dispatch(setProducts(newProducts));
-    reset();
+    reset({
+      productName: "",
+      productCategory: "",
+      imageOfProduct: "",
+      productFreshness: "",
+      additionalDescription: "",
+      productPrice: 0,
+    });
     Swal.fire({
       title: "Success",
       text: "Berhasil menambahkan data",
@@ -131,8 +140,15 @@ function CreateProduct() {
         showCancelButton: false,
       });
       setSelectedId("");
-      reset();
       fetchData();
+      reset({
+        productName: "",
+        productCategory: "",
+        imageOfProduct: "",
+        productFreshness: "",
+        additionalDescription: "",
+        productPrice: 0,
+      });
     } catch (error) {
       Swal.fire({
         title: "Error",
