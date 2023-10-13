@@ -20,6 +20,21 @@ export const getDetailProducts = async (id) => {
   }
 };
 
+export const createProduct = async (data) => {
+  try {
+    const newData = {
+      id: uuidv4(),
+      ...data,
+      imageOfProduct:
+        "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png",
+    };
+    const response = await axiosWithConfig.post("/products", newData);
+    return response.data
+  } catch (error) {
+    throw Error("Failed to create a product")
+  }
+};
+
 export const updateProduct = async (data) => {
   const { id } = data;
   try {
