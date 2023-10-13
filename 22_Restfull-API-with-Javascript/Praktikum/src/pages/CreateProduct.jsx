@@ -29,6 +29,7 @@ import {
   getProducts,
   updateProduct,
   deleteProduct,
+  createProduct,
 } from "../utils/API/products/api";
 
 function CreateProduct() {
@@ -109,26 +110,30 @@ function CreateProduct() {
     }
   }
 
-  function onSubmit(data) {
-    const product = {
-      id: uuidv4(),
-      ...data,
-    };
-    const newProducts = [...products, product];
-    dispatch(setProducts(newProducts));
-    reset({
-      productName: "",
-      productCategory: "",
-      imageOfProduct: "",
-      productFreshness: "",
-      additionalDescription: "",
-      productPrice: 0,
-    });
-    Swal.fire({
-      title: "Success",
-      text: "Berhasil menambahkan data",
-      showCancelButton: false,
-    });
+  async function onSubmit(data) {
+    try {
+      await createProduct(data);
+      Swal.fire({
+        title: "Success",
+        text: "Successfully created a new product",
+        showCancelButton: false,
+      });
+      reset({
+        productName: "",
+        productCategory: "",
+        imageOfProduct: "",
+        productFreshness: "",
+        additionalDescription: "",
+        productPrice: 0,
+      });
+      fetchData();
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
+    }
   }
 
   async function handleEdit(data) {
