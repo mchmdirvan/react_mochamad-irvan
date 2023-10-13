@@ -35,3 +35,12 @@ export const updateProduct = async (data) => {
     throw Error("Failed to update a product")
   }
 };
+
+export const deleteProduct = async (id) => {
+  try {
+    const response = await axiosWithConfig.delete("/products/" + id);
+    return response.data;
+  } catch (error) {
+    throw Error("Failed to get a product");
+  }
+};
