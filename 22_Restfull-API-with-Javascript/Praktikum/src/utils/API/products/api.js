@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 import axiosWithConfig from "../axiosWithConfig";
 
 export const getProducts = async () => {
@@ -18,5 +20,18 @@ export const getDetailProducts = async (id) => {
   }
 };
 
-
-
+export const updateProduct = async (data) => {
+  const { id } = data;
+  try {
+    const newData = {
+      id: uuidv4(),
+      ...data,
+      image:
+        "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png",
+    };
+    const response = await axiosWithConfig.put(`/products/${id}`, newData);
+    return response.data
+  } catch (error) {
+    throw Error("Failed to update a product")
+  }
+};
