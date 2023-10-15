@@ -6,6 +6,7 @@ import { setAxiosConfig } from "../utils/API/axiosWithConfig";
 import CreateProduct from "../pages/CreateProduct";
 import LandingPage from "../pages/LandingPage";
 import DetailData from "../pages/detail";
+import  OpenAI  from "../pages/OpenAI";
 
 function Router() {
   useEffect(() => {
@@ -24,6 +25,14 @@ function Router() {
     {
       path: "/create-product/:id",
       element: <DetailData />,
+    },
+    {
+      path: "/openai",
+      element: <OpenAI/>,
+    },
+    {
+      path: "*",
+      element: <div>404 page Not Found</div>,
     },
   ]);
   return <RouterProvider router={router} />;
