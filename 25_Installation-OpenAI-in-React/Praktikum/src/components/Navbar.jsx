@@ -71,6 +71,11 @@ function Navbar() {
                 Create Product
               </Link>
             </li>
+            <li>
+              <Link href="#" className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2" to="/OpenAI">
+                OpenAI
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
