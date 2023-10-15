@@ -20,15 +20,68 @@ export default function IndexOpenAI() {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    try {
+      const response = await configuration.chat.completions.create({
+        messages: [{ role: "system", content: "You are a helpful assistant." }],
+        model: "gpt-3.5-turbo",
+      });
+      setResults(response.choices);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const handleSubmit = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
-    console.log(prompt);
+    const userMsg = {
+      message: {
+        content: prompt,
+        role: "user",
+      },
+    };
+    const newData = [...results, userMsg];
+    setResults(newData);
+    
+    try {
+      const response = await configuration.chat.completions.create({
+        messages: [{ role: "user", content: prompt }],
+        model: "gpt-3.5-turbo",
+      });
+      const choice = response.choices[0];
+      setResults([...newData, choice]);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+      setPrompt("");
+    }
   };
 
   return (
     <>
       <Navbar />
       <div className="w-full h-[90vh] py-4 px-8 flex flex-col text-black">
+        <div className="grow flex flex-col overflow-auto">
+          {results.map((result) => (
+            <p
+              className={clsx(
+                "border rounded-xl p-3 mb-4 w-fit",
+                result.message.role === "assistant" ? "self-start" : "self-end"
+              )}
+              key={result.message.content}
+            >
+              {result.message.content}
+            </p>
+          ))}
+        </div>
         <form onSubmit={handleSubmit} className="flex items-center gap-3">
           <Input
             placeholder="Insert prompt"
@@ -37,8 +90,15 @@ export default function IndexOpenAI() {
             name="insertPrompt"
             id="insertPrompt"
             ariaLabel="insert-prompt"
+            value={prompt}
           />
-          <Button type="submit" label="submit" className="px-3" ariaLabel="btn-submit" id="btn-submit" />
+          <Button
+            type="submit"
+            label="submit"
+            className="px-3"
+            ariaLabel="btn-submit"
+            id="btn-submit"
+          />
         </form>
       </div>
     </>
