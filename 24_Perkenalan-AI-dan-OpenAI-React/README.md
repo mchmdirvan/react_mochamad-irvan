@@ -54,3 +54,7 @@ AI belajar membuat prediksi atau keputusan dengan menggunakan data
 
 ## Apa itu openAI playground?
 OpenAI Playground adalah platform daring yang memungkinkan pengguna untuk berinteraksi dengan model kecerdasan buatan, seperti GPT-3, dengan cara menguji dan mengirimkan masukan teks untuk melihat bagaimana model tersebut merespons. Itu membantu dalam eksperimen dan pemahaman kemampuan model AI dalam pemrosesan bahasa alami.
+
+## Generate image
+- Bing Chat
+- MidJourney
