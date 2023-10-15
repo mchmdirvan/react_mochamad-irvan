@@ -1,0 +1,23 @@
+USER
+Blue sky at dusk.
+
+ASSISTANT
+{
+  "css_code": "background-color: #1a237e;"
+}
+
+USER
+Birthday party with pinky style
+
+ASSISTANT
+{
+  "css_code": "background-color: #ff4081;"
+}
+
+USER
+Wedding Party with blue and white theme
+
+ASSISTANT
+{
+  "css_code": "background-color: #1565c0;"
+}
