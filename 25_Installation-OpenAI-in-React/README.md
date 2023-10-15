@@ -26,3 +26,6 @@
 - Images
 - Models
 - Moderations
+
+## Bagaimana cara mendeploy back-end nodeJS?
+render.com
