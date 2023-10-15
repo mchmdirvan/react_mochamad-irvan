@@ -15,3 +15,14 @@
 6. Membuat file .env dan gitignore .env nya
 7. Melakukan konfigurasi .env 
 8. Melakukan konfigurasi openAI
+
+## Apa saja yang dapat dilakukan dengan openAI pada project react?
+- Audio
+- Chat
+- Completions
+- Embeddings
+- Fine-tuning
+- Files
+- Images
+- Models
+- Moderations
