@@ -94,7 +94,8 @@ export default function IndexOpenAI() {
           />
           <Button
             type="submit"
-            label="submit"
+            label={isLoading ? "Loading" : "Submit"}
+            disabled={isLoading}
             className="px-3"
             ariaLabel="btn-submit"
             id="btn-submit"
