@@ -26,3 +26,10 @@ Prompt Engineering adalah teknik yang digunakan untuk mengoptimalkan output dari
 - Dapatkan informasi dari berbagai sumber
 - Berikan contoh keluaran yang kalian inginkan
 - Berikan data dengan jumlah yang besar
+
+## AI untuk membuat website
+- Vercel V0
+
+## Midtrans
+- Snap
+
