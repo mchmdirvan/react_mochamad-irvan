@@ -90,7 +90,7 @@ export default function IndexOpenAI() {
         </div>
         <form onSubmit={handleSubmit} className="flex items-center gap-3">
           <Input
-            placeholder="Insert prompt"
+            placeholder="Menganalisa tempat wisata terdekat"
             onChange={(event) => setPrompt(event.target.value)}
             className="w-[90vw]"
             name="insertPrompt"
