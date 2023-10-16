@@ -49,10 +49,16 @@ export default function IndexOpenAI() {
     };
     const newData = [...results, userMsg];
     setResults(newData);
-    
     try {
       const response = await configuration.chat.completions.create({
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+          { role: "user", content: prompt },
+          {
+            role: "system",
+            content:
+              "Kamu adalah seorang tour guide yang bertugas untuk memandu wisatawan untuk mencari wisata di sekitarnya.",
+          },
+        ],
         model: "gpt-3.5-turbo",
       });
       const choice = response.choices[0];
