@@ -6,6 +6,7 @@ import { setAxiosConfig } from "../utils/API/axiosWithConfig";
 import CreateProduct from "../pages/CreateProduct";
 import LandingPage from "../pages/LandingPage";
 import DetailData from "../pages/detail";
+import Login from "../pages/Login";
 
 function Router() {
   useEffect(() => {
@@ -16,6 +17,10 @@ function Router() {
     {
       path: "/",
       element: <LandingPage />,
+    },
+    {
+      path: "/login",
+      element: <Login/>
     },
     {
       path: "/create-product",
