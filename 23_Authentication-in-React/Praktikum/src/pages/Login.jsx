@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import React from "react";
 import * as z from "zod";
 
+import { useToken } from "../utils/states/contexts/token-context";
 import { Input } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
@@ -14,17 +16,20 @@ const schema = z.object({
 });
 
 export default function Login() {
+  const { token, setToken } = useToken();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(schema),
   });
 
   function handleLogin(data) {
-    console.log(data);
+    setToken(JSON.stringify(data));
+    navigate("/");
   }
 
   return (
