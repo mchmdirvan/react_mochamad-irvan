@@ -27,6 +27,7 @@ function Input({
   placeholder,
   register,
   ariaLabel,
+  onChange,
 }) {
   return (
     <>
@@ -48,6 +49,7 @@ function Input({
             placeholder={placeholder}
             {...(register ? register(name, {valueAsNumber: type === "number" ? true : false}) : {})}
             aria-label={ariaLabel}
+            onChange={onChange}
           />
           {error && <div className=" text-red-500">{error}</div>}
         </div>
