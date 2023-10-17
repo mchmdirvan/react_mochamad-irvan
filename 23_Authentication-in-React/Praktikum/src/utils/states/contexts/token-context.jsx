@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useState, useMemo, useContext } from "react";
 
 const TokenContext = createContext("");
 
-function TokenProvider({ Children }) {
+function TokenProvider({ children }) {
   const [token, setToken] = useState("");
 
   const tokenContextValue = useMemo(
@@ -16,7 +16,7 @@ function TokenProvider({ Children }) {
 
   return (
     <TokenContext.Provider value={tokenContextValue}>
-      {Children}
+      {children}
     </TokenContext.Provider>
   );
 }
