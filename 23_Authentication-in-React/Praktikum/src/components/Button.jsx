@@ -12,11 +12,11 @@ import React from "react";
  * }}
  */
 
-function Button({ type, id, label, ariaLabel }) {
+function Button({ type, id, label, ariaLabel, className }) {
   return (
     <div className="mt-5">
       <button
-        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700"
+      className={`${className} bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-700`}
         type={type}
         id={id}
         aria-label={ariaLabel}
