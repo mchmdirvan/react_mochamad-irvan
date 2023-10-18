@@ -23,7 +23,7 @@ function Router() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: token ? <Login /> : <Navigate to="/"/> 
     },
     {
       path: "/create-product",
