@@ -1,5 +1,9 @@
 # (23) Authentication in React 
 
+## Project
+username:admin
+password: password123
+
 ## Apa itu authentication?
 Authentication merupakan proses untuk memastikan suatu pengenalan.
 
