@@ -23,15 +23,15 @@ function Router() {
     },
     {
       path: "/login",
-      element: token ? <Login /> : <Navigate to="/"/> 
+      element: token === "" ? <Login /> : <Navigate to="/"/> 
     },
     {
       path: "/create-product",
-      element: token ? <CreateProduct /> : <Navigate to="/login"/>
+      element: token === "" ? <CreateProduct /> : <Navigate to="/login"/>
     },
     {
       path: "/create-product/:id",
-      element: token ? <DetailData /> : <Navigate to="/login"/>
+      element: token === "" ? <DetailData /> : <Navigate to="/login"/>
     },
   ]);
   return <RouterProvider router={router} />;
