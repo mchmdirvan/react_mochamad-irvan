@@ -27,11 +27,11 @@ function Router() {
     },
     {
       path: "/create-product",
-      element: token === "" ? <CreateProduct /> : <Navigate to="/login"/>
+      element: token === "" ? <Navigate to="/login"/> : <CreateProduct /> 
     },
     {
       path: "/create-product/:id",
-      element: token === "" ? <DetailData /> : <Navigate to="/login"/>
+      element: token === "" ? <Navigate to="/login"/>: <DetailData /> 
     },
   ]);
   return <RouterProvider router={router} />;
