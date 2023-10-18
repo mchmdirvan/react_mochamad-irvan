@@ -1,11 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
 import { Link } from "react-router-dom";
+import React from "react";
 
 import { useToken } from "../utils/states/contexts/token-context";
+import Swal from "../utils/swal";
 
 function Navbar() {
-  const { token } = useToken();
+  const { token, changeToken } = useToken();
+
+  function handleLogout() {
+    changeToken();
+    Swal.fire({
+      title: "Success",
+      text: "Successfully logout",
+      showCancelButton: false,
+    });
+  }
 
   return (
     <nav className=" dark:bg-gray-900">
@@ -71,25 +81,35 @@ function Navbar() {
                 About
               </a>
             </li>
-            <li>
-              {token === "" ? (
-                <Link
-                  href="#"
-                  className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
-                  to="/login"
-                >
-                  Login
-                </Link>
-              ) : (
-                <Link
-                  href="#"
-                  className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
-                  to="/create-product"
-                >
-                  Create Product
-                </Link>
-              )}
-            </li>
+            {token === "" ? (
+              <Link
+                href="#"
+                className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                to="/login"
+              >
+                Login
+              </Link>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                    to="/create-product"
+                  >
+                    Create Product
+                  </Link>
+                </li>
+                <li onClick={handleLogout}>
+                  <a
+                    href="#"
+                    className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                  >
+                    Logout
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
