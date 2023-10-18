@@ -9,14 +9,16 @@ import { useToken } from "../utils/states/contexts/token-context";
 import { Input } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
+import Swal from "../utils/swal";
+
 
 const schema = z.object({
-  email: z.string().email().min(1, { message: "Email is required" }),
+  username: z.string().min(1, { message: "username is required" }),
   password: z.string().min(1, { message: "Password is required" }),
 });
 
 export default function Login() {
-  const { token, setToken } = useToken();
+  const { changeToken } = useToken();
   const navigate = useNavigate();
 
   const {
@@ -28,8 +30,21 @@ export default function Login() {
   });
 
   function handleLogin(data) {
-    setToken(JSON.stringify(data));
-    navigate("/");
+    const dummyUser = { username: "admin", password: "password123" };
+
+    if (
+      data.username === dummyUser.username &&
+      data.password === dummyUser.password
+    ) {
+      changeToken(JSON.stringify(data));
+      navigate("/"); 
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "Invalid username or password",
+        showCancelButton: false,
+      });
+    }
   }
 
   return (
@@ -40,10 +55,10 @@ export default function Login() {
         <form onSubmit={handleSubmit(handleLogin)}>
           <Input
             register={register}
-            name="email"
-            label="Email"
-            type="email"
-            error={errors.email?.message}
+            name="username"
+            label="Username"
+            type="text"
+            error={errors.username?.message}
           />
           <Input
             register={register}
