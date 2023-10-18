@@ -6,11 +6,13 @@ import React from "react";
 import * as z from "zod";
 
 import { useToken } from "../utils/states/contexts/token-context";
+import { useTitle } from "../utils/hooks/customHooks";
+import { login } from "../utils/API/auth/api";
+import Swal from "../utils/swal";
+
 import { Input } from "../components/FormComponent";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
-import Swal from "../utils/swal";
-
 
 const schema = z.object({
   username: z.string().min(1, { message: "username is required" }),
@@ -18,6 +20,7 @@ const schema = z.object({
 });
 
 export default function Login() {
+  useTitle("Login")
   const { changeToken } = useToken();
   const navigate = useNavigate();
 
@@ -29,19 +32,15 @@ export default function Login() {
     resolver: zodResolver(schema),
   });
 
-  function handleLogin(data) {
-    const dummyUser = { username: "admin", password: "password123" };
-
-    if (
-      data.username === dummyUser.username &&
-      data.password === dummyUser.password
-    ) {
-      changeToken(JSON.stringify(data));
-      navigate("/"); 
-    } else {
+  async function handleLogin(data) {
+    try {
+      const result = await login(data);
+      changeToken(JSON.stringify(result));
+      navigate("/");
+    } catch (error) {
       Swal.fire({
         title: "Error",
-        text: "Invalid username or password",
+        text: error.message,
         showCancelButton: false,
       });
     }
