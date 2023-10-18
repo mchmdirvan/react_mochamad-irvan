@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+
+import { useToken } from "../utils/states/contexts/token-context";
 
 function Navbar() {
+  const { token } = useToken();
+
   return (
     <nav className=" dark:bg-gray-900">
       <div className="flex flex-wrap items-center justify-between mx-auto p-2 shadow-md pr-10">
@@ -41,7 +45,8 @@ function Navbar() {
               <Link
                 href="#"
                 className=" bg-blue-600 text-white px-5 py-2 rounded-md hover:text-black hover:bg-white"
-                aria-current="page" to="/"
+                aria-current="page"
+                to="/"
               >
                 Home
               </Link>
@@ -67,14 +72,23 @@ function Navbar() {
               </a>
             </li>
             <li>
-              <Link href="#" className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2" to="/create-product">
-                Create Product
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2" to="/login">
-                Login
-              </Link>
+              {token === "" ? (
+                <Link
+                  href="#"
+                  className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              ) : (
+                <Link
+                  href="#"
+                  className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                  to="/create-product"
+                >
+                  Create Product
+                </Link>
+              )}
             </li>
           </ul>
         </div>
