@@ -1,8 +1,22 @@
 /* eslint-disable no-unused-vars */
+import { Link } from "react-router-dom";
 import React from "react";
-import {Link} from 'react-router-dom'
+
+import { useToken } from "../utils/states/contexts/token-context";
+import Swal from "../utils/swal";
 
 function Navbar() {
+  const { token, changeToken } = useToken();
+
+  function handleLogout() {
+    changeToken();
+    Swal.fire({
+      title: "Success",
+      text: "Successfully logout",
+      showCancelButton: false,
+    });
+  }
+
   return (
     <nav className=" dark:bg-gray-900">
       <div className="flex flex-wrap items-center justify-between mx-auto p-2 shadow-md pr-10">
@@ -41,7 +55,8 @@ function Navbar() {
               <Link
                 href="#"
                 className=" bg-blue-600 text-white px-5 py-2 rounded-md hover:text-black hover:bg-white"
-                aria-current="page" to="/"
+                aria-current="page"
+                to="/"
               >
                 Home
               </Link>
@@ -66,16 +81,42 @@ function Navbar() {
                 About
               </a>
             </li>
-            <li>
-              <Link href="#" className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2" to="/create-product">
-                Create Product
+            {token === "" ? (
+              <Link
+                href="#"
+                className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                to="/login"
+              >
+                Login
               </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2" to="/OpenAI">
-                OpenAI
-              </Link>
-            </li>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    href="#"
+                    className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                    to="/create-product"
+                  >
+                    Create Product
+                  </Link>
+                  <Link
+                    href="#"
+                    className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                    to="/OpenAI"
+                  >
+                    OpenAI
+                  </Link>
+                </li>
+                <li onClick={handleLogout}>
+                  <a
+                    href="#"
+                    className="text-blue-600  hover:text-black px-2 rounded-full hover:border-2"
+                  >
+                    Logout
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
