@@ -10,7 +10,7 @@ import { useToken } from "../utils/states/contexts/token-context";
 import { setAxiosConfig } from "../utils/API/axiosWithConfig";
 import CreateProduct from "../pages/CreateProduct";
 import LandingPage from "../pages/LandingPage";
-import DetailData from "../pages/detail";
+import DetailData from "../pages/Detail";
 import OpenAI from "../pages/OpenAI";
 import Login from "../pages/Login";
 
