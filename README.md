@@ -26,25 +26,25 @@ Hello Everyone! 👋 Welcome to my Front-End ReactJS learning journey with Alter
 - Mini project
 - Capstone Project
 
-### 🚀 Progress Update:
+## 🚀 Progress:
 
 - Started Learning: December,15 2023
 
-### 🖼 Prototype
+## 🖼 Prototype
 
 [Figma](https://www.figma.com/file/Qo5vbbCyhIwTTelfOM9J9I/Bootstrap-5---alterra?type=design&node-id=405-4730&mode=design&t=0z9PyzlxouVHHLPD-0)
 
-### 🚀 Deployment Global State Management
+## 🚀 Deployment Global State Management
 
 [Live Demo](https://deployment-redux.vercel.app/) | [Codebase](https://github.com/mchmdirvan/react_mochamad-irvan/tree/main/20_Deployment/Praktikum)
 
 
-### 🚀 Deployment Data Fetching, Auth, OpenAI
+## 🚀 Deployment Data Fetching, Auth, OpenAI
 
 [Live Demo](https://alterra-deployment-tasks-irvan.vercel.app/) | [Codebase](https://github.com/mchmdirvan/react_mochamad-irvan/tree/main/26_Basic-Model-OpenAI-dan-Prompt-Engginer-in-React/Praktikum)
 
 
-### 🌟 As User
+## 🌟 As User
 
 - View Landing Page
 - Login
