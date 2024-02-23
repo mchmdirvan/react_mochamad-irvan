@@ -1,12 +1,43 @@
 # (07) Javascript Refreshemt
 
+## Random Notes
+suvery stackoverflow 2023
+nodemon
+
+## ada apa saja macam-macam cara penamaan variable?
+- lowercase
+- UPPERCASE
+- camelCase
+- PascalCase
+- snake_case
+
+## Apa saja tipe data di Javascript?
+Tipe data Primitive
+- Int
+- Bool == / === / && / ||
+- String ``,"",''
+- Null
+- Undefined
+
+Tipe data collection
+- Object {}
+- Array []
+
+## Bagaimana cara menulis function
+function funcName (param) {
+...
+}
+
+## Bagaimana cara mengetahui output function?
+hover nama fungsinya. kalau mau ada hasilnya harus di return. bisa juga dengan console.log(functionName(params))
+
 ## Apa itu Javascript?
 
 JavaScript adalah bahasa pemrograman serbaguna yang digunakan secara luas untuk membuat konten web interaktif dan dinamis. Bahasa ini berjalan di peramban web, memungkinkan untuk scripting di sisi klien, dan juga bisa digunakan di sisi server dengan Node.js.
 
 ## let and const
 
-Variabel dalam JavaScript bisa dideklarasikan dengan menggunakan let dan const. Kata kunci let digunakan untuk variabel yang nilainya bisa diubah, sementara const digunakan untuk variabel dengan nilai yang tetap.
+Variabel dalam JavaScript bisa dideklarasikan dengan menggunakan let dan const. Kata kunci let digunakan untuk variabel yang nilainya bisa diubah, sementara const digunakan untuk variabel dengan nilai yang tetap. var bisa dijalankan sebelum di inisialisasi, sedangkan let harus di deklerasikan.
 
 ## String template (backtick)
 
