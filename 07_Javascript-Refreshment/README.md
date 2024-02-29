@@ -31,6 +31,21 @@ function funcName (param) {
 ## Bagaimana cara mengetahui output function?
 hover nama fungsinya. kalau mau ada hasilnya harus di return. bisa juga dengan console.log(functionName(params))
 
+## Arrow Function Expression()
+Regular function dapat berupa function declaration dan function expression. Namun, arrow function hanya berupa expression function saja. 
+const variableName = (param) => {
+  action
+}
+ketika body dari function hanya terdiri dari satu baris, kita bisa menghapus tanda kurung kurawal 
+const sayName = name => console.log(`Nama saya ${name}`);
+
+## Branching 
+- if else
+- switch case
+- Ternary operator
+
+-----
+
 ## Apa itu Javascript?
 
 JavaScript adalah bahasa pemrograman serbaguna yang digunakan secara luas untuk membuat konten web interaktif dan dinamis. Bahasa ini berjalan di peramban web, memungkinkan untuk scripting di sisi klien, dan juga bisa digunakan di sisi server dengan Node.js.
@@ -225,11 +240,5 @@ function functioName(param) {
   logic action
 }
 
-## Arrow Function Expression()
-Regular function dapat berupa function declaration dan function expression. Namun, arrow function hanya berupa expression function saja. 
-const variableName = (param) => {
-  action
-}
-ketika body dari function hanya terdiri dari satu baris, kita bisa menghapus tanda kurung kurawal 
-const sayName = name => console.log(`Nama saya ${name}`);
+
 
